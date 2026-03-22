@@ -41,7 +41,7 @@
 
   /* CURSOR */
   .cursor{width:10px;height:10px;background:var(--rust);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform 0.1s ease;mix-blend-mode:multiply;}
-  .cursor-ring{width:36px;height:36px;border:1px solid var(--rust);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:all 0.18s ease;opacity:0.6;}
+  .cursor-ring{width:36px;height:36px;border:3.5px solid var(--rust);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:all 0.18s ease;opacity:0.85;}
 
   /* NAV */
   nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;transition:background 0.3s ease;}
@@ -55,6 +55,68 @@
   .nav-links{display:flex;gap:2.5rem;list-style:none;}
   .nav-links a{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
   .nav-links a:hover{color:var(--rust);}
+
+  /* THEME TOGGLE */
+  .nav-left{display:flex;align-items:center;gap:0.8rem;}
+  .theme-toggle{display:flex;gap:4px;align-items:center;padding:0.25rem 0.5rem;border:1px solid rgba(0,0,0,0.12);border-radius:20px;background:transparent;transition:border-color 0.2s;}
+  nav.nav-dark .theme-toggle{border-color:rgba(255,255,255,0.2);}
+  .theme-dot{width:12px;height:12px;border-radius:50%;cursor:none;border:1.5px solid transparent;transition:all 0.2s;flex-shrink:0;}
+  .theme-dot:hover{transform:scale(1.25);}
+  .theme-dot.active{border-color:var(--rust);transform:scale(1.2);}
+  nav.nav-dark .theme-dot.active{border-color:white;}
+  .theme-dot[data-theme="light"]{background:#f5f0e8;border-color:#c8b89a;}
+  .theme-dot[data-theme="dark"]{background:#1a1612;}
+  .theme-dot[data-theme="blueprint"]{background:#0d2137;}
+  .theme-dot[data-theme="mono"]{background:linear-gradient(135deg,#fff 50%,#111 50%);}
+
+  /* THEMES */
+  body.theme-dark{--ink:#f5f0e8;--paper:#0e0c0a;--rust:#c4652a;--warm:#d4a96a;--muted:#7a7068;--light:#1e1a16;--dark:#050403;background:#0e0c0a;color:#f5f0e8;}
+  body.theme-dark .hero-left{background:#0e0c0a;}
+  body.theme-dark #about{background:#0e0c0a;}
+  body.theme-dark #activities{background:#1a1612;}
+  body.theme-dark .activity-card{background:#0e0c0a;color:#f5f0e8;}
+  body.theme-dark .act-desc{color:#7a7068;}
+  body.theme-dark #contact-form-section{background:#0e0c0a;}
+  body.theme-dark .cf-input,.theme-dark .cf-textarea{color:#f5f0e8;border-bottom-color:#2a2520;}
+  body.theme-dark .timeline-dot{background:#0e0c0a;}
+
+  body.theme-blueprint{--ink:#e0f4ff;--paper:#0a1929;--rust:#00bcd4;--warm:#4dd0e1;--muted:#7bb8cc;--light:#0d2137;--dark:#050e1a;background:#0a1929;color:#e0f4ff;}
+  body.theme-blueprint .hero-right::before{background:linear-gradient(135deg,#00bcd4 0%,#0a1929 100%);}
+  body.theme-blueprint #about{background:#0a1929;}
+  body.theme-blueprint #projects{background:#050e1a;}
+  body.theme-blueprint #activities{background:#0d2137;}
+  body.theme-blueprint .activity-card{background:#0a1929;color:#e0f4ff;}
+  body.theme-blueprint .act-desc{color:#7bb8cc;}
+  body.theme-blueprint #contact-form-section{background:#0a1929;}
+  body.theme-blueprint .cf-input,.theme-blueprint .cf-textarea{color:#e0f4ff;border-bottom-color:#0d3350;}
+  body.theme-blueprint .timeline-dot{background:#0a1929;}
+  body.theme-blueprint .stats-bar{background:#00bcd4;}
+  body.theme-blueprint .ai-section{background:#00838f;}
+  body.theme-blueprint footer{background:#050e1a;}
+  body.theme-blueprint .skill-fill{background:#00bcd4;}
+  body.theme-blueprint .section-num{color:#00bcd4;}
+  body.theme-blueprint .tag{border-color:#00bcd4;color:#00bcd4;}
+  body.theme-blueprint .about-block h3{color:#00bcd4;}
+  body.theme-blueprint .hero-label{color:#00bcd4;}
+  body.theme-blueprint .hero-name span{color:#00bcd4;}
+  body.theme-blueprint .scroll-line{background:#00bcd4;}
+  body.theme-blueprint .loader-bar{background:#00bcd4;}
+
+  body.theme-mono{--ink:#111;--paper:#fff;--rust:#111;--warm:#555;--muted:#777;--light:#eee;--dark:#111;background:#fff;color:#111;}
+  body.theme-mono .hero-right::before{background:linear-gradient(135deg,#222 0%,#000 100%);}
+  body.theme-mono .stats-bar{background:#111;}
+  body.theme-mono .ai-section{background:#333;}
+  body.theme-mono #projects{background:#111;}
+  body.theme-mono footer{background:#111;}
+  body.theme-mono .skill-fill{background:#111;}
+  body.theme-mono .section-num,.theme-mono .hero-label,.theme-mono .hero-name span,.theme-mono .scroll-line{color:#111;}
+  body.theme-mono .tag{border-color:#111;color:#111;}
+  body.theme-mono .about-block h3{color:#333;}
+  body.theme-mono .btn-cv{background:#111;border-color:#111;}
+  body.theme-mono .btn-cv:hover{background:transparent;color:#111;}
+
+  /* smooth theme transition */
+  body{transition:background 0.4s ease,color 0.4s ease;}
   .nav-lang{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--muted);padding:0.3rem 0.8rem;transition:all 0.2s;}
   .nav-lang:hover{color:var(--rust);border-color:var(--rust);}
 
@@ -301,7 +363,15 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">BTK.26</a>
+  <div class="nav-left">
+    <a class="nav-logo" href="#">BTK.26</a>
+    <div class="theme-toggle">
+      <div class="theme-dot active" data-theme="light" title="Light"></div>
+      <div class="theme-dot" data-theme="dark" title="Dark"></div>
+      <div class="theme-dot" data-theme="blueprint" title="Blueprint"></div>
+      <div class="theme-dot" data-theme="mono" title="Mono"></div>
+    </div>
+  </div>
   <ul class="nav-links">
     <li><a href="#about">Profile</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -538,7 +608,7 @@
 </section>
 
 <!-- AI HIGHLIGHT -->
-<div class="ai-section">
+<div class="ai-section" id="aiSection">
   <div>
     <div class="ai-label">Key Strength</div>
     <div class="ai-title">AI IN ARCHITECTURE</div>
@@ -697,8 +767,8 @@
     { selector: '#projects',             color: '#ffffff', ring: 'rgba(255,255,255,0.5)' },
     { selector: '#hobbies',              color: '#ffffff', ring: 'rgba(255,255,255,0.5)' },
     { selector: '#contact',              color: '#ffffff', ring: 'rgba(255,255,255,0.5)' },
-    { selector: '.ai-section',           color: '#f5f0e8', ring: 'rgba(245,240,232,0.5)' },
-    { selector: '.stats-bar',            color: '#f5f0e8', ring: 'rgba(245,240,232,0.5)' },
+    { selector: '#aiSection',             color: '#f5f0e8', ring: 'rgba(245,240,232,0.6)' },
+    { selector: '#statsBar',              color: '#f5f0e8', ring: 'rgba(245,240,232,0.6)' },
     { selector: '#home',                 color: '#b84c2a', ring: 'rgba(184,76,42,0.4)'  },
     { selector: '#about',                color: '#b84c2a', ring: 'rgba(184,76,42,0.4)'  },
     { selector: '#activities',           color: '#0e0c0a', ring: 'rgba(14,12,10,0.3)'   },
@@ -712,6 +782,7 @@
     cursor.style.transition = 'background 0.3s ease, transform 0.1s ease';
     ring.style.transition    = 'border-color 0.3s ease, all 0.18s ease';
     cursor.style.background  = c;
+    cursor.style.mixBlendMode = (c === "#ffffff" || c === "#f5f0e8") ? "normal" : "multiply";
     ring.style.borderColor   = r;
   }
   const colorObs = new IntersectionObserver(entries => {
@@ -782,6 +853,167 @@
   document.getElementById('lbNext').addEventListener('click',e=>{e.stopPropagation();lbIndex=(lbIndex+1)%lbImages.length;showLbImage();});
   lb.addEventListener('click',e=>{if(e.target===lb)closeLightbox();});
   document.addEventListener('keydown',e=>{if(!lb.classList.contains('active'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft'){lbIndex=(lbIndex-1+lbImages.length)%lbImages.length;showLbImage();}if(e.key==='ArrowRight'){lbIndex=(lbIndex+1)%lbImages.length;showLbImage();}});
+
+  // ══════════════════════════════════════
+  // FUN UI FEATURES
+  // ══════════════════════════════════════
+
+  // 1. CURSOR TRAIL
+  const trailPool = [];
+  const TRAIL_COUNT = 10;
+  for(let i=0;i<TRAIL_COUNT;i++){
+    const d=document.createElement('div');
+    d.style.cssText='position:fixed;pointer-events:none;z-index:9990;border-radius:50%;width:6px;height:6px;opacity:0;transition:opacity 0.4s ease;transform:translate(-50%,-50%)';
+    document.body.appendChild(d);
+    trailPool.push({el:d,x:0,y:0});
+  }
+  let trailTick=0;
+  document.addEventListener('mousemove',e=>{
+    trailTick=(trailTick+1)%TRAIL_COUNT;
+    const t=trailPool[trailTick];
+    t.x=e.clientX; t.y=e.clientY;
+    t.el.style.left=e.clientX+'px';
+    t.el.style.top=e.clientY+'px';
+    t.el.style.background=currentCursorColor;
+    t.el.style.opacity='0.35';
+    setTimeout(()=>{t.el.style.opacity='0';},300);
+  });
+
+  // 2. CLICK RIPPLE
+  document.addEventListener('click',e=>{
+    const r=document.createElement('div');
+    r.style.cssText=`position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:8px;height:8px;border-radius:50%;border:2px solid ${currentCursorColor};transform:translate(-50%,-50%) scale(1);pointer-events:none;z-index:9995;opacity:0.8;transition:transform 0.6s ease,opacity 0.6s ease;`;
+    document.body.appendChild(r);
+    requestAnimationFrame(()=>{
+      r.style.transform='translate(-50%,-50%) scale(8)';
+      r.style.opacity='0';
+    });
+    setTimeout(()=>r.remove(),700);
+  });
+
+  // 3. HERO PARALLAX (mouse move on hero section)
+  const heroName=document.querySelector('.hero-name');
+  const heroTagline=document.querySelector('.hero-tagline');
+  const heroSection=document.querySelector('.hero');
+  if(heroSection&&heroName){
+    heroSection.addEventListener('mousemove',e=>{
+      const rect=heroSection.getBoundingClientRect();
+      const cx=(e.clientX-rect.left)/rect.width-0.5;
+      const cy=(e.clientY-rect.top)/rect.height-0.5;
+      heroName.style.transform=`translate(${cx*18}px,${cy*10}px)`;
+      heroName.style.transition='transform 0.1s ease';
+      if(heroTagline){heroTagline.style.transform=`translate(${cx*10}px,${cy*6}px)`;heroTagline.style.transition='transform 0.1s ease';}
+    });
+    heroSection.addEventListener('mouseleave',()=>{
+      heroName.style.transform='';
+      if(heroTagline)heroTagline.style.transform='';
+    });
+  }
+
+  // 4. MAGNETIC BUTTONS
+  document.querySelectorAll('.btn-cv,.cf-submit,.nav-lang').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{
+      const r=btn.getBoundingClientRect();
+      const dx=(e.clientX-r.left-r.width/2)*0.3;
+      const dy=(e.clientY-r.top-r.height/2)*0.3;
+      btn.style.transform=`translate(${dx}px,${dy}px)`;
+      btn.style.transition='transform 0.1s ease';
+    });
+    btn.addEventListener('mouseleave',()=>{
+      btn.style.transform='';
+      btn.style.transition='transform 0.4s cubic-bezier(0.34,1.56,0.64,1)';
+    });
+  });
+
+  // 5. TEXT SCRAMBLE on section titles
+  const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#';
+  function scramble(el){
+    const original=el.textContent;
+    let frame=0; const totalFrames=18;
+    const interval=setInterval(()=>{
+      el.textContent=original.split('').map((c,i)=>{
+        if(c===' ')return ' ';
+        if(frame/totalFrames>i/original.length)return c;
+        return chars[Math.floor(Math.random()*chars.length)];
+      }).join('');
+      frame++;
+      if(frame>totalFrames){el.textContent=original;clearInterval(interval);}
+    },40);
+  }
+  const scrambleObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting&&!e.target.dataset.scrambled){
+        e.target.dataset.scrambled='1';
+        scramble(e.target);
+      }
+    });
+  },{threshold:0.5});
+  document.querySelectorAll('.section-title').forEach(t=>scrambleObs.observe(t));
+
+  // 6. GRID OVERLAY (press G)
+  const gridOverlay=document.createElement('div');
+  gridOverlay.style.cssText='position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:0;transition:opacity 0.3s ease;background-image:linear-gradient(rgba(184,76,42,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(184,76,42,0.08) 1px,transparent 1px);background-size:40px 40px;';
+  document.body.appendChild(gridOverlay);
+  let gridOn=false;
+  document.addEventListener('keydown',e=>{
+    if(e.key==='g'||e.key==='G'){
+      gridOn=!gridOn;
+      gridOverlay.style.opacity=gridOn?'1':'0';
+    }
+  });
+
+  // 7. THEME SWITCHER
+  const themes=['light','dark','blueprint','mono'];
+  let currentTheme='light';
+  function applyTheme(t){
+    themes.forEach(th=>document.body.classList.remove('theme-'+th));
+    if(t!=='light') document.body.classList.add('theme-'+t);
+    currentTheme=t;
+    document.querySelectorAll('.theme-dot').forEach(d=>{
+      d.classList.toggle('active',d.dataset.theme===t);
+    });
+    localStorage.setItem('btk-theme',t);
+  }
+  // Load saved theme
+  const savedTheme=localStorage.getItem('btk-theme');
+  if(savedTheme) applyTheme(savedTheme);
+  // Dot click
+  document.querySelectorAll('.theme-dot').forEach(d=>{
+    d.addEventListener('click',()=>applyTheme(d.dataset.theme));
+  });
+  // Keyboard: press T to cycle themes
+  document.addEventListener('keydown',e=>{
+    if((e.key==='t'||e.key==='T')&&!e.ctrlKey&&!e.metaKey){
+      const idx=(themes.indexOf(currentTheme)+1)%themes.length;
+      applyTheme(themes[idx]);
+    }
+  });
+
+  // 8. EASTER EGG — press K
+  const eggOverlay=document.createElement('div');
+  eggOverlay.style.cssText='position:fixed;inset:0;z-index:99998;background:rgba(14,12,10,0.96);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;opacity:0;visibility:hidden;transition:opacity 0.4s ease;cursor:none;';
+  eggOverlay.innerHTML=`
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,6rem);color:#b84c2a;letter-spacing:0.1em;text-align:center;line-height:1">YOU FOUND<br><span style="color:#f5f0e8">THE SECRET</span></div>
+    <div style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:#8a7f72;text-transform:uppercase;text-align:center;max-width:400px;line-height:2">
+      Bach Thai Khang · Architecture Student · Gamer · Explorer<br>
+      Born 2004 · Hanoi · Loves esports &amp; photography<br>
+      <span style="color:#b84c2a">hienkhang2004@gmail.com</span>
+    </div>
+    <div style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;color:#4a4a4a;text-transform:uppercase;margin-top:1rem">Click anywhere to close · Press K again to toggle</div>
+  `;
+  document.body.appendChild(eggOverlay);
+  document.addEventListener('keydown',e=>{
+    if(lb.classList.contains('active'))return;
+    if(e.key==='k'||e.key==='K'){
+      const visible=eggOverlay.style.visibility==='visible';
+      eggOverlay.style.opacity=visible?'0':'1';
+      eggOverlay.style.visibility=visible?'hidden':'visible';
+    }
+  });
+  eggOverlay.addEventListener('click',()=>{
+    eggOverlay.style.opacity='0';
+    setTimeout(()=>eggOverlay.style.visibility='hidden',400);
+  });
 </script>
 </body>
 </html>
