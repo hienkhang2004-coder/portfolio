@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bach Thai Khang — Architectural Portfolio 2026</title>
+<title>Bạch Thái Khang — Architectural Portfolio 2026</title>
 
 <!-- Open Graph / Facebook thumbnail -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Bach Thai Khang — Architectural Portfolio 2026">
-<meta property="og:description" content="Architecture student IITC · Hanoi University of Architecture · Currently at Sunjin Vietnam. School projects, old quarter renovation, urban planning and real-world work.">
+<meta property="og:title" content="Bạch Thái Khang — Architectural Portfolio 2026">
+<meta property="og:description" content="Sinh viên kiến trúc IITC · ĐH Kiến trúc Hà Nội · Đang làm việc tại Sunjin Vietnam. Đồ án trường học, nhà phố cổ, quy hoạch đô thị và dự án thực tế.">
 <meta property="og:image" content="./assets/cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="">
 <meta property="og:site_name" content="BTK Portfolio">
 
-<!-- Twitter Card (also works on Zalo, iMessage...) -->
+<!-- Twitter Card (hoạt động cả trên Zalo, iMessage...) -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bach Thai Khang — Architectural Portfolio 2026">
-<meta name="twitter:description" content="Architecture student IITC · Hanoi University of Architecture · Sunjin Vietnam">
+<meta name="twitter:title" content="Bạch Thái Khang — Architectural Portfolio 2026">
+<meta name="twitter:description" content="Sinh viên kiến trúc IITC · ĐH Kiến trúc Hà Nội · Sunjin Vietnam">
 <meta name="twitter:image" content="./assets/cover.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Mono:wght@300;400;500&family=Bebas+Neue&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #0e0c0a;
@@ -36,7 +36,7 @@
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; font-size: 16px; }
-  body { font-family: 'Cormorant Garamond', serif; background: var(--paper); color: var(--ink); overflow-x: hidden; cursor: none; }
+  body { font-family: 'Be Vietnam Pro', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; cursor: none; }
 
   .cursor { width: 10px; height: 10px; background: var(--rust); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s ease; mix-blend-mode: multiply; }
   .cursor-ring { width: 36px; height: 36px; border: 1px solid var(--rust); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transition: all 0.18s ease; opacity: 0.6; }
@@ -55,7 +55,7 @@
   .hero-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust); margin-bottom: 1.5rem; }
   .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 8vw, 8rem); line-height: 0.9; color: var(--ink); letter-spacing: 0.02em; }
   .hero-name span { color: var(--rust); }
-  .hero-tagline { font-size: 1.25rem; font-style: italic; color: var(--muted); margin-top: 1.5rem; font-weight: 300; max-width: 320px; line-height: 1.6; }
+  .hero-tagline { font-size: 1.1rem; font-style: italic; color: var(--muted); margin-top: 1.5rem; font-weight: 300; max-width: 320px; line-height: 1.7; font-family: 'Playfair Display', serif; }
   .hero-meta { display: flex; gap: 3rem; margin-top: 3rem; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; }
   .hero-meta span { display: block; }
   .hero-meta strong { color: var(--ink); font-size: 0.75rem; }
@@ -96,8 +96,8 @@
   .timeline-item:last-child::before { display: none; }
   .timeline-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--paper); border: 1.5px solid var(--rust); margin-top: 0.35rem; position: relative; z-index: 1; flex-shrink: 0; }
   .timeline-period { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 0.2rem; }
-  .timeline-org { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; }
-  .timeline-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.5; font-style: italic; }
+  .timeline-org { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; font-family: 'Be Vietnam Pro', sans-serif; }
+  .timeline-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; font-family: 'Be Vietnam Pro', sans-serif; font-style: normal; }
 
   .skills-grid { display: flex; flex-direction: column; gap: 0.8rem; }
   .skill-row { display: flex; align-items: center; gap: 1rem; }
@@ -105,6 +105,7 @@
   .skill-bar { flex: 1; height: 3px; background: var(--light); position: relative; overflow: hidden; }
   .skill-fill { position: absolute; left: 0; top: 0; height: 100%; background: var(--rust); width: 0; transition: width 1s cubic-bezier(0.4,0,0.2,1); }
   .skill-fill.animated { width: var(--w); }
+
   .about-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; }
   .tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem; border: 1px solid var(--rust); color: var(--rust); border-radius: 2px; transition: all 0.2s; }
   .tag:hover { background: var(--rust); color: white; }
@@ -115,6 +116,7 @@
   #projects .section-num { color: var(--warm); }
   #projects .section-header { border-bottom-color: rgba(255,255,255,0.08); }
   #projects .section-en { color: rgba(255,255,255,0.3); }
+
   .project-tabs { display: flex; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
   .tab-btn { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.8rem 1.8rem; border: none; background: transparent; color: rgba(255,255,255,0.35); cursor: none; position: relative; transition: color 0.2s; }
   .tab-btn::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: var(--warm); transform: scaleX(0); transition: transform 0.2s; }
@@ -123,6 +125,7 @@
   .tab-btn:hover { color: rgba(255,255,255,0.7); }
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
+
   .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5px; }
   .project-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 2.5rem; position: relative; overflow: hidden; transition: all 0.3s ease; cursor: none; }
   .project-card::before { content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 0; background: var(--warm); transition: height 0.3s ease; }
@@ -130,15 +133,16 @@
   .project-card:hover::before { height: 100%; }
   .project-card-num { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--warm); letter-spacing: 0.15em; margin-bottom: 1rem; }
   .project-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.05em; color: white; margin-bottom: 0.5rem; line-height: 1.1; }
-  .project-card-sub { font-size: 0.85rem; font-style: italic; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; line-height: 1.4; }
+  .project-card-sub { font-size: 0.85rem; font-family: 'Be Vietnam Pro', sans-serif; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; line-height: 1.4; }
   .project-card-instructor { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); }
   .project-card-arrow { position: absolute; bottom: 2rem; right: 2rem; font-size: 1.2rem; color: rgba(255,255,255,0.15); transition: all 0.3s; }
   .project-card:hover .project-card-arrow { color: var(--warm); transform: translate(3px,-3px); }
+
   .real-project-item { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; padding: 2.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); align-items: start; }
   .real-project-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
   .rp-label { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.05em; color: white; line-height: 1.2; }
   .rp-type { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--warm); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 0.5rem; }
-  .rp-desc { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.7; font-style: italic; }
+  .rp-desc { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.7; font-family: 'Be Vietnam Pro', sans-serif; }
   .rp-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
   .rp-tag { font-family: 'DM Mono', monospace; font-size: 0.58rem; padding: 0.25rem 0.7rem; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.4); border-radius: 2px; letter-spacing: 0.08em; }
 
@@ -146,7 +150,7 @@
   .ai-section { background: var(--rust); padding: 4rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
   .ai-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-bottom: 1rem; }
   .ai-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); color: white; line-height: 1; letter-spacing: 0.03em; margin-bottom: 1.5rem; }
-  .ai-desc { font-size: 1.1rem; color: rgba(255,255,255,0.75); line-height: 1.7; font-style: italic; }
+  .ai-desc { font-size: 1.1rem; color: rgba(255,255,255,0.75); line-height: 1.7; font-family: 'Be Vietnam Pro', sans-serif; }
   .before-after { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; }
   .ba-box { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.2); padding: 1.5rem; border-radius: 4px; overflow: hidden; }
   .ba-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 0.8rem; }
@@ -165,7 +169,7 @@
   .activity-card:hover::after { transform: scaleX(1); }
   .act-icon { font-size: 2rem; margin-bottom: 1rem; }
   .act-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.05em; color: var(--ink); margin-bottom: 0.6rem; }
-  .act-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; font-style: italic; }
+  .act-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; font-family: 'Be Vietnam Pro', sans-serif; }
 
   /* HOBBIES */
   #hobbies { background: var(--ink); padding-top: 5rem; padding-bottom: 5rem; }
@@ -173,6 +177,7 @@
   #hobbies .section-num { color: var(--warm); }
   #hobbies .section-header { border-bottom-color: rgba(255,255,255,0.08); }
   #hobbies .section-en { color: rgba(255,255,255,0.25); }
+
   .photo-mosaic { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 160px; gap: 4px; }
   .photo-item { background: #222; position: relative; overflow: hidden; cursor: none; }
   .photo-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
@@ -183,13 +188,13 @@
   .photo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; color: rgba(255,255,255,0.12); transition: all 0.3s; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-align: center; padding: 1rem; }
   .photo-item:hover .photo-placeholder { color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.03); }
   .photo-icon { font-size: 1.8rem; margin-bottom: 0.3rem; }
-  .photo-caption { font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; color: rgba(255,255,255,0.25); margin-top: 0.3rem; line-height: 1.4; }
+  .photo-caption { font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.25); margin-top: 0.3rem; line-height: 1.4; }
 
   /* FOOTER */
   footer { background: var(--dark); padding: 5rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; }
   .footer-greeting { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-bottom: 1rem; }
   .footer-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 6rem); color: var(--paper); line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 1.5rem; }
-  .footer-bio { font-size: 1rem; color: var(--muted); line-height: 1.7; font-style: italic; max-width: 420px; }
+  .footer-bio { font-size: 1rem; color: var(--muted); line-height: 1.7; font-family: 'Be Vietnam Pro', sans-serif; max-width: 420px; }
   .contact-links { display: flex; flex-direction: column; gap: 1rem; }
   .contact-link { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 1.5rem; border: 1px solid rgba(255,255,255,0.08); color: white; text-decoration: none; transition: all 0.2s; position: relative; overflow: hidden; }
   .contact-link::before { content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: var(--warm); transform: scaleY(0); transition: transform 0.2s; }
@@ -200,6 +205,7 @@
   .cl-value { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
   .footer-copy { grid-column: span 2; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.15); letter-spacing: 0.1em; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 2rem; }
 
+  /* ANIMATIONS */
   .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-up.visible { opacity: 1; transform: none; }
   .fade-up:nth-child(2) { transition-delay: 0.1s; }
@@ -210,28 +216,92 @@
   .lightbox {
     position: fixed; inset: 0; z-index: 10000;
     display: flex; align-items: center; justify-content: center;
-    background: rgba(10,8,6,0);
+    background: rgba(10,8,6,0); 
     pointer-events: none;
     transition: background 0.3s ease;
   }
-  .lightbox.active { background: rgba(10,8,6,0.92); pointer-events: all; }
+  .lightbox.active {
+    background: rgba(10,8,6,0.92);
+    pointer-events: all;
+  }
   .lightbox-img-wrap {
-    position: relative; max-width: 90vw; max-height: 88vh;
-    transform: scale(0.88); opacity: 0;
+    position: relative;
+    max-width: 90vw; max-height: 88vh;
+    transform: scale(0.88);
+    opacity: 0;
     transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease;
   }
-  .lightbox.active .lightbox-img-wrap { transform: scale(1); opacity: 1; }
-  .lightbox-img { display: block; max-width: 90vw; max-height: 88vh; width: auto; height: auto; object-fit: contain; box-shadow: 0 32px 80px rgba(0,0,0,0.6); }
-  .lightbox-caption { position: absolute; bottom: -2.4rem; left: 0; right: 0; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); text-transform: uppercase; }
-  .lightbox-close { position: fixed; top: 2rem; right: 2.5rem; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); font-size: 1.2rem; cursor: none; transition: all 0.2s; background: transparent; font-family: 'DM Mono', monospace; }
+  .lightbox.active .lightbox-img-wrap {
+    transform: scale(1);
+    opacity: 1;
+  }
+  .lightbox-img {
+    display: block;
+    max-width: 90vw; max-height: 88vh;
+    width: auto; height: auto;
+    object-fit: contain;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  }
+  .lightbox-caption {
+    position: absolute;
+    bottom: -2.4rem; left: 0; right: 0;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+  }
+  .lightbox-close {
+    position: fixed; top: 2rem; right: 2.5rem;
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.6);
+    font-size: 1.2rem;
+    cursor: none;
+    transition: all 0.2s;
+    background: transparent;
+    font-family: 'DM Mono', monospace;
+  }
   .lightbox-close:hover { border-color: var(--rust); color: var(--rust); }
-  .lightbox-counter { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.3); }
-  .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.5); font-size: 1rem; cursor: none; transition: all 0.2s; background: transparent; font-family: 'DM Mono', monospace; }
+  .lightbox-counter {
+    position: fixed; bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.3);
+  }
+  .lightbox-nav {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.5);
+    font-size: 1rem;
+    cursor: none;
+    transition: all 0.2s;
+    background: transparent;
+    font-family: 'DM Mono', monospace;
+  }
   .lightbox-nav:hover { border-color: var(--rust); color: var(--rust); }
   .lightbox-prev { left: 2rem; }
   .lightbox-next { right: 2rem; }
-  .photo-item::after { content: '⊕'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0); font-size: 2rem; color: white; opacity: 0; transition: all 0.25s ease; pointer-events: none; z-index: 2; text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
-  .photo-item:hover::after { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+
+  /* hover indicator on photo items */
+  .photo-item { cursor: none; }
+  .photo-item::after {
+    content: '⊕';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 2rem; color: white;
+    opacity: 0;
+    transition: all 0.25s ease;
+    pointer-events: none;
+    z-index: 2;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  }
+  .photo-item:hover::after { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
@@ -260,34 +330,34 @@
 <nav>
   <a class="nav-logo" href="#">BTK.25</a>
   <ul class="nav-links">
-    <li><a href="#about">Profile</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#activities">Activities</a></li>
-    <li><a href="#hobbies">Photos</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">Hồ sơ</a></li>
+    <li><a href="#projects">Đồ án</a></li>
+    <li><a href="#activities">Hoạt động</a></li>
+    <li><a href="#hobbies">Ảnh</a></li>
+    <li><a href="#contact">Liên hệ</a></li>
   </ul>
-  <a class="nav-lang" href="./index-vi.html">🇻🇳 Tiếng Việt</a>
+  <a class="nav-lang" href="./index.html">🇬🇧 English</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-left">
     <div class="hero-label">Architectural Portfolio · 2026</div>
-    <h1 class="hero-name">BACH<br>THAI<br><span>KHANG</span></h1>
-    <p class="hero-tagline">Architecture student with strong work ethic and boundless creative ambition</p>
+    <h1 class="hero-name">BẠCH<br>THÁI<br><span>KHANG</span></h1>
+    <p class="hero-tagline">Sinh viên kiến trúc với tinh thần trách nhiệm và đam mê sáng tạo không giới hạn</p>
     <div class="hero-meta">
-      <div><span>University</span><strong>Hanoi Arch. Univ.</strong></div>
-      <div><span>Class</span><strong>22KTT · 2022–2027</strong></div>
-      <div><span>Currently</span><strong>Sunjin Vietnam</strong></div>
+      <div><span>Trường</span><strong>ĐH Kiến trúc HN</strong></div>
+      <div><span>Khoá</span><strong>22KTT · 2022–2027</strong></div>
+      <div><span>Hiện tại</span><strong>Sunjin Vietnam</strong></div>
     </div>
-    <div class="scroll-cue"><div class="scroll-line"></div>Scroll down</div>
+    <div class="scroll-cue"><div class="scroll-line"></div>Kéo xuống</div>
   </div>
   <div class="hero-right">
     <div class="hero-bg-text">K</div>
     <div class="hero-right-content">
       <div class="hero-portrait-wrap">
         <div class="hero-portrait">
-          <img src="./assets/avatar.jpg" alt="Bach Thai Khang" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="./assets/avatar.jpg" alt="Bạch Thái Khang" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="hero-portrait-placeholder" style="display:none">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="20" cy="14" r="6"/><path d="M6 34c0-7.732 6.268-14 14-14s14 6.268 14 14"/></svg>
             <span>avatar.jpg</span>
@@ -296,10 +366,10 @@
       </div>
       <div>
         <div class="hero-role">Architecture Student · IITC</div>
-        <div class="hero-school">Hanoi<br>University of<br>Architecture</div>
+        <div class="hero-school">Đại học<br>Kiến trúc<br>Hà Nội</div>
         <div class="hero-contact-list">
           <span>📞 (+84) 978 786 930</span>
-          <a href="mailto:hienkhang2004@gmail.com?subject=Hello Khang — Contact from Portfolio">✉ hienkhang2004@gmail.com</a>
+          <a href="mailto:hienkhang2004@gmail.com?subject=Xin chào Khang — Liên hệ từ Portfolio">✉ hienkhang2004@gmail.com</a>
           <a href="https://www.instagram.com/__gnahkiaht/" target="_blank" rel="noopener">Instagram: __gnahkiaht</a>
           <a href="https://www.facebook.com/khagg7z7/" target="_blank" rel="noopener">FB: Bạch Thái Khang</a>
         </div>
@@ -312,20 +382,20 @@
 <section id="about">
   <div class="section-header">
     <span class="section-num">01</span>
-    <h2 class="section-title">PROFILE</h2>
-    <span class="section-en">CV & Skills</span>
+    <h2 class="section-title">HỒ SƠ</h2>
+    <span class="section-en">Profile & CV</span>
   </div>
   <div class="about-grid">
     <div class="about-block fade-up">
-      <h3>Education & Experience</h3>
-      <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">May 2025 – Present</div><div class="timeline-org">Sunjin Vietnam JV</div><div class="timeline-desc">Concept team — contributing ideas for schools, social housing</div></div></div>
-      <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">Mar 2024 – Sep 2024</div><div class="timeline-org">HAD Architects</div><div class="timeline-desc">Architecture intern — Revit production for residential & high-rise</div></div></div>
-      <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">Oct 2022 – May 2023</div><div class="timeline-org">APA Academy</div><div class="timeline-desc">Software training: SketchUp, AutoCAD, Revit, Corona, 3ds Max</div></div></div>
-      <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">2022 – 2027</div><div class="timeline-org">Hanoi University of Architecture</div><div class="timeline-desc">Architecture student — IITC program</div></div></div>
-      <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">2019 – 2022</div><div class="timeline-org">Quang Trung – Ha Dong High School</div><div class="timeline-desc">High school graduation</div></div></div>
+      <h3>Học tập &amp; Kinh nghiệm</h3>
+      <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">05/2025 – Nay</div><div class="timeline-org">Sunjin Vietnam JV</div><div class="timeline-desc">Đội ngũ concept — đóng góp ý tưởng trường học, nhà ở xã hội</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">03/2024 – 09/2024</div><div class="timeline-org">HAD Architects</div><div class="timeline-desc">Thực tập sinh — Revit, triển khai nhà dân &amp; chung cư cao tầng</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">10/2022 – 05/2023</div><div class="timeline-org">APA Academy</div><div class="timeline-desc">Đào tạo phần mềm kiến trúc: Sketchup, Autocad, Revit, Corona, 3dsmax</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">2022 – 2027</div><div class="timeline-org">ĐH Kiến trúc Hà Nội</div><div class="timeline-desc">Sinh viên kiến trúc — chuyên ngành IITC</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">2019 – 2022</div><div class="timeline-org">THPT Quang Trung – Hà Đông</div><div class="timeline-desc">Tốt nghiệp THPT</div></div></div>
     </div>
     <div class="about-block fade-up">
-      <h3>Software Skills</h3>
+      <h3>Kỹ năng phần mềm</h3>
       <div class="skills-grid">
         <div class="skill-row"><div class="skill-name">Revit</div><div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div></div>
         <div class="skill-row"><div class="skill-name">AutoCAD</div><div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div></div>
@@ -339,18 +409,18 @@
       </div>
     </div>
     <div class="about-block fade-up">
-      <h3>Special Abilities</h3>
+      <h3>Khả năng đặc biệt</h3>
       <div class="about-tags">
-        <span class="tag">Computer fluency</span><span class="tag">AI in design</span>
-        <span class="tag">Teamwork</span><span class="tag">Fast learner</span>
-        <span class="tag">Creative</span><span class="tag">Deadline 100%</span>
+        <span class="tag">Thành thạo máy tính</span><span class="tag">Ứng dụng AI</span>
+        <span class="tag">Làm việc nhóm</span><span class="tag">Học hỏi nhanh</span>
+        <span class="tag">Sáng tạo</span><span class="tag">Deadline 100%</span>
       </div>
       <div style="margin-top:2rem">
-        <h3 style="margin-bottom:1rem">Achievements</h3>
+        <h3 style="margin-bottom:1rem">Thành tựu</h3>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem">
-          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-style:italic;padding-left:1rem;border-left:2px solid var(--rust)">100% on-time submissions, consistently Good–Excellent grades</li>
-          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-style:italic;padding-left:1rem;border-left:2px solid var(--warm)">Recognized by peers for high responsibility and strong teamwork</li>
-          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-style:italic;padding-left:1rem;border-left:2px solid var(--rust)">Contributed to multiple successful concept proposals; praised by mentors</li>
+          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-family:'Be Vietnam Pro',sans-serif;padding-left:1rem;border-left:2px solid var(--rust)">Luôn hoàn thành đúng deadline 100%, điểm khá–tốt trong học tập và đồ án</li>
+          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-family:'Be Vietnam Pro',sans-serif;padding-left:1rem;border-left:2px solid var(--warm)">Được đánh giá có trách nhiệm, tinh thần cao trong làm việc nhóm</li>
+          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-family:'Be Vietnam Pro',sans-serif;padding-left:1rem;border-left:2px solid var(--rust)">Tham gia phát triển ý tưởng nhiều dự án thành công, được mentor ghi nhận</li>
         </ul>
       </div>
     </div>
@@ -361,38 +431,38 @@
 <section id="projects">
   <div class="section-header">
     <span class="section-num">02</span>
-    <h2 class="section-title">PROJECTS</h2>
-    <span class="section-en">Works & Portfolio</span>
+    <h2 class="section-title">ĐỒ ÁN</h2>
+    <span class="section-en">Works & Projects</span>
   </div>
   <div class="project-tabs">
-    <button class="tab-btn active" onclick="switchTab('school',this)">School Projects</button>
-    <button class="tab-btn" onclick="switchTab('real',this)">Real Projects</button>
+    <button class="tab-btn active" onclick="switchTab('school',this)">Đồ án trong trường</button>
+    <button class="tab-btn" onclick="switchTab('real',this)">Dự án thực tế</button>
   </div>
   <div class="tab-panel active" id="tab-school">
     <div class="project-grid">
-      <div class="project-card fade-up"><div class="project-card-num">Studio 02</div><div class="project-card-title">Old Quarter House Renovation</div><div class="project-card-sub">Renovating a house in a Hanoi Old Quarter alley — optimising light flow, ventilation, and living spaces</div><div class="project-card-instructor">Advisor: Ths.Kts. Eytan Fichman | IITC</div><div class="project-card-arrow">↗</div></div>
-      <div class="project-card fade-up"><div class="project-card-num">Studio 04</div><div class="project-card-title">Phuc Minh Khang Multi-Level School</div><div class="project-card-sub">Full school complex design — integrating landscape, functional zoning, and a contemporary facade</div><div class="project-card-instructor">Advisor: Kts. Tran Nguyen Quang | Sunjin Vietnam</div><div class="project-card-arrow">↗</div></div>
-      <div class="project-card fade-up"><div class="project-card-num">Urban Q3</div><div class="project-card-title">Van Quan Lake Urban Design</div><div class="project-card-sub">Lakeside urban design — walkways, public amenities, and green-corridor intersections</div><div class="project-card-instructor">Advisor: Kts. Tran Nguyen Quang | Sunjin Vietnam</div><div class="project-card-arrow">↗</div></div>
+      <div class="project-card fade-up"><div class="project-card-num">Studio 02</div><div class="project-card-title">Cải tạo nhà phố cổ</div><div class="project-card-sub">Cải tạo nhà trong ngõ phố cổ — tối ưu hoá lưu thông ánh sáng, không khí và không gian sinh hoạt</div><div class="project-card-instructor">GVHD: Ths.Kts. Eytan Fichman | IITC</div><div class="project-card-arrow">↗</div></div>
+      <div class="project-card fade-up"><div class="project-card-num">Studio 04</div><div class="project-card-title">Trường học liên cấp Phúc Ninh Khang</div><div class="project-card-sub">Thiết kế tổng thể trường học liên cấp — tích hợp cảnh quan, phân khu chức năng và mặt đứng hiện đại</div><div class="project-card-instructor">GVHD: Kts. Trần Nguyên Quang | Sunjin Vietnam</div><div class="project-card-arrow">↗</div></div>
+      <div class="project-card fade-up"><div class="project-card-num">Quy hoạch Q3</div><div class="project-card-title">Đô thị hồ Văn Quán</div><div class="project-card-sub">Quy hoạch đô thị ven hồ — thiết kế dạo bộ, tiện ích công cộng và nút giao hành lang xanh</div><div class="project-card-instructor">GVHD: Kts. Trần Nguyên Quang | Sunjin Vietnam</div><div class="project-card-arrow">↗</div></div>
     </div>
   </div>
   <div class="tab-panel" id="tab-real">
-    <div class="real-project-item fade-up"><div><div class="rp-label">Indochine Restaurant</div><div class="rp-type">Facade Design</div></div><div><p class="rp-desc">Redesigned the facade of an Indochine-style restaurant — blending traditional materials with a contemporary architectural language. Includes site plan, ground and second-floor layouts.</p><div class="rp-tags"><span class="rp-tag">Revit</span><span class="rp-tag">3ds Max</span><span class="rp-tag">Corona</span><span class="rp-tag">Photoshop</span></div></div></div>
-    <div class="real-project-item fade-up"><div><div class="rp-label">Middle School 1B – Co Nhue</div><div class="rp-type">Concept Design · Bac Tu Liem</div></div><div><p class="rp-desc">Developed concept for a 3,900 m² middle school in Co Nhue Ward, Bac Tu Liem District. Full design with gymnasium block, connecting corridors, and landscaping system.</p><div class="rp-tags"><span class="rp-tag">SketchUp</span><span class="rp-tag">Lumion</span><span class="rp-tag">AutoCAD</span></div></div></div>
-    <div class="real-project-item fade-up"><div><div class="rp-label">AI Facade Ideation</div><div class="rp-type">Before / After · Freelance</div></div><div><p class="rp-desc">Applied AI tools to facade design ideation — transforming a blank 3D mass into a full architectural proposal with materials, colours, and landscaping for Lotus Grand Hotel.</p><div class="rp-tags"><span class="rp-tag">AI Tools</span><span class="rp-tag">Photoshop</span><span class="rp-tag">SketchUp</span></div></div></div>
+    <div class="real-project-item fade-up"><div><div class="rp-label">Indochine Restaurant</div><div class="rp-type">Thiết kế mặt đứng</div></div><div><p class="rp-desc">Thiết kế lại mặt đứng nhà hàng phong cách Đông Dương — kết hợp vật liệu truyền thống với ngôn ngữ kiến trúc hiện đại. Bao gồm tổng mặt bằng, mặt bằng tầng 1 và tầng 2.</p><div class="rp-tags"><span class="rp-tag">Revit</span><span class="rp-tag">3ds Max</span><span class="rp-tag">Corona</span><span class="rp-tag">Photoshop</span></div></div></div>
+    <div class="real-project-item fade-up"><div><div class="rp-label">THCS 1B – Cổ Nhuế</div><div class="rp-type">Concept Design · Bắc Từ Liêm</div></div><div><p class="rp-desc">Lên phương án concept trường trung học cơ sở 3900m² trong phường Cổ Nhuế, quận Bắc Từ Liêm. Thiết kế tổng thể với khối gymnasium, hành lang kết nối và hệ thống cảnh quan.</p><div class="rp-tags"><span class="rp-tag">SketchUp</span><span class="rp-tag">Lumion</span><span class="rp-tag">AutoCAD</span></div></div></div>
+    <div class="real-project-item fade-up"><div><div class="rp-label">AI Mặt đứng</div><div class="rp-type">Before / After · Freelance</div></div><div><p class="rp-desc">Ứng dụng AI vào phát triển ý tưởng mặt đứng công trình — chuyển đổi khối trắng thành phương án kiến trúc có vật liệu, màu sắc và cảnh quan đầy đủ cho Lotus Grand Hotel.</p><div class="rp-tags"><span class="rp-tag">AI Tools</span><span class="rp-tag">Photoshop</span><span class="rp-tag">SketchUp</span></div></div></div>
   </div>
 </section>
 
 <!-- AI HIGHLIGHT -->
 <div class="ai-section">
   <div>
-    <div class="ai-label">Key Strength</div>
-    <div class="ai-title">AI IN ARCHITECTURE</div>
-    <p class="ai-desc">Leveraging AI tools to accelerate concept development, generate diverse design options, and rapidly visualise ideas — a competitive edge in real-world practice.</p>
+    <div class="ai-label">Điểm mạnh đặc trưng</div>
+    <div class="ai-title">ỨNG DỤNG AI TRONG KIẾN TRÚC</div>
+    <p class="ai-desc">Khai thác công cụ AI để rút ngắn thời gian phát triển concept, tạo ra nhiều phương án đa dạng và hỗ trợ trực quan hoá ý tưởng một cách nhanh chóng — lợi thế cạnh tranh trong môi trường thực tế.</p>
   </div>
   <div>
     <div class="before-after">
       <div class="ba-box">
-        <div class="ba-label">Before · White mass</div>
+        <div class="ba-label">Before · Khối trắng</div>
         <img class="ba-img" src="./assets/ai_before.jpg" alt="Before" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="ba-visual" style="display:none"><div class="ba-row" style="width:100%"></div><div class="ba-row w60"></div><div class="ba-row w80"></div><div class="ba-row w45"></div><div class="ba-row" style="width:100%"></div></div>
       </div>
@@ -410,16 +480,16 @@
 <section id="activities">
   <div class="section-header">
     <span class="section-num">03</span>
-    <h2 class="section-title">ACTIVITIES</h2>
+    <h2 class="section-title">HOẠT ĐỘNG</h2>
     <span class="section-en">Extra-curricular</span>
   </div>
   <div class="activities-grid">
-    <div class="activity-card fade-up"><div class="act-icon">🏆</div><div class="act-title">Student Competitions</div><p class="act-desc">Participated in architectural design competitions at Hanoi University of Architecture — intense teamwork under deadline pressure and rapid idea development</p></div>
-    <div class="activity-card fade-up"><div class="act-icon">🏗️</div><div class="act-title">Site Visits</div><p class="act-desc">Visited active construction sites — understanding real-world construction processes, reading technical drawings, and communicating with site engineers</p></div>
-    <div class="activity-card fade-up"><div class="act-icon">🌿</div><div class="act-title">Field Surveys</div><p class="act-desc">Field trips surveying terrain, landscape, and cultural context for design projects — from mountain regions to urban centres</p></div>
-    <div class="activity-card fade-up"><div class="act-icon">🎨</div><div class="act-title">Exhibitions & Workshops</div><p class="act-desc">Attended interior workshops, architecture exhibitions, and professional events to expand knowledge and build a professional network</p></div>
-    <div class="activity-card fade-up"><div class="act-icon">🤝</div><div class="act-title">Teamwork</div><p class="act-desc">Experience leading and participating in diverse project teams — from urban planning to residential and commercial architectural design</p></div>
-    <div class="activity-card fade-up"><div class="act-icon">📐</div><div class="act-title">Physical Models</div><p class="act-desc">Hands-on model-making using cardboard, wood, and foam — developing 3D spatial thinking and idea presentation skills</p></div>
+    <div class="activity-card fade-up"><div class="act-icon">🏆</div><div class="act-title">Cuộc thi sinh viên</div><p class="act-desc">Tham gia các cuộc thi sáng tác kiến trúc tại Trường Đại học Kiến trúc Hà Nội, trải nghiệm làm việc nhóm cường độ cao và phát triển ý tưởng dưới áp lực thời gian</p></div>
+    <div class="activity-card fade-up"><div class="act-icon">🏗️</div><div class="act-title">Thực địa công trường</div><p class="act-desc">Tham quan và thực địa công trình đang xây dựng — hiểu quy trình thi công thực tế, đọc bản vẽ kỹ thuật và giao tiếp với các kỹ sư công trường</p></div>
+    <div class="activity-card fade-up"><div class="act-icon">🌿</div><div class="act-title">Khảo sát thực địa</div><p class="act-desc">Các chuyến thực địa khảo sát địa hình, cảnh quan và bối cảnh văn hoá phục vụ đồ án thiết kế — từ núi đồi đến đô thị trung tâm</p></div>
+    <div class="activity-card fade-up"><div class="act-icon">🎨</div><div class="act-title">Triển lãm &amp; Workshop</div><p class="act-desc">Tham gia các workshop nội thất, triển lãm kiến trúc và sự kiện chuyên ngành trong và ngoài trường để mở rộng kiến thức và mạng lưới nghề nghiệp</p></div>
+    <div class="activity-card fade-up"><div class="act-icon">🤝</div><div class="act-title">Làm việc nhóm</div><p class="act-desc">Kinh nghiệm dẫn dắt và tham gia nhóm trong nhiều dự án đa dạng — từ quy hoạch đô thị đến thiết kế công trình dân dụng và thương mại</p></div>
+    <div class="activity-card fade-up"><div class="act-icon">📐</div><div class="act-title">Mô hình vật lý</div><p class="act-desc">Thực hành làm mô hình thủ công bằng vật liệu như bìa carton, gỗ và xốp — phát triển tư duy không gian 3 chiều và kỹ năng trình bày ý tưởng</p></div>
   </div>
 </section>
 
@@ -427,40 +497,52 @@
 <section id="hobbies">
   <div class="section-header">
     <span class="section-num">04</span>
-    <h2 class="section-title">PHOTOGRAPHY</h2>
+    <h2 class="section-title">NHIẾP ẢNH</h2>
     <span class="section-en">Photography Hobbies</span>
   </div>
   <div class="photo-mosaic">
-    <div class="photo-item"><img src="./assets/photo1.jpg" alt="Lake sunset Hanoi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌅</span><span>Hanoi Lake Sunset</span><span class="photo-caption">Golden light reflecting on the water</span></div></div>
-    <div class="photo-item"><img src="./assets/photo2.jpg" alt="Park" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌳</span><span>Autumn Park</span><span class="photo-caption">Canopy of green, shadow and light</span></div></div>
-    <div class="photo-item"><img src="./assets/photo3.jpg" alt="Bridge" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌉</span><span>Bridge at Sunset</span><span class="photo-caption">Historic bridge spanning the river</span></div></div>
-    <div class="photo-item"><img src="./assets/photo4.jpg" alt="Architecture" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🏛️</span><span>Architectural Space</span><span class="photo-caption">Gates, walls and natural light</span></div></div>
-    <div class="photo-item"><img src="./assets/photo5.jpg" alt="Staircase" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🔲</span><span>Architectural Detail</span><span class="photo-caption">Spiral staircase — rhythm of space</span></div></div>
-    <div class="photo-item"><img src="./assets/photo6.jpg" alt="Ha Long Bay" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌊</span><span>Ha Long Bay Sunset</span><span class="photo-caption">Sky and sea merge as one</span></div></div>
-    <div class="photo-item"><img src="./assets/photo7.jpg" alt="Beach" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🏖️</span><span>White Sand Beach</span><span class="photo-caption">Sand and clouds — pure nature</span></div></div>
-    <div class="photo-item"><img src="./assets/photo8.jpg" alt="Cave" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">☁️</span><span>Coastal Cave</span><span class="photo-caption">Cave mouth looking out to blue sea</span></div></div>
-    <div class="photo-item"><img src="./assets/photo13.jpg" alt="Old quarter alley" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌿</span><span>Old Quarter Alley</span><span class="photo-caption">French colonial architecture and climbing vines</span></div></div>
+    <div class="photo-item"><img src="./assets/photo1.jpg" alt="Hoàng hôn hồ Hà Nội" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌅</span><span>Hoàng hôn hồ Hà Nội</span><span class="photo-caption">Ánh sáng vàng phản chiếu mặt nước</span></div></div>
+    <div class="photo-item"><img src="./assets/photo2.jpg" alt="Công viên" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌳</span><span>Công viên mùa thu</span><span class="photo-caption">Hàng cây xanh mát, bóng tối và ánh sáng</span></div></div>
+    <div class="photo-item"><img src="./assets/photo3.jpg" alt="Cầu" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌉</span><span>Cầu hoàng hôn</span><span class="photo-caption">Di tích lịch sử bắc qua dòng sông</span></div></div>
+    <div class="photo-item"><img src="./assets/photo4.jpg" alt="Kiến trúc cổ" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🏛️</span><span>Không gian kiến trúc</span><span class="photo-caption">Chi tiết cổng, tường và ánh sáng tự nhiên</span></div></div>
+    <div class="photo-item"><img src="./assets/photo5.jpg" alt="Cầu thang" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🔲</span><span>Chi tiết kiến trúc</span><span class="photo-caption">Cầu thang xoắn ốc — nhịp điệu không gian</span></div></div>
+    <div class="photo-item"><img src="./assets/photo6.jpg" alt="Hạ Long" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌊</span><span>Hoàng hôn Hạ Long</span><span class="photo-caption">Trời và nước hoà quyện</span></div></div>
+    <div class="photo-item"><img src="./assets/photo7.jpg" alt="Bãi biển" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🏖️</span><span>Bãi cát trắng</span><span class="photo-caption">Cát và mây — thiên nhiên thuần khiết</span></div></div>
+    <div class="photo-item"><img src="./assets/photo8.jpg" alt="Hang động" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">☁️</span><span>Hang động ven biển</span><span class="photo-caption">Cửa hang nhìn ra biển xanh</span></div></div>
+    <div class="photo-item"><img src="./assets/photo13.jpg" alt="Ngõ phố cổ" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌿</span><span>Ngõ phố cổ</span><span class="photo-caption">Kiến trúc Pháp cũ và cây leo</span></div></div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer id="contact">
   <div class="footer-left">
-    <div class="footer-greeting">Let's connect</div>
-    <div class="footer-name">BACH<br>THAI<br>KHANG</div>
-    <p class="footer-bio">With a strong sense of responsibility and professionalism, I am confident I can contribute positively and always eager to learn and grow in the field of architecture.</p>
+    <div class="footer-greeting">Hãy kết nối cùng tôi</div>
+    <div class="footer-name">BẠCH<br>THÁI<br>KHANG</div>
+    <p class="footer-bio">Với tinh thần trách nhiệm và nghiêm túc trong công việc nghề nghiệp, tôi tự tin có thể đóng góp tích cực và luôn mong muốn học hỏi, phát triển không ngừng trong lĩnh vực kiến trúc.</p>
   </div>
   <div class="footer-right">
     <div class="contact-links">
-      <a class="contact-link" href="https://zalo.me/0978786930" target="_blank"><span class="cl-icon">📞</span><span class="cl-label">Zalo / Phone</span><span class="cl-value">(+84) 978 786 930</span></a>
-      <a class="contact-link" href="mailto:hienkhang2004@gmail.com?subject=Hello Khang — Contact from Portfolio"><span class="cl-icon">✉</span><span class="cl-label">Email</span><span class="cl-value">hienkhang2004@gmail.com</span></a>
+      <a class="contact-link" href="https://zalo.me/0978786930" target="_blank"><span class="cl-icon">📞</span><span class="cl-label">Zalo / Điện thoại</span><span class="cl-value">(+84) 978 786 930</span></a>
+      <a class="contact-link" href="mailto:hienkhang2004@gmail.com?subject=Xin chào Khang — Liên hệ từ Portfolio"><span class="cl-icon">✉</span><span class="cl-label">Email</span><span class="cl-value">hienkhang2004@gmail.com</span></a>
       <a class="contact-link" href="https://www.instagram.com/__gnahkiaht/" target="_blank" rel="noopener"><span class="cl-icon">📸</span><span class="cl-label">Instagram</span><span class="cl-value">__gnahkiaht</span></a>
       <a class="contact-link" href="https://www.facebook.com/khagg7z7/" target="_blank" rel="noopener"><span class="cl-icon">👤</span><span class="cl-label">Facebook</span><span class="cl-value">Bạch Thái Khang</span></a>
-      <a class="contact-link" href="./index-vi.html"><span class="cl-icon">🇻🇳</span><span class="cl-label">Language</span><span class="cl-value">Xem phiên bản Tiếng Việt</span></a>
+      <a class="contact-link" href="./index.html"><span class="cl-icon">🇬🇧</span><span class="cl-label">Language</span><span class="cl-value">View English Version</span></a>
     </div>
   </div>
-  <div class="footer-copy">© 2026 Bach Thai Khang · Architectural Portfolio · Hanoi University of Architecture · 22KTT</div>
+  <div class="footer-copy">© 2026 Bạch Thái Khang · Architectural Portfolio · ĐH Kiến trúc Hà Nội · 22KTT</div>
 </footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">‹</button>
+  <button class="lightbox-nav lightbox-next" id="lbNext">›</button>
+  <div class="lightbox-img-wrap">
+    <img class="lightbox-img" id="lbImg" src="" alt="">
+    <div class="lightbox-caption" id="lbCaption"></div>
+  </div>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
 
 <script>
   const cursor = document.getElementById('cursor'), ring = document.getElementById('cursorRing');
@@ -493,6 +575,7 @@
       const placeholder = item.tagName === 'IMG' ? item.closest('.photo-item').querySelector('.photo-placeholder span:not(.photo-icon):not(.photo-caption)') : item.querySelector('.photo-placeholder span:not(.photo-icon):not(.photo-caption)');
       lbImages.push({ src: img.src, alt: img.alt || '', caption: placeholder ? placeholder.textContent : img.alt });
     });
+    // dedupe by src
     lbImages = lbImages.filter((v,i,a)=>a.findIndex(t=>t.src===v.src)===i);
   }
 
@@ -526,6 +609,7 @@
     document.body.style.overflow = '';
   }
 
+  // Click on photo items to open
   document.querySelectorAll('.photo-item').forEach(item => {
     item.addEventListener('click', () => {
       const img = item.querySelector('img');
@@ -538,7 +622,9 @@
   document.getElementById('lbClose').addEventListener('click', closeLightbox);
   document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; showLbImage(); });
   document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); lbIndex = (lbIndex + 1) % lbImages.length; showLbImage(); });
+
   lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+
   document.addEventListener('keydown', e => {
     if (!lb.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
@@ -546,18 +632,5 @@
     if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbImages.length; showLbImage(); }
   });
 </script>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lbClose">✕</button>
-  <button class="lightbox-nav lightbox-prev" id="lbPrev">‹</button>
-  <button class="lightbox-nav lightbox-next" id="lbNext">›</button>
-  <div class="lightbox-img-wrap">
-    <img class="lightbox-img" id="lbImg" src="" alt="">
-    <div class="lightbox-caption" id="lbCaption"></div>
-  </div>
-  <div class="lightbox-counter" id="lbCounter"></div>
-</div>
-
 </body>
 </html>
