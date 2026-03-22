@@ -41,7 +41,13 @@
   .cursor { width: 10px; height: 10px; background: var(--rust); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s ease; mix-blend-mode: multiply; }
   .cursor-ring { width: 36px; height: 36px; border: 1px solid var(--rust); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transition: all 0.18s ease; opacity: 0.6; }
 
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; mix-blend-mode: multiply; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; transition: background 0.3s ease; }
+  nav.nav-dark { background: rgba(15,12,10,0.5); backdrop-filter: blur(8px); }
+  nav.nav-dark .nav-logo { color: white; }
+  nav.nav-dark .nav-links a { color: rgba(255,255,255,0.65); }
+  nav.nav-dark .nav-links a:hover { color: white; }
+  nav.nav-dark .nav-lang { color: rgba(255,255,255,0.65); border-color: rgba(255,255,255,0.3); }
+  nav.nav-dark .nav-lang:hover { color: white; border-color: white; }
   .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.15em; color: var(--ink); text-decoration: none; }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
@@ -198,7 +204,7 @@
   .cl-icon { font-size: 1rem; width: 20px; text-align: center; }
   .cl-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); min-width: 80px; }
   .cl-value { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
-  .footer-copy { grid-column: span 2; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.15); letter-spacing: 0.1em; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 2rem; }
+  .footer-copy { grid-column: span 2; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.75); letter-spacing: 0.1em; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.12); margin-top: 2rem; }
 
   .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-up.visible { opacity: 1; transform: none; }
@@ -371,7 +377,7 @@
   <div class="tab-panel active" id="tab-school">
     <div class="project-grid">
       <div class="project-card fade-up"><div class="project-card-num">Studio 02</div><div class="project-card-title">Old Quarter House Renovation</div><div class="project-card-sub">Renovating a house in a Hanoi Old Quarter alley — optimising light flow, ventilation, and living spaces</div><div class="project-card-instructor">Advisor: Ths.Kts. Eytan Fichman | IITC</div><div class="project-card-arrow">↗</div></div>
-      <div class="project-card fade-up"><div class="project-card-num">Studio 04</div><div class="project-card-title">Phuc Minh Khang Multi-Level School</div><div class="project-card-sub">Full school complex design — integrating landscape, functional zoning, and a contemporary facade</div><div class="project-card-instructor">Advisor: Kts. Tran Nguyen Quang | Sunjin Vietnam</div><div class="project-card-arrow">↗</div></div>
+      <div class="project-card fade-up"><div class="project-card-num">Studio 04</div><div class="project-card-title">Phuc Ninh Khong Multi-Level School</div><div class="project-card-sub">Full school complex design — integrating landscape, functional zoning, and a contemporary facade</div><div class="project-card-instructor">Advisor: Kts. Tran Nguyen Quang | Sunjin Vietnam</div><div class="project-card-arrow">↗</div></div>
       <div class="project-card fade-up"><div class="project-card-num">Urban Q3</div><div class="project-card-title">Van Quan Lake Urban Design</div><div class="project-card-sub">Lakeside urban design — walkways, public amenities, and green-corridor intersections</div><div class="project-card-instructor">Advisor: Kts. Tran Nguyen Quang | Sunjin Vietnam</div><div class="project-card-arrow">↗</div></div>
     </div>
   </div>
@@ -477,6 +483,22 @@
   document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
   const sio=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('.skill-fill').forEach(b=>b.classList.add('animated'));});},{threshold:0.2});
   const ab=document.getElementById('about');if(ab)sio.observe(ab);
+
+  // NAV COLOR: switch to white text when scrolling over dark sections
+  const navEl = document.querySelector('nav');
+  const darkSections = ['projects','hobbies','contact'];
+  const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        if (darkSections.includes(e.target.id)) {
+          navEl.classList.add('nav-dark');
+        } else {
+          navEl.classList.remove('nav-dark');
+        }
+      }
+    });
+  }, { rootMargin: '-60px 0px -85% 0px' });
+  document.querySelectorAll('section[id], footer[id]').forEach(s => navObserver.observe(s));
 
   // LIGHTBOX
   const lb = document.getElementById('lightbox');
