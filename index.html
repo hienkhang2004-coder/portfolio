@@ -30,14 +30,18 @@
   body{font-family:'Cormorant Garamond',serif;background:var(--paper);color:var(--ink);overflow-x:hidden;cursor:none;}
 
   /* LOADER */
-  #loader{position:fixed;inset:0;z-index:99999;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity 0.6s ease,visibility 0.6s ease;}
+  #loader{position:fixed;inset:0;z-index:99999;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;transition:opacity 0.6s ease,visibility 0.6s ease;}
   #loader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
-  .loader-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,12vw,9rem);letter-spacing:0.08em;color:var(--paper);line-height:0.9;text-align:center;}
-  .loader-name span{color:var(--rust);}
+  .loader-svg{width:min(480px,85vw);height:auto;display:block;}
+  .loader-svg text{font-family:'Bebas Neue',sans-serif;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:3;}
+  .dl{stroke-dasharray:var(--len,1800);stroke-dashoffset:var(--len,1800);animation:drawStroke 1s cubic-bezier(0.4,0,0.2,1) forwards;}
+  .dl-r{stroke:#b84c2a;} .dl-w{stroke:#f5f0e8;}
+  @keyframes drawStroke{to{stroke-dashoffset:0;}}
   .loader-bar-wrap{width:160px;height:1px;background:rgba(255,255,255,0.1);position:relative;overflow:hidden;}
-  .loader-bar{position:absolute;left:0;top:0;height:100%;width:0;background:var(--rust);animation:loaderFill 1.6s cubic-bezier(0.4,0,0.2,1) forwards;}
+  .loader-bar{position:absolute;left:0;top:0;height:100%;width:0;background:var(--rust);animation:loaderFill 1.6s cubic-bezier(0.4,0,0.2,1) 0.3s forwards;}
   @keyframes loaderFill{to{width:100%;}}
-  .loader-sub{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-top:-1rem;}
+  .loader-sub{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-top:-0.5rem;opacity:0;animation:ldFadeIn 0.5s ease 1.2s forwards;}
+  @keyframes ldFadeIn{to{opacity:1;}}
 
   /* CURSOR */
   .cursor{width:10px;height:10px;background:var(--rust);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform 0.1s ease;mix-blend-mode:multiply;}
@@ -175,8 +179,10 @@
   .timeline-org{font-size:0.95rem;font-weight:600;color:var(--ink);margin-bottom:0.2rem;}
   .timeline-desc{font-size:0.85rem;color:var(--muted);line-height:1.5;font-style:italic;}
   .skills-grid{display:flex;flex-direction:column;gap:0.8rem;}
-  .skill-row{display:flex;align-items:center;gap:1rem;}
+  .skill-row{display:flex;align-items:center;gap:1rem;position:relative;}
   .skill-name{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;color:var(--ink);width:80px;flex-shrink:0;}
+  .skill-pct{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--muted);width:32px;text-align:right;flex-shrink:0;opacity:0;transition:opacity 0.4s ease 0.8s;}
+  .skill-fill.animated~.skill-pct,.skill-row:has(.skill-fill.animated) .skill-pct{opacity:1;}
   .skill-bar{flex:1;height:3px;background:var(--light);position:relative;overflow:hidden;}
   .skill-fill{position:absolute;left:0;top:0;height:100%;background:var(--rust);width:0;transition:width 1s cubic-bezier(0.4,0,0.2,1);}
   .skill-fill.animated{width:var(--w);}
@@ -347,19 +353,137 @@
     .about-grid,.activities-grid{grid-template-columns:1fr;}
     .stats-bar{padding:2rem 1.5rem;}
   }
+
+  /* SCROLL PROGRESS BAR */
+  #scroll-progress{position:fixed;top:0;left:0;width:0%;height:2px;background:var(--rust);z-index:9999;transition:width 0.1s linear;pointer-events:none;}
+
+  /* SECTION WATERMARK NUMBER */
+  .section-watermark{position:absolute;right:-0.05em;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',sans-serif;font-size:clamp(6rem,18vw,14rem);color:var(--rust);opacity:0.04;line-height:1;pointer-events:none;user-select:none;z-index:0;}
+  section{position:relative;overflow:hidden;}
+
+  /* IMAGE TILT 3D */
+  .project-card-thumb,.rp-thumb,.ba-box{transform-style:preserve-3d;will-change:transform;}
+  .tilt-wrap{transform-style:preserve-3d;transition:transform 0.15s ease;will-change:transform;}
+
+  /* IMAGE SKELETON SHIMMER */
+  @keyframes shimmer{0%{background-position:-200% 0;}100%{background-position:200% 0;}}
+  .img-skeleton{background:linear-gradient(90deg,var(--light) 25%,rgba(255,255,255,0.5) 50%,var(--light) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;}
+
+  /* BACK TO TOP */
+  #back-top{position:fixed;bottom:2.5rem;right:2.5rem;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--ink);color:var(--paper);border:none;cursor:none;z-index:500;opacity:0;transform:translateY(12px);transition:opacity 0.3s ease,transform 0.3s ease;font-size:1rem;}
+  #back-top.visible{opacity:1;transform:translateY(0);}
+  #back-top:hover{background:var(--rust);}
+
+  /* PAGE TRANSITION WIPE */
+  #page-wipe{position:fixed;inset:0;z-index:99997;background:var(--ink);transform:translateX(-100%);pointer-events:none;}
+  #page-wipe.wipe-in{transition:transform 0.45s cubic-bezier(0.76,0,0.24,1);transform:translateX(0);}
+  #page-wipe.wipe-out{transition:transform 0.45s cubic-bezier(0.76,0,0.24,1) 0.05s;transform:translateX(100%);}
+
+  /* DIMENSION LINES on project card hover */
+  .project-card::after{content:'';position:absolute;inset:8px;border:1px dashed rgba(212,169,106,0);transition:border-color 0.3s ease;pointer-events:none;z-index:2;}
+  .project-card:hover::after{border-color:rgba(212,169,106,0.25);}
+  .project-card .dim-h,.project-card .dim-v{position:absolute;font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:0.1em;color:rgba(212,169,106,0);transition:color 0.3s ease;pointer-events:none;z-index:3;}
+  .project-card:hover .dim-h,.project-card:hover .dim-v{color:rgba(212,169,106,0.5);}
+  .project-card .dim-h{bottom:12px;left:50%;transform:translateX(-50%);}
+  .project-card .dim-v{right:12px;top:50%;transform:translateY(-50%) rotate(90deg);}
+
+  /* GRAIN TEXTURE */
+  body::after{content:'';position:fixed;inset:0;z-index:99990;pointer-events:none;opacity:0.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:200px 200px;}
+
+  /* MORPH CURSOR LABEL */
+  #cursor-label{position:fixed;pointer-events:none;z-index:9997;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:white;background:var(--rust);padding:0.25rem 0.6rem;opacity:0;transform:translate(14px,-50%) scale(0.8);transition:opacity 0.2s ease,transform 0.2s ease;white-space:nowrap;}
+  #cursor-label.show{opacity:1;transform:translate(14px,-50%) scale(1);}
+
+  /* GLITCH */
+  @keyframes glitch1{0%,100%{clip-path:inset(0 0 100% 0);}10%{clip-path:inset(20% 0 60% 0);transform:translate(-4px,0);}20%{clip-path:inset(50% 0 30% 0);transform:translate(4px,0);}30%{clip-path:inset(70% 0 10% 0);transform:translate(-2px,0);}40%{clip-path:inset(0 0 100% 0);}}
+  @keyframes glitch2{0%,100%{clip-path:inset(0 0 100% 0);}10%{clip-path:inset(60% 0 20% 0);transform:translate(4px,0);}20%{clip-path:inset(30% 0 50% 0);transform:translate(-4px,0);}30%{clip-path:inset(10% 0 70% 0);transform:translate(2px,0);}40%{clip-path:inset(0 0 100% 0);}}
+  .hero-name{position:relative;}
+  .hero-name::before,.hero-name::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;height:100%;opacity:0;}
+  .hero-name.glitching::before{opacity:0.8;color:#00ffff;animation:glitch1 0.3s steps(1) forwards;}
+  .hero-name.glitching::after{opacity:0.8;color:#ff0040;animation:glitch2 0.3s steps(1) 0.05s forwards;}
+
+  /* TYPEWRITER */
+  .typewriter-wrap{overflow:hidden;}
+  .typewriter-text{border-right:2px solid var(--rust);white-space:nowrap;overflow:hidden;width:0;animation:typeCaret 0.6s step-end infinite;}
+  @keyframes typeCaret{50%{border-color:transparent;}}
+
+  /* MAGNETIC WATERMARK */
+  .section-watermark{transition:transform 0.3s ease;}
+
+  /* ── ACTIVE NAV HIGHLIGHT ── */
+  .nav-links a{position:relative;}
+  .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--rust);transition:width 0.3s cubic-bezier(0.4,0,0.2,1);}
+  .nav-links a.nav-active{color:var(--rust);}
+  .nav-links a.nav-active::after{width:100%;}
+  nav.nav-dark .nav-links a.nav-active{color:white;}
+  nav.nav-dark .nav-links a.nav-active::after{background:white;}
+
+  /* ── CURSOR BLEND MODE ── */
+  .cursor-blend{width:40px;height:40px;border-radius:50%;position:fixed;pointer-events:none;z-index:9996;mix-blend-mode:difference;background:white;transform:translate(-50%,-50%) scale(0);transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s ease;opacity:0;}
+  .cursor-blend.active{transform:translate(-50%,-50%) scale(1);opacity:1;}
+
+  /* ── CUSTOM SCROLLBAR ── */
+  ::-webkit-scrollbar{width:4px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  ::-webkit-scrollbar-thumb{background:var(--scrollbar-color,var(--rust));border-radius:2px;transition:background 0.3s;}
+  ::-webkit-scrollbar-thumb:hover{opacity:0.8;}
+  html{scrollbar-width:thin;scrollbar-color:var(--scrollbar-color,var(--rust)) transparent;}
+
+  /* ── IMAGE LAZY LOAD fade-in ── */
+  img[loading="lazy"]{opacity:0;transition:opacity 0.6s ease;}
+  img[loading="lazy"].loaded{opacity:1;}
+
+  /* ── FOCUS STYLES ── */
+  *:focus-visible{outline:2px solid var(--rust);outline-offset:3px;border-radius:2px;}
+  button:focus-visible,a:focus-visible{outline:2px solid var(--rust);outline-offset:4px;}
+
+  /* ── SPLIT TEXT REVEAL ── */
+  .split-reveal{overflow:hidden;display:block;}
+  .split-reveal .word{display:inline-block;overflow:hidden;margin-right:0.25em;}
+  .split-reveal .char{display:inline-block;transform:translateY(110%) rotate(4deg);opacity:0;transition:transform 0.65s cubic-bezier(0.16,1,0.3,1), opacity 0.65s ease;}
+  .split-reveal.revealed .char{transform:translateY(0) rotate(0deg);opacity:1;}
+
+  /* ── SCROLL LINE DRAWING ── */
+  .draw-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+  .draw-path{fill:none;stroke:var(--rust);stroke-width:1;opacity:0.12;stroke-dasharray:var(--path-len,1000);stroke-dashoffset:var(--path-len,1000);transition:stroke-dashoffset 1.8s cubic-bezier(0.4,0,0.2,1);}
+  .draw-path.drawn{stroke-dashoffset:0;}
+  .section-header{position:relative;z-index:1;}
+
+  /* ── PARTICLE CANVAS ── */
+  #particle-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.5s ease 0.5s;}
+  #particle-canvas.visible{opacity:1;}
+  .hero-left{position:relative;z-index:2;}
 </style>
 </head>
 <body>
 
 <!-- LOADING SCREEN -->
 <div id="loader">
-  <div class="loader-name">BACH<br>THAI<br><span>KHANG</span></div>
+  <svg class="loader-svg" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+    <text x="240" y="72" font-size="88" text-anchor="middle" letter-spacing="6"
+      class="dl dl-w" style="--len:1600;animation-delay:0s">BACH</text>
+    <text x="240" y="142" font-size="88" text-anchor="middle" letter-spacing="6"
+      class="dl dl-w" style="--len:1600;animation-delay:0.25s">THAI</text>
+    <text x="240" y="212" font-size="88" text-anchor="middle" letter-spacing="6"
+      class="dl dl-r" style="--len:2000;animation-delay:0.5s">KHANG</text>
+  </svg>
   <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
   <div class="loader-sub">Architectural Portfolio · 2026</div>
 </div>
 
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"></div>
+
+<!-- BACK TO TOP -->
+<button id="back-top" aria-label="Back to top">↑</button>
+
+<!-- PAGE WIPE -->
+<div id="page-wipe"></div>
+
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
+<div id="cursor-label"></div>
+<div class="cursor-blend" id="cursorBlend"></div>
 
 <!-- NAV -->
 <nav>
@@ -384,10 +508,11 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <canvas id="particle-canvas"></canvas>
   <div class="hero-left">
     <div class="hero-label">Architectural Portfolio · 2026</div>
-    <h1 class="hero-name">BACH<br>THAI<br><span>KHANG</span></h1>
-    <p class="hero-tagline">Architecture student with strong work ethic and boundless creative ambition</p>
+    <h1 class="hero-name" data-text="BACH&#10;THAI&#10;KHANG">BACH<br>THAI<br><span>KHANG</span></h1>
+    <p class="hero-tagline typewriter-wrap"><span class="typewriter-text" id="typewriterText"></span></p>
     <div class="hero-meta">
       <div><span>University</span><strong>Hanoi Arch. Univ.</strong></div>
       <div><span>Class</span><strong>22KTT · 2022–2027</strong></div>
@@ -446,9 +571,16 @@
 
 <!-- ABOUT -->
 <section id="about">
+  <svg class="draw-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <path class="draw-path" style="--path-len:2400" d="M0,380 L100,380 L100,20 L120,20 L120,380 L800,380"/>
+    <path class="draw-path" style="--path-len:1800;transition-delay:0.2s" d="M100,200 L400,200 L400,20 L700,20"/>
+    <path class="draw-path" style="--path-len:600;transition-delay:0.5s" d="M100,100 L200,100 M300,100 L500,100"/>
+    <path class="draw-path" style="--path-len:400;transition-delay:0.7s" d="M110,20 L110,380 M200,20 L200,120"/>
+  </svg>
+  <div class="section-watermark">01</div>
   <div class="section-header">
     <span class="section-num">01</span>
-    <h2 class="section-title">PROFILE</h2>
+    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">P</span><span class="char" style="transition-delay:0.04s">R</span><span class="char" style="transition-delay:0.08s">O</span><span class="char" style="transition-delay:0.12s">F</span><span class="char" style="transition-delay:0.16s">I</span><span class="char" style="transition-delay:0.20s">L</span><span class="char" style="transition-delay:0.24s">E</span></span></span></h2>
     <span class="section-en">CV & Skills</span>
   </div>
   <div class="about-grid">
@@ -463,15 +595,15 @@
     <div class="about-block fade-up">
       <h3>Software Skills</h3>
       <div class="skills-grid">
-        <div class="skill-row"><div class="skill-name">Revit</div><div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div></div>
-        <div class="skill-row"><div class="skill-name">AutoCAD</div><div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div></div>
-        <div class="skill-row"><div class="skill-name">SketchUp</div><div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div></div>
-        <div class="skill-row"><div class="skill-name">3ds Max</div><div class="skill-bar"><div class="skill-fill" style="--w:80%"></div></div></div>
-        <div class="skill-row"><div class="skill-name">Corona</div><div class="skill-bar"><div class="skill-fill" style="--w:78%"></div></div></div>
-        <div class="skill-row"><div class="skill-name">Photoshop</div><div class="skill-bar"><div class="skill-fill" style="--w:82%"></div></div></div>
-        <div class="skill-row"><div class="skill-name">Lumion</div><div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div></div>
-        <div class="skill-row"><div class="skill-name">D5 Render</div><div class="skill-bar"><div class="skill-fill" style="--w:72%"></div></div></div>
-        <div class="skill-row"><div class="skill-name">AI Tools</div><div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div></div>
+        <div class="skill-row"><div class="skill-name">Revit</div><div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div><span class="skill-pct">90%</span></div>
+        <div class="skill-row"><div class="skill-name">AutoCAD</div><div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div><span class="skill-pct">88%</span></div>
+        <div class="skill-row"><div class="skill-name">SketchUp</div><div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div><span class="skill-pct">85%</span></div>
+        <div class="skill-row"><div class="skill-name">3ds Max</div><div class="skill-bar"><div class="skill-fill" style="--w:80%"></div></div><span class="skill-pct">80%</span></div>
+        <div class="skill-row"><div class="skill-name">Corona</div><div class="skill-bar"><div class="skill-fill" style="--w:78%"></div></div><span class="skill-pct">78%</span></div>
+        <div class="skill-row"><div class="skill-name">Photoshop</div><div class="skill-bar"><div class="skill-fill" style="--w:82%"></div></div><span class="skill-pct">82%</span></div>
+        <div class="skill-row"><div class="skill-name">Lumion</div><div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div><span class="skill-pct">75%</span></div>
+        <div class="skill-row"><div class="skill-name">D5 Render</div><div class="skill-bar"><div class="skill-fill" style="--w:72%"></div></div><span class="skill-pct">72%</span></div>
+        <div class="skill-row"><div class="skill-name">AI Tools</div><div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div><span class="skill-pct">88%</span></div>
       </div>
     </div>
     <div class="about-block fade-up">
@@ -495,9 +627,16 @@
 
 <!-- PROJECTS -->
 <section id="projects">
+  <svg class="draw-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <path class="draw-path" style="--path-len:3000;stroke:#d4a96a" d="M0,390 L50,390 L50,10 L750,10 L750,390 L800,390"/>
+    <path class="draw-path" style="--path-len:1200;stroke:#d4a96a;transition-delay:0.3s" d="M50,200 L750,200"/>
+    <path class="draw-path" style="--path-len:800;stroke:#d4a96a;transition-delay:0.5s" d="M200,10 L200,200 M400,10 L400,390 M600,10 L600,200"/>
+    <path class="draw-path" style="--path-len:300;stroke:#d4a96a;transition-delay:0.8s" d="M50,100 L200,100 M600,100 L750,100"/>
+  </svg>
+  <div class="section-watermark">02</div>
   <div class="section-header">
     <span class="section-num">02</span>
-    <h2 class="section-title">PROJECTS</h2>
+    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">P</span><span class="char" style="transition-delay:0.04s">R</span><span class="char" style="transition-delay:0.08s">O</span><span class="char" style="transition-delay:0.12s">J</span><span class="char" style="transition-delay:0.16s">E</span><span class="char" style="transition-delay:0.20s">C</span><span class="char" style="transition-delay:0.24s">T</span><span class="char" style="transition-delay:0.28s">S</span></span></span></h2>
     <span class="section-en">Works & Portfolio</span>
   </div>
   <div class="project-tabs">
@@ -508,42 +647,45 @@
     <div class="project-grid">
       <div class="project-card fade-up">
         <div class="project-card-thumb">
-          <img src="./assets/studio2_f1.jpg" alt="Old Quarter House" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img loading="lazy" src="./assets/studio2_f1.jpg" alt="Old Quarter House" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="project-card-thumb-placeholder">Studio 02</div>
         </div>
         <div class="project-card-body">
           <div class="project-card-num">Studio 02</div>
           <div class="project-card-title">Old Quarter House Renovation</div>
           <div class="project-card-sub">Renovating a house in a Hanoi Old Quarter alley — optimising light flow, ventilation, and living spaces</div>
-          <div class="project-card-instructor">Advisor: Ths.Kts. Eytan Fichman | IITC</div>
+          <div class="project-card-instructor">Advisor: M.Arch. Eytan Fichman | IITC</div>
         </div>
         <div class="project-card-arrow">↗</div>
+        <span class="dim-h">27.86 m</span><span class="dim-v">3F</span>
       </div>
       <div class="project-card fade-up">
         <div class="project-card-thumb">
-          <img src="./assets/studio4_hero.jpg" alt="Multi-level School" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img loading="lazy" src="./assets/studio4_hero.jpg" alt="Multi-level School" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="project-card-thumb-placeholder">Studio 04</div>
         </div>
         <div class="project-card-body">
           <div class="project-card-num">Studio 04</div>
-          <div class="project-card-title">Phuc Ninh Khong Multi-Level School</div>
+          <div class="project-card-title">Phuc Minh Khang Multi-Level School</div>
           <div class="project-card-sub">Full school complex design — integrating landscape, functional zoning, and a contemporary facade</div>
-          <div class="project-card-instructor">Advisor: Kts. Tran Nguyen Quang | Sunjin Vietnam</div>
+          <div class="project-card-instructor">Advisor: Arch. Tran Nguyen Quang | Sunjin Vietnam</div>
         </div>
         <div class="project-card-arrow">↗</div>
+        <span class="dim-h">120 m</span><span class="dim-v">5F</span>
       </div>
       <div class="project-card fade-up">
         <div class="project-card-thumb">
-          <img src="./assets/urban_plan.jpg" alt="Van Quan Lake" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img loading="lazy" src="./assets/urban_plan.jpg" alt="Van Quan Lake" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="project-card-thumb-placeholder">Urban Q3</div>
         </div>
         <div class="project-card-body">
           <div class="project-card-num">Urban Q3</div>
           <div class="project-card-title">Van Quan Lake Urban Design</div>
           <div class="project-card-sub">Lakeside urban design — walkways, public amenities, and green-corridor intersections</div>
-          <div class="project-card-instructor">Advisor: Kts. Tran Nguyen Quang | Sunjin Vietnam</div>
+          <div class="project-card-instructor">Advisor: Arch. Ngo Minh Anh</div>
         </div>
         <div class="project-card-arrow">↗</div>
+        <span class="dim-h">3.2 ha</span><span class="dim-v">Urban</span>
       </div>
     </div>
   </div>
@@ -553,7 +695,7 @@
         <div class="rp-label">Indochine Restaurant</div>
         <div class="rp-type">Facade Design</div>
         <div class="rp-thumb">
-          <img src="./assets/indochine_hero.jpg" alt="Indochine" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img loading="lazy" src="./assets/indochine_hero.jpg" alt="Indochine" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="rp-thumb-placeholder">Indochine</div>
         </div>
       </div>
@@ -567,7 +709,7 @@
         <div class="rp-label">Middle School 1B – Co Nhue</div>
         <div class="rp-type">Concept Design · Bac Tu Liem</div>
         <div class="rp-thumb">
-          <img src="./assets/school1b_hero.jpg" alt="School 1B" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img loading="lazy" src="./assets/school1b_hero.jpg" alt="School 1B" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="rp-thumb-placeholder">School 1B</div>
         </div>
       </div>
@@ -581,7 +723,7 @@
         <div class="rp-label">Si Pa Phin School</div>
         <div class="rp-type">Concept Design · Si Pa Phin, Dien Bien</div>
         <div class="rp-thumb">
-          <img src="./assets/sipaphin_hero.jpg" alt="Si Pa Phin Multi-level School" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img loading="lazy" src="./assets/sipaphin_hero.jpg" alt="Si Pa Phin Multi-level School" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="rp-thumb-placeholder">Si Pa Phin</div>
         </div>
       </div>
@@ -595,7 +737,7 @@
         <div class="rp-label">AI Facade Ideation</div>
         <div class="rp-type">Before / After · Freelance</div>
         <div class="rp-thumb">
-          <img src="./assets/ai_after.jpg" alt="AI Facade" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img loading="lazy" src="./assets/ai_after.jpg" alt="AI Facade" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="rp-thumb-placeholder">AI Work</div>
         </div>
       </div>
@@ -618,13 +760,13 @@
     <div class="before-after">
       <div class="ba-box">
         <div class="ba-label">Before · White mass</div>
-        <img class="ba-img" src="./assets/ai_before.jpg" alt="Before" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img loading="lazy" class="ba-img" src="./assets/ai_before.jpg" alt="Before" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="ba-visual" style="display:none"><div class="ba-row" style="width:100%"></div><div class="ba-row w60"></div><div class="ba-row w80"></div><div class="ba-row w45"></div><div class="ba-row" style="width:100%"></div></div>
       </div>
       <div class="ba-arrow">→</div>
       <div class="ba-box">
         <div class="ba-label">After · AI Render</div>
-        <img class="ba-img" src="./assets/ai_after.jpg" alt="After" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img loading="lazy" class="ba-img" src="./assets/ai_after.jpg" alt="After" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="ba-visual" style="display:none"><div class="ba-row after" style="width:100%"></div><div class="ba-row after w80"></div><div class="ba-row after" style="width:100%"></div><div class="ba-row after w60"></div><div class="ba-row after" style="width:100%"></div></div>
       </div>
     </div>
@@ -633,9 +775,16 @@
 
 <!-- ACTIVITIES -->
 <section id="activities">
+  <svg class="draw-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <path class="draw-path" style="--path-len:2000" d="M0,390 L800,390"/>
+    <path class="draw-path" style="--path-len:1600;transition-delay:0.15s" d="M100,390 L100,10 L700,10 L700,390"/>
+    <path class="draw-path" style="--path-len:900;transition-delay:0.35s" d="M100,200 L700,200 M100,100 L400,100"/>
+    <path class="draw-path" style="--path-len:500;transition-delay:0.6s" d="M250,10 L250,390 M550,10 L550,200"/>
+  </svg>
+  <div class="section-watermark">03</div>
   <div class="section-header">
     <span class="section-num">03</span>
-    <h2 class="section-title">ACTIVITIES</h2>
+    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">A</span><span class="char" style="transition-delay:0.04s">C</span><span class="char" style="transition-delay:0.08s">T</span><span class="char" style="transition-delay:0.12s">I</span><span class="char" style="transition-delay:0.16s">V</span><span class="char" style="transition-delay:0.20s">I</span><span class="char" style="transition-delay:0.24s">T</span><span class="char" style="transition-delay:0.28s">I</span><span class="char" style="transition-delay:0.32s">E</span><span class="char" style="transition-delay:0.36s">S</span></span></span></h2>
     <span class="section-en">Extra-curricular</span>
   </div>
   <div class="activities-grid">
@@ -650,29 +799,43 @@
 
 <!-- PHOTOGRAPHY -->
 <section id="hobbies">
+  <svg class="draw-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <path class="draw-path" style="--path-len:2800;stroke:#d4a96a" d="M0,10 L800,10 M0,390 L800,390"/>
+    <path class="draw-path" style="--path-len:1400;stroke:#d4a96a;transition-delay:0.25s" d="M50,10 L50,390 M750,10 L750,390"/>
+    <path class="draw-path" style="--path-len:600;stroke:#d4a96a;transition-delay:0.5s" d="M200,10 L200,390 M600,10 L600,390"/>
+    <path class="draw-path" style="--path-len:400;stroke:#d4a96a;transition-delay:0.75s" d="M50,200 L750,200"/>
+  </svg>
+  <div class="section-watermark">04</div>
   <div class="section-header">
     <span class="section-num">04</span>
-    <h2 class="section-title">PHOTOGRAPHY</h2>
+    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">P</span><span class="char" style="transition-delay:0.04s">H</span><span class="char" style="transition-delay:0.08s">O</span><span class="char" style="transition-delay:0.12s">T</span><span class="char" style="transition-delay:0.16s">O</span><span class="char" style="transition-delay:0.20s">G</span><span class="char" style="transition-delay:0.24s">R</span><span class="char" style="transition-delay:0.28s">A</span><span class="char" style="transition-delay:0.32s">P</span><span class="char" style="transition-delay:0.36s">H</span><span class="char" style="transition-delay:0.40s">Y</span></span></span></h2>
     <span class="section-en">Photography Hobbies</span>
   </div>
   <div class="photo-mosaic">
-    <div class="photo-item"><img src="./assets/photo1.jpg" alt="Lake sunset Hanoi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌅</span><span>Hanoi Lake Sunset</span><span class="photo-caption">Golden light reflecting on the water</span></div></div>
-    <div class="photo-item"><img src="./assets/photo2.jpg" alt="Park" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌳</span><span>Autumn Park</span><span class="photo-caption">Canopy of green, shadow and light</span></div></div>
-    <div class="photo-item"><img src="./assets/photo3.jpg" alt="Bridge" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌉</span><span>Bridge at Sunset</span><span class="photo-caption">Historic bridge spanning the river</span></div></div>
-    <div class="photo-item"><img src="./assets/photo4.jpg" alt="Architecture" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🏛️</span><span>Architectural Space</span><span class="photo-caption">Gates, walls and natural light</span></div></div>
-    <div class="photo-item"><img src="./assets/photo5.jpg" alt="Staircase" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🔲</span><span>Architectural Detail</span><span class="photo-caption">Spiral staircase — rhythm of space</span></div></div>
-    <div class="photo-item"><img src="./assets/photo6.jpg" alt="Ha Long Bay" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌊</span><span>Ha Long Bay Sunset</span><span class="photo-caption">Sky and sea merge as one</span></div></div>
-    <div class="photo-item"><img src="./assets/photo7.jpg" alt="Beach" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🏖️</span><span>White Sand Beach</span><span class="photo-caption">Sand and clouds — pure nature</span></div></div>
-    <div class="photo-item"><img src="./assets/photo8.jpg" alt="Cave" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">☁️</span><span>Coastal Cave</span><span class="photo-caption">Cave mouth looking out to blue sea</span></div></div>
-    <div class="photo-item"><img src="./assets/photo13.jpg" alt="Old quarter alley" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌿</span><span>Old Quarter Alley</span><span class="photo-caption">French colonial architecture and climbing vines</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo1.jpg" alt="Lake sunset Hanoi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌅</span><span>Hanoi Lake Sunset</span><span class="photo-caption">Golden light reflecting on the water</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo2.jpg" alt="Park" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌳</span><span>Autumn Park</span><span class="photo-caption">Canopy of green, shadow and light</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo3.jpg" alt="Bridge" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌉</span><span>Bridge at Sunset</span><span class="photo-caption">Historic bridge spanning the river</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo4.jpg" alt="Architecture" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🏛️</span><span>Architectural Space</span><span class="photo-caption">Gates, walls and natural light</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo5.jpg" alt="Staircase" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🔲</span><span>Architectural Detail</span><span class="photo-caption">Spiral staircase — rhythm of space</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo6.jpg" alt="Ha Long Bay" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌊</span><span>Ha Long Bay Sunset</span><span class="photo-caption">Sky and sea merge as one</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo7.jpg" alt="Beach" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🏖️</span><span>White Sand Beach</span><span class="photo-caption">Sand and clouds — pure nature</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo8.jpg" alt="Cave" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">☁️</span><span>Coastal Cave</span><span class="photo-caption">Cave mouth looking out to blue sea</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo13.jpg" alt="Old quarter alley" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌿</span><span>Old Quarter Alley</span><span class="photo-caption">French colonial architecture and climbing vines</span></div></div>
   </div>
 </section>
 
 <!-- CONTACT FORM -->
 <section id="contact-form-section">
+  <svg class="draw-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <path class="draw-path" style="--path-len:2200" d="M0,390 L50,390 L50,10 L750,10 L750,390 L800,390"/>
+    <path class="draw-path" style="--path-len:800;transition-delay:0.3s" d="M50,150 L750,150"/>
+    <path class="draw-path" style="--path-len:500;transition-delay:0.55s" d="M300,10 L300,390"/>
+    <path class="draw-path" style="--path-len:300;transition-delay:0.8s" d="M50,300 L300,300 M450,150 L750,300"/>
+  </svg>
+  <div class="section-watermark">05</div>
   <div class="section-header">
     <span class="section-num">05</span>
-    <h2 class="section-title">GET IN TOUCH</h2>
+    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">G</span><span class="char" style="transition-delay:0.04s">E</span><span class="char" style="transition-delay:0.08s">T</span></span> <span class="word"><span class="char" style="transition-delay:0.00s">I</span><span class="char" style="transition-delay:0.04s">N</span></span> <span class="word"><span class="char" style="transition-delay:0.00s">T</span><span class="char" style="transition-delay:0.04s">O</span><span class="char" style="transition-delay:0.08s">U</span><span class="char" style="transition-delay:0.12s">C</span><span class="char" style="transition-delay:0.16s">H</span></span></span></h2>
     <span class="section-en">Send a message</span>
   </div>
   <div class="contact-form-wrap">
@@ -687,7 +850,7 @@
       </div>
     </div>
     <!-- Replace YOUR_FORM_ID at formspree.io/forms → New Form → copy the ID -->
-    <form class="cf-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <form class="cf-form" id="contactForm" action="https://formspree.io/f/xvzwjoba" method="POST">
       <div class="cf-row">
         <div class="cf-field">
           <label class="cf-label" for="cf-name">Your name</label>
@@ -729,7 +892,7 @@
       <a class="contact-link" href="./index-vi.html"><span class="cl-icon">🇻🇳</span><span class="cl-label">Language</span><span class="cl-value">Xem phiên bản Tiếng Việt</span></a>
     </div>
   </div>
-  <div class="footer-copy">© 2026 Bach Thai Khang · Architectural Portfolio · Hanoi University of Architecture · 22KTT</div>
+  <div class="footer-copy">© <span id="footerYear">2026</span> Bach Thai Khang · Architectural Portfolio · Hanoi University of Architecture · 22KTT</div>
 </footer>
 
 <!-- LIGHTBOX -->
@@ -738,7 +901,7 @@
   <button class="lightbox-nav lightbox-prev" id="lbPrev">‹</button>
   <button class="lightbox-nav lightbox-next" id="lbNext">›</button>
   <div class="lightbox-img-wrap">
-    <img class="lightbox-img" id="lbImg" src="" alt="">
+    <img loading="lazy" class="lightbox-img" id="lbImg" src="" alt="">
     <div class="lightbox-caption" id="lbCaption"></div>
   </div>
   <div class="lightbox-counter" id="lbCounter"></div>
@@ -962,6 +1125,63 @@
     }
   });
 
+  // NEW FEATURES
+
+  // A. SCROLL PROGRESS BAR
+  const progressBar=document.getElementById('scroll-progress');
+  window.addEventListener('scroll',()=>{
+    const pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;
+    progressBar.style.width=pct+'%';
+  },{passive:true});
+
+  // B. BACK TO TOP
+  const backTop=document.getElementById('back-top');
+  window.addEventListener('scroll',()=>{
+    backTop.classList.toggle('visible',window.scrollY>600);
+  },{passive:true});
+  backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  // C. IMAGE TILT 3D
+  document.querySelectorAll('.project-card-thumb,.rp-thumb').forEach(el=>{
+    el.addEventListener('mousemove',e=>{
+      const r=el.getBoundingClientRect();
+      const cx=(e.clientX-r.left)/r.width-0.5;
+      const cy=(e.clientY-r.top)/r.height-0.5;
+      el.style.transform=`perspective(600px) rotateY(${cx*14}deg) rotateX(${-cy*10}deg) scale(1.03)`;
+      el.style.transition='transform 0.1s ease';
+    });
+    el.addEventListener('mouseleave',()=>{
+      el.style.transform='perspective(600px) rotateY(0deg) rotateX(0deg) scale(1)';
+      el.style.transition='transform 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+    });
+  });
+
+  // D. PAGE TRANSITION WIPE
+  const wipe=document.getElementById('page-wipe');
+  document.querySelectorAll('a[href]').forEach(a=>{
+    const href=a.getAttribute('href');
+    if(!href||href.startsWith('#')||href.startsWith('mailto')||href.startsWith('tel')||href.startsWith('http')||a.hasAttribute('download')) return;
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      wipe.classList.add('wipe-in');
+      setTimeout(()=>window.location.href=href,450);
+    });
+  });
+  window.addEventListener('pageshow',()=>{
+    wipe.classList.remove('wipe-in');
+    requestAnimationFrame(()=>wipe.classList.add('wipe-out'));
+    setTimeout(()=>wipe.classList.remove('wipe-out'),500);
+  });
+
+  // E. SKELETON SHIMMER on images before load
+  document.querySelectorAll('img').forEach(img=>{
+    if(!img.complete){
+      img.classList.add('img-skeleton');
+      img.addEventListener('load',()=>img.classList.remove('img-skeleton'),{once:true});
+      img.addEventListener('error',()=>img.classList.remove('img-skeleton'),{once:true});
+    }
+  });
+
   // 7. THEME SWITCHER
   const themes=['light','dark','blueprint','mono'];
   let currentTheme='light';
@@ -1014,6 +1234,309 @@
     eggOverlay.style.opacity='0';
     setTimeout(()=>eggOverlay.style.visibility='hidden',400);
   });
+
+  // ══════════════════════════════════════
+  // POLISH FEATURES
+  // ══════════════════════════════════════
+
+  // 1. ACTIVE NAV HIGHLIGHT
+  const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+  const allSections = document.querySelectorAll('section[id], footer[id], div[id="aiSection"], div[id="statsBar"]');
+  const navHighlightObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      navAnchors.forEach(a => {
+        a.classList.remove('nav-active');
+        if (a.getAttribute('href') === '#' + e.target.id) {
+          a.classList.add('nav-active');
+        }
+      });
+    });
+  }, { rootMargin: '-35% 0px -55% 0px' });
+  allSections.forEach(s => navHighlightObs.observe(s));
+
+  // 2. CURSOR BLEND MODE — activates over dark sections + images
+  const cursorBlend = document.getElementById('cursorBlend');
+  let blendMx = 0, blendMy = 0;
+  document.addEventListener('mousemove', e => {
+    blendMx = e.clientX; blendMy = e.clientY;
+    cursorBlend.style.left = blendMx + 'px';
+    cursorBlend.style.top  = blendMy + 'px';
+  });
+  // Activate blend on dark bg elements
+  const blendTargets = document.querySelectorAll(
+    '#projects, #hobbies, footer, .ai-section, .stats-bar, .photo-item, .project-card, #loader'
+  );
+  blendTargets.forEach(el => {
+    el.addEventListener('mouseenter', () => cursorBlend.classList.add('active'));
+    el.addEventListener('mouseleave', () => cursorBlend.classList.remove('active'));
+  });
+
+  // 3. LAZY LOAD — fade in images when they enter viewport
+  const lazyImgs = document.querySelectorAll('img[loading="lazy"]');
+  const lazyObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const img = e.target;
+        img.addEventListener('load', () => img.classList.add('loaded'), { once: true });
+        if (img.complete) img.classList.add('loaded');
+        lazyObs.unobserve(img);
+      }
+    });
+  }, { rootMargin: '200px' });
+  lazyImgs.forEach(img => lazyObs.observe(img));
+
+  // 4. DYNAMIC FOOTER YEAR
+  const fyEl = document.getElementById('footerYear');
+  if (fyEl) fyEl.textContent = new Date().getFullYear();
+
+  // 5. SMOOTH SCROLL for nav anchor links (override default)
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // 6. CUSTOM SCROLLBAR color sync with theme
+  function updateScrollbarTheme(t) {
+    const colors = {
+      light: '#b84c2a', dark: '#c4652a',
+      blueprint: '#00bcd4', mono: '#111'
+    };
+    document.documentElement.style.setProperty('--scrollbar-color', colors[t] || '#b84c2a');
+  }
+  // Hook into applyTheme
+  const _origApplyTheme = applyTheme;
+  applyTheme = function(t) { _origApplyTheme(t); updateScrollbarTheme(t); };
+  updateScrollbarTheme(currentTheme || 'light');
+
+
+  // ── SCROLL LINE DRAWING ──
+  const drawPaths = document.querySelectorAll('.draw-path');
+  const drawObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('drawn');
+        drawObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  drawPaths.forEach(p => drawObs.observe(p));
+
+  // ── SPLIT TEXT REVEAL ──
+  const splitEls = document.querySelectorAll('.split-reveal');
+  const splitObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        // stagger chars with delay already set inline
+        e.target.classList.add('revealed');
+        splitObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  splitEls.forEach(el => splitObs.observe(el));
+
+
+  // ══════════════════════════════════════
+  // PARTICLE FIELD — GPU Canvas
+  // ══════════════════════════════════════
+  (function(){
+    const canvas = document.getElementById('particle-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    // Config
+    const CONFIG = {
+      count: 80,
+      maxDist: 140,       // max distance to draw connection line
+      mouseRadius: 180,   // mouse influence radius
+      mouseForce: 0.012,  // how strongly particles repel from mouse
+      speed: 0.35,
+      particleRadius: 1.8,
+      lineWidth: 0.5,
+    };
+
+    let W, H, dpr, animId;
+    let mouseX = -9999, mouseY = -9999;
+    let particles = [];
+
+    // Colors — sync with theme
+    function getColors() {
+      const style = getComputedStyle(document.body);
+      const isDark = document.body.classList.contains('theme-dark');
+      const isBP   = document.body.classList.contains('theme-blueprint');
+      const isMono = document.body.classList.contains('theme-mono');
+      if (isBP)   return { dot: '#00bcd4', line: '#00bcd4' };
+      if (isMono) return { dot: '#555',    line: '#333'    };
+      if (isDark) return { dot: '#c4652a', line: '#c4652a' };
+      return { dot: '#b84c2a', line: '#b84c2a' };
+    }
+
+    function resize() {
+      dpr = window.devicePixelRatio || 1;
+      const rect = canvas.parentElement.getBoundingClientRect();
+      W = rect.width; H = rect.height;
+      canvas.width  = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width  = W + 'px';
+      canvas.style.height = H + 'px';
+      ctx.scale(dpr, dpr);
+    }
+
+    function createParticles() {
+      particles = [];
+      for (let i = 0; i < CONFIG.count; i++) {
+        particles.push({
+          x:  Math.random() * W,
+          y:  Math.random() * H,
+          vx: (Math.random() - 0.5) * CONFIG.speed,
+          vy: (Math.random() - 0.5) * CONFIG.speed,
+          r:  CONFIG.particleRadius * (0.6 + Math.random() * 0.8),
+          opacity: 0.3 + Math.random() * 0.5,
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      const colors = getColors();
+
+      // Update + draw particles
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        // Mouse repulsion
+        const dx = p.x - mouseX;
+        const dy = p.y - mouseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < CONFIG.mouseRadius && dist > 0) {
+          const force = (CONFIG.mouseRadius - dist) / CONFIG.mouseRadius;
+          p.vx += (dx / dist) * force * CONFIG.mouseForce * 8;
+          p.vy += (dy / dist) * force * CONFIG.mouseForce * 8;
+        }
+
+        // Velocity damping
+        p.vx *= 0.995;
+        p.vy *= 0.995;
+
+        // Speed cap
+        const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+        if (speed > CONFIG.speed * 3) {
+          p.vx = (p.vx / speed) * CONFIG.speed * 3;
+          p.vy = (p.vy / speed) * CONFIG.speed * 3;
+        }
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Wrap around edges
+        if (p.x < -10) p.x = W + 10;
+        if (p.x > W + 10) p.x = -10;
+        if (p.y < -10) p.y = H + 10;
+        if (p.y > H + 10) p.y = -10;
+
+        // Draw dot
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = colors.dot
+          .replace(')', `,${p.opacity})`)
+          .replace('rgb', 'rgba')
+          .replace('#b84c2a', `rgba(184,76,42,${p.opacity})`)
+          .replace('#c4652a', `rgba(196,101,42,${p.opacity})`)
+          .replace('#00bcd4', `rgba(0,188,212,${p.opacity})`)
+          .replace('#555',    `rgba(85,85,85,${p.opacity})`);
+
+        // Simpler approach
+        ctx.fillStyle = hexToRgba(colors.dot, p.opacity);
+        ctx.fill();
+
+        // Draw connections
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j];
+          const dx2 = p.x - q.x;
+          const dy2 = p.y - q.y;
+          const d2  = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+          if (d2 < CONFIG.maxDist) {
+            const alpha = (1 - d2 / CONFIG.maxDist) * 0.25;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = hexToRgba(colors.line, alpha);
+            ctx.lineWidth   = CONFIG.lineWidth;
+            ctx.stroke();
+          }
+        }
+
+        // Draw mouse connection (closest 5 particles to mouse)
+        if (dist < CONFIG.mouseRadius * 1.2) {
+          const alpha = (1 - dist / (CONFIG.mouseRadius * 1.2)) * 0.4;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouseX, mouseY);
+          ctx.strokeStyle = hexToRgba(colors.line, alpha);
+          ctx.lineWidth   = CONFIG.lineWidth * 0.8;
+          ctx.stroke();
+        }
+      }
+
+      animId = requestAnimationFrame(draw);
+    }
+
+    function hexToRgba(hex, a) {
+      // Handle both hex and named colors
+      const map = {
+        '#b84c2a': `rgba(184,76,42,${a})`,
+        '#c4652a': `rgba(196,101,42,${a})`,
+        '#00bcd4': `rgba(0,188,212,${a})`,
+        '#555':    `rgba(85,85,85,${a})`,
+        '#333':    `rgba(51,51,51,${a})`,
+      };
+      return map[hex] || `rgba(184,76,42,${a})`;
+    }
+
+    // Init
+    resize();
+    createParticles();
+    draw();
+    setTimeout(() => canvas.classList.add('visible'), 100);
+
+    // Events
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(animId);
+      resize();
+      draw();
+    });
+
+    const heroEl = document.getElementById('home');
+    if (heroEl) {
+      heroEl.addEventListener('mousemove', e => {
+        const r = canvas.getBoundingClientRect();
+        mouseX = e.clientX - r.left;
+        mouseY = e.clientY - r.top;
+      });
+      heroEl.addEventListener('mouseleave', () => {
+        mouseX = -9999; mouseY = -9999;
+      });
+    }
+
+    // Touch support
+    heroEl && heroEl.addEventListener('touchmove', e => {
+      const r = canvas.getBoundingClientRect();
+      mouseX = e.touches[0].clientX - r.left;
+      mouseY = e.touches[0].clientY - r.top;
+    }, { passive: true });
+
+    // Performance: pause when tab not visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) cancelAnimationFrame(animId);
+      else draw();
+    });
+
+  })();
+
 </script>
 </body>
 </html>
