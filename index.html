@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bạch Thái Khang — Architectural Portfolio 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0c0a;
+    --paper: #f5f0e8;
+    --rust: #b84c2a;
+    --warm: #d4a96a;
+    --muted: #8a7f72;
+    --light: #e8e2d6;
+    --dark: #1a1612;
+    --accent: #c4501e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    width: 10px; height: 10px;
+    background: var(--rust);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    mix-blend-mode: multiply;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid var(--rust);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.18s ease;
+    opacity: 0.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    mix-blend-mode: multiply;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--rust); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 3rem 5rem;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 8vw, 8rem);
+    line-height: 0.9;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+  .hero-name span { color: var(--rust); }
+  .hero-tagline {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: 1.5rem;
+    font-weight: 300;
+    max-width: 320px;
+    line-height: 1.6;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .hero-meta span { display: block; }
+  .hero-meta strong { color: var(--ink); font-size: 0.75rem; }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--rust) 0%, #3a1f12 100%);
+    opacity: 0.88;
+    z-index: 1;
+  }
+  .hero-bg-text {
+    position: absolute;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28vw;
+    color: rgba(255,255,255,0.04);
+    z-index: 2;
+    bottom: -2rem;
+    right: -2rem;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-right-content {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4rem 3rem;
+    color: white;
+  }
+  .hero-role {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1rem;
+  }
+  .hero-school {
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.3;
+    margin-bottom: 2rem;
+  }
+  .hero-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.08em;
+  }
+  .hero-contact-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .hero-contact-list a:hover { color: white; }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2rem;
+    left: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    z-index: 5;
+  }
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--rust);
+    animation: scrollPulse 1.5s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { width: 40px; opacity: 1; }
+    50% { width: 60px; opacity: 0.5; }
+  }
+
+  /* SECTION BASE */
+  section { padding: 7rem 3rem; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid var(--light);
+    padding-bottom: 1.5rem;
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--rust);
+    letter-spacing: 0.15em;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 0.05em;
+    color: var(--ink);
+  }
+  .section-en {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+
+  /* ABOUT / CV */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+  .about-block h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--light);
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 1.2rem;
+    margin-bottom: 1.8rem;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: -1.8rem;
+    width: 1px;
+    background: var(--light);
+  }
+  .timeline-item:last-child::before { display: none; }
+  .timeline-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1.5px solid var(--rust);
+    margin-top: 0.35rem;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+  .timeline-content {}
+  .timeline-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.2rem;
+  }
+  .timeline-org {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .timeline-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .skill-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .skill-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    width: 80px;
+    flex-shrink: 0;
+  }
+  .skill-bar {
+    flex: 1;
+    height: 3px;
+    background: var(--light);
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-fill {
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%;
+    background: var(--rust);
+    width: 0;
+    transition: width 1s cubic-bezier(0.4,0,0.2,1);
+  }
+  .skill-fill.animated { width: var(--w); }
+
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+  }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--rust);
+    color: var(--rust);
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .tag:hover { background: var(--rust); color: white; }
+
+  /* PROJECTS */
+  #projects { background: var(--dark); }
+  #projects .section-title { color: var(--paper); }
+  #projects .section-num { color: var(--warm); }
+  #projects .section-header { border-bottom-color: rgba(255,255,255,0.08); }
+  #projects .section-en { color: rgba(255,255,255,0.3); }
+
+  .project-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .tab-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.8rem;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.35);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+  }
+  .tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0; right: 0;
+    height: 2px;
+    background: var(--warm);
+    transform: scaleX(0);
+    transition: transform 0.2s;
+  }
+  .tab-btn.active { color: var(--warm); }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-btn:hover { color: rgba(255,255,255,0.7); }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5px;
+  }
+  .project-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 3px;
+    height: 0;
+    background: var(--warm);
+    transition: height 0.3s ease;
+  }
+  .project-card:hover { background: rgba(255,255,255,0.06); }
+  .project-card:hover::before { height: 100%; }
+  .project-card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--warm);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+  .project-card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    color: white;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+  .project-card-sub {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+  }
+  .project-card-instructor {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.08em;
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .project-card-arrow {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.15);
+    transition: all 0.3s;
+  }
+  .project-card:hover .project-card-arrow { color: var(--warm); transform: translate(3px,-3px); }
+
+  /* REAL PROJECTS */
+  .real-project-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    align-items: start;
+  }
+  .real-project-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+  .rp-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    color: white;
+    line-height: 1.2;
+  }
+  .rp-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--warm);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+  .rp-desc {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .rp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .rp-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.4);
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+  }
+
+  /* AI SECTION */
+  .ai-section {
+    background: var(--rust);
+    padding: 4rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .ai-left {}
+  .ai-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .ai-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: white;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    margin-bottom: 1.5rem;
+  }
+  .ai-desc {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .ai-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+  .ba-box {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
+  .ba-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  .ba-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .ba-row {
+    height: 8px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 2px;
+  }
+  .ba-row.after { background: rgba(255,255,255,0.4); }
+  .ba-row.w60 { width: 60%; }
+  .ba-row.w80 { width: 80%; }
+  .ba-row.w45 { width: 45%; }
+  .ba-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ACTIVITIES */
+  #activities { background: var(--light); }
+  .activities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .activity-card {
+    background: white;
+    padding: 2rem;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .activity-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--rust);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .activity-card:hover::after { transform: scaleX(1); }
+  .act-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .act-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+  .act-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* HOBBIES */
+  #hobbies {
+    background: var(--ink);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  #hobbies .section-title { color: var(--paper); }
+  #hobbies .section-num { color: var(--warm); }
+  #hobbies .section-header { border-bottom-color: rgba(255,255,255,0.08); }
+  #hobbies .section-en { color: rgba(255,255,255,0.25); }
+  .photo-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 160px;
+    gap: 4px;
+  }
+  .photo-item {
+    background: #222;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .photo-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  .photo-item:nth-child(6) { grid-column: span 2; }
+  .photo-item:nth-child(9) { grid-column: span 2; grid-row: span 2; }
+
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.12);
+    transition: all 0.3s;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+    padding: 1rem;
+  }
+  .photo-item:hover .photo-placeholder {
+    color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.03);
+  }
+  .photo-icon { font-size: 1.8rem; margin-bottom: 0.3rem; }
+  .photo-caption {
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+    margin-top: 0.3rem;
+    line-height: 1.4;
+  }
+
+  /* CONTACT / FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 5rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+  }
+  .footer-left {}
+  .footer-greeting {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .footer-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    color: var(--paper);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .footer-bio {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    font-style: italic;
+    max-width: 420px;
+  }
+  .footer-right {}
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-link::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--warm);
+    transform: scaleY(0);
+    transition: transform 0.2s;
+  }
+  .contact-link:hover::before { transform: scaleY(1); }
+  .contact-link:hover { background: rgba(255,255,255,0.04); }
+  .cl-icon {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+  }
+  .cl-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    min-width: 80px;
+  }
+  .cl-value {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .footer-copy {
+    grid-column: span 2;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 0.1em;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 2rem;
+  }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .fade-up:nth-child(2) { transition-delay: 0.1s; }
+  .fade-up:nth-child(3) { transition-delay: 0.2s; }
+  .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .project-grid { grid-template-columns: 1fr; }
+    .ai-section { grid-template-columns: 1fr; }
+    .activities-grid { grid-template-columns: 1fr 1fr; }
+    footer { grid-template-columns: 1fr; }
+    .footer-copy { grid-column: 1; }
+    .real-project-item { grid-template-columns: 1fr; gap: 1rem; }
+    section { padding: 4rem 1.5rem; }
+    .photo-mosaic { grid-template-columns: repeat(2, 1fr); }
+    .photo-item:nth-child(1) { grid-column: span 2; }
+    .photo-item:nth-child(9) { grid-column: span 2; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">BTK.25</a>
+  <ul class="nav-links">
+    <li><a href="#about">Hồ sơ</a></li>
+    <li><a href="#projects">Đồ án</a></li>
+    <li><a href="#activities">Hoạt động</a></li>
+    <li><a href="#hobbies">Ảnh</a></li>
+    <li><a href="#contact">Liên hệ</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-label">Architectural Portfolio · Nov 2025</div>
+    <h1 class="hero-name">BẠCH<br>THÁI<br><span>KHANG</span></h1>
+    <p class="hero-tagline">Sinh viên kiến trúc với tinh thần trách nhiệm và đam mê sáng tạo không giới hạn</p>
+    <div class="hero-meta">
+      <div>
+        <span>Trường</span>
+        <strong>ĐH Kiến trúc HN</strong>
+      </div>
+      <div>
+        <span>Khoá</span>
+        <strong>22KTT · 2022–2027</strong>
+      </div>
+      <div>
+        <span>Hiện tại</span>
+        <strong>Sunjin Vietnam</strong>
+      </div>
+    </div>
+    <div class="scroll-cue">
+      <div class="scroll-line"></div>
+      Kéo xuống
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-bg-text">K</div>
+    <div class="hero-right-content">
+      <div class="hero-role">Architecture Student · IITC</div>
+      <div class="hero-school">Đại học<br>Kiến trúc<br>Hà Nội</div>
+      <div class="hero-contact-list">
+        <span>📞 (+84) 978 786 930</span>
+        <a href="mailto:hienkhang2004@gmail.com">✉ hienkhang2004@gmail.com</a>
+        <a href="#">Instagram: __gnahkiaht</a>
+        <a href="#">FB: Bạch Thái Khang</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">HỒ SƠ</h2>
+    <span class="section-en">Profile & CV</span>
+  </div>
+  <div class="about-grid">
+    <!-- Education & Experience -->
+    <div class="about-block fade-up">
+      <h3>Học tập & Kinh nghiệm</h3>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-period">05/2025 – Nay</div>
+          <div class="timeline-org">Sunjin Vietnam JV</div>
+          <div class="timeline-desc">Đội ngũ concept — đóng góp ý tưởng trường học, nhà ở xã hội</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-period">03/2024 – 09/2024</div>
+          <div class="timeline-org">HAD Architects</div>
+          <div class="timeline-desc">Thực tập sinh — Revit, triển khai nhà dân & chung cư cao tầng</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-period">10/2022 – 05/2023</div>
+          <div class="timeline-org">APA Academy</div>
+          <div class="timeline-desc">Đào tạo phần mềm kiến trúc: Sketchup, Autocad, Revit, Corona, 3dsmax</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-period">2022 – 2027</div>
+          <div class="timeline-org">ĐH Kiến trúc Hà Nội</div>
+          <div class="timeline-desc">Sinh viên kiến trúc — chuyên ngành IITC</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-period">2019 – 2022</div>
+          <div class="timeline-org">THPT Quang Trung – Hà Đông</div>
+          <div class="timeline-desc">Tốt nghiệp THPT</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="about-block fade-up">
+      <h3>Kỹ năng phần mềm</h3>
+      <div class="skills-grid">
+        <div class="skill-row">
+          <div class="skill-name">Revit</div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">AutoCAD</div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">SketchUp</div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">3ds Max</div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:80%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">Corona</div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:78%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">Photoshop</div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:82%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">Lumion</div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">D5 Render</div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:72%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">AI Tools</div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Qualities -->
+    <div class="about-block fade-up">
+      <h3>Khả năng đặc biệt</h3>
+      <div class="about-tags">
+        <span class="tag">Thành thạo máy tính</span>
+        <span class="tag">Ứng dụng AI</span>
+        <span class="tag">Làm việc nhóm</span>
+        <span class="tag">Học hỏi nhanh</span>
+        <span class="tag">Sáng tạo</span>
+        <span class="tag">Deadline 100%</span>
+      </div>
+      <div style="margin-top:2rem;">
+        <h3 style="margin-bottom:1rem">Thành tựu</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;">
+          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-style:italic;padding-left:1rem;border-left:2px solid var(--rust)">
+            Luôn hoàn thành đúng deadline 100%, điểm khá–tốt trong học tập và đồ án
+          </li>
+          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-style:italic;padding-left:1rem;border-left:2px solid var(--warm)">
+            Được đánh giá có trách nhiệm, tinh thần cao trong làm việc nhóm
+          </li>
+          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-style:italic;padding-left:1rem;border-left:2px solid var(--rust)">
+            Tham gia phát triển ý tưởng nhiều dự án thành công, được mentor ghi nhận
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">ĐỒ ÁN</h2>
+    <span class="section-en">Works & Projects</span>
+  </div>
+
+  <div class="project-tabs">
+    <button class="tab-btn active" onclick="switchTab('school', this)">Đồ án trong trường</button>
+    <button class="tab-btn" onclick="switchTab('real', this)">Dự án thực tế</button>
+  </div>
+
+  <div class="tab-panel active" id="tab-school">
+    <div class="project-grid">
+      <div class="project-card fade-up">
+        <div class="project-card-num">Studio 02</div>
+        <div class="project-card-title">Cải tạo nhà phố cổ</div>
+        <div class="project-card-sub">Cải tạo nhà trong ngõ phố cổ — tối ưu hoá lưu thông ánh sáng, không khí và không gian sinh hoạt</div>
+        <div class="project-card-instructor">GVHD: Ths.Kts. Eytan Fichman | IITC</div>
+        <div class="project-card-arrow">↗</div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-card-num">Studio 04</div>
+        <div class="project-card-title">Trường học liên cấp Phúc Ninh Khang</div>
+        <div class="project-card-sub">Thiết kế tổng thể trường học liên cấp — tích hợp cảnh quan, phân khu chức năng và mặt đứng hiện đại</div>
+        <div class="project-card-instructor">GVHD: Kts. Trần Nguyên Quang | Sunjin Vietnam</div>
+        <div class="project-card-arrow">↗</div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-card-num">Quy hoạch Q3</div>
+        <div class="project-card-title">Đô thị hồ Văn Quán</div>
+        <div class="project-card-sub">Quy hoạch đô thị ven hồ — thiết kế dạo bộ, tiện ích công cộng và nút giao hành lang xanh</div>
+        <div class="project-card-instructor">GVHD: Kts. Trần Nguyên Quang | Sunjin Vietnam</div>
+        <div class="project-card-arrow">↗</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-real">
+    <div class="real-project-item fade-up">
+      <div>
+        <div class="rp-label">Indochine Restaurant</div>
+        <div class="rp-type">Thiết kế mặt đứng</div>
+      </div>
+      <div>
+        <p class="rp-desc">Thiết kế lại mặt đứng nhà hàng phong cách Đông Dương — kết hợp vật liệu truyền thống với ngôn ngữ kiến trúc hiện đại. Bao gồm tổng mặt bằng, mặt bằng tầng 1 và tầng 2.</p>
+        <div class="rp-tags">
+          <span class="rp-tag">Revit</span>
+          <span class="rp-tag">3ds Max</span>
+          <span class="rp-tag">Corona</span>
+          <span class="rp-tag">Photoshop</span>
+        </div>
+      </div>
+    </div>
+    <div class="real-project-item fade-up">
+      <div>
+        <div class="rp-label">THCS 1B – Cổ Nhuế</div>
+        <div class="rp-type">Concept Design · Bắc Từ Liêm</div>
+      </div>
+      <div>
+        <p class="rp-desc">Lên phương án concept trường trung học cơ sở 3900m² trong phường Cổ Nhuế, quận Bắc Từ Liêm. Thiết kế tổng thể với khối gymnasium, hành lang kết nối và hệ thống cảnh quan.</p>
+        <div class="rp-tags">
+          <span class="rp-tag">SketchUp</span>
+          <span class="rp-tag">Lumion</span>
+          <span class="rp-tag">AutoCAD</span>
+        </div>
+      </div>
+    </div>
+    <div class="real-project-item fade-up">
+      <div>
+        <div class="rp-label">AI Mặt đứng</div>
+        <div class="rp-type">Before / After · Freelance</div>
+      </div>
+      <div>
+        <p class="rp-desc">Ứng dụng AI vào phát triển ý tưởng mặt đứng công trình — chuyển đổi khối trắng thành phương án kiến trúc có vật liệu, màu sắc và cảnh quan đầy đủ cho Lotus Grand Hotel.</p>
+        <div class="rp-tags">
+          <span class="rp-tag">AI Tools</span>
+          <span class="rp-tag">Photoshop</span>
+          <span class="rp-tag">SketchUp</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI HIGHLIGHT -->
+<div class="ai-section">
+  <div class="ai-left">
+    <div class="ai-label">Điểm mạnh đặc trưng</div>
+    <div class="ai-title">ỨNG DỤNG AI TRONG KIẾN TRÚC</div>
+    <p class="ai-desc">Khai thác công cụ AI để rút ngắn thời gian phát triển concept, tạo ra nhiều phương án đa dạng và hỗ trợ trực quan hoá ý tưởng một cách nhanh chóng — lợi thế cạnh tranh trong môi trường thực tế.</p>
+  </div>
+  <div class="ai-right">
+    <div class="before-after">
+      <div class="ba-box">
+        <div class="ba-label">Before · Khối trắng</div>
+        <div class="ba-visual">
+          <div class="ba-row" style="width:100%"></div>
+          <div class="ba-row w60"></div>
+          <div class="ba-row w80"></div>
+          <div class="ba-row w45"></div>
+          <div class="ba-row" style="width:100%"></div>
+        </div>
+      </div>
+      <div class="ba-arrow">→</div>
+      <div class="ba-box">
+        <div class="ba-label">After · AI Render</div>
+        <div class="ba-visual">
+          <div class="ba-row after" style="width:100%"></div>
+          <div class="ba-row after w80"></div>
+          <div class="ba-row after" style="width:100%"></div>
+          <div class="ba-row after w60"></div>
+          <div class="ba-row after" style="width:100%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIVITIES -->
+<section id="activities">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">HOẠT ĐỘNG</h2>
+    <span class="section-en">Extra-curricular</span>
+  </div>
+  <div class="activities-grid">
+    <div class="activity-card fade-up">
+      <div class="act-icon">🏆</div>
+      <div class="act-title">Cuộc thi sinh viên</div>
+      <p class="act-desc">Tham gia các cuộc thi sáng tác kiến trúc tại Trường Đại học Kiến trúc Hà Nội, trải nghiệm làm việc nhóm cường độ cao và phát triển ý tưởng dưới áp lực thời gian</p>
+    </div>
+    <div class="activity-card fade-up">
+      <div class="act-icon">🏗️</div>
+      <div class="act-title">Thực địa công trường</div>
+      <p class="act-desc">Tham quan và thực địa công trình đang xây dựng — hiểu quy trình thi công thực tế, đọc bản vẽ kỹ thuật và giao tiếp với các kỹ sư công trường</p>
+    </div>
+    <div class="activity-card fade-up">
+      <div class="act-icon">🌿</div>
+      <div class="act-title">Khảo sát thực địa</div>
+      <p class="act-desc">Các chuyến thực địa khảo sát địa hình, cảnh quan và bối cảnh văn hoá phục vụ đồ án thiết kế — từ núi đồi đến đô thị trung tâm</p>
+    </div>
+    <div class="activity-card fade-up">
+      <div class="act-icon">🎨</div>
+      <div class="act-title">Triển lãm & Workshop</div>
+      <p class="act-desc">Tham gia các workshop nội thất, triển lãm kiến trúc và sự kiện chuyên ngành trong và ngoài trường để mở rộng kiến thức và mạng lưới nghề nghiệp</p>
+    </div>
+    <div class="activity-card fade-up">
+      <div class="act-icon">🤝</div>
+      <div class="act-title">Làm việc nhóm</div>
+      <p class="act-desc">Kinh nghiệm dẫn dắt và tham gia nhóm trong nhiều dự án đa dạng — từ quy hoạch đô thị đến thiết kế công trình dân dụng và thương mại</p>
+    </div>
+    <div class="activity-card fade-up">
+      <div class="act-icon">📐</div>
+      <div class="act-title">Mô hình vật lý</div>
+      <p class="act-desc">Thực hành làm mô hình thủ công bằng vật liệu như bìa carton, gỗ và xốp — phát triển tư duy không gian 3 chiều và kỹ năng trình bày ý tưởng</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTOGRAPHY -->
+<section id="hobbies">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">NHIẾP ẢNH</h2>
+    <span class="section-en">Photography Hobbies</span>
+  </div>
+  <div class="photo-mosaic">
+    <div class="photo-item">
+      <div class="photo-placeholder">
+        <span class="photo-icon">🌅</span>
+        <span>Hoàng hôn hồ Hà Nội</span>
+        <span class="photo-caption">Ánh sáng vàng phản chiếu mặt nước — khoảnh khắc yên bình giữa lòng thành phố</span>
+      </div>
+    </div>
+    <div class="photo-item">
+      <div class="photo-placeholder">
+        <span class="photo-icon">🌳</span>
+        <span>Công viên mùa thu</span>
+        <span class="photo-caption">Hàng cây xanh mát, bóng tối và ánh sáng</span>
+      </div>
+    </div>
+    <div class="photo-item">
+      <div class="photo-placeholder">
+        <span class="photo-icon">🌉</span>
+        <span>Cầu Long Biên</span>
+        <span class="photo-caption">Di tích lịch sử bắc qua sông Hồng</span>
+      </div>
+    </div>
+    <div class="photo-item">
+      <div class="photo-placeholder">
+        <span class="photo-icon">🏛️</span>
+        <span>Không gian kiến trúc</span>
+        <span class="photo-caption">Chi tiết cổng, tường và ánh sáng tự nhiên</span>
+      </div>
+    </div>
+    <div class="photo-item">
+      <div class="photo-placeholder">
+        <span class="photo-icon">🌊</span>
+        <span>Hoàng hôn vịnh biển</span>
+        <span class="photo-caption">Hạ Long — trời và nước hoà quyện</span>
+      </div>
+    </div>
+    <div class="photo-item">
+      <div class="photo-placeholder">
+        <span class="photo-icon">☁️</span>
+        <span>Bầu trời đô thị</span>
+        <span class="photo-caption">Mây và nắng trên mái nhà Hà Nội — góc nhìn từ tầng cao</span>
+      </div>
+    </div>
+    <div class="photo-item">
+      <div class="photo-placeholder">
+        <span class="photo-icon">🏙️</span>
+        <span>Chung cư từ trên cao</span>
+        <span class="photo-caption">Nhịp điệu của các khối nhà</span>
+      </div>
+    </div>
+    <div class="photo-item">
+      <div class="photo-placeholder">
+        <span class="photo-icon">🐱</span>
+        <span>Mèo trên mái nhà cổ</span>
+        <span class="photo-caption">Đời thường bên kiến trúc Pháp cũ kỹ</span>
+      </div>
+    </div>
+    <div class="photo-item">
+      <div class="photo-placeholder">
+        <span class="photo-icon">🌿</span>
+        <span>Nội thất & cây xanh</span>
+        <span class="photo-caption">Monstera bên cửa sổ — thiên nhiên trong không gian sống</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <div class="footer-left">
+    <div class="footer-greeting">Hãy kết nối cùng tôi</div>
+    <div class="footer-name">BẠCH<br>THÁI<br>KHANG</div>
+    <p class="footer-bio">Với tinh thần trách nhiệm và nghiêm túc trong công việc nghề nghiệp, tôi tự tin có thể đóng góp tích cực và luôn mong muốn học hỏi, phát triển không ngừng trong lĩnh vực kiến trúc.</p>
+  </div>
+  <div class="footer-right">
+    <div class="contact-links">
+      <a class="contact-link" href="tel:+84978786930">
+        <span class="cl-icon">📞</span>
+        <span class="cl-label">Điện thoại</span>
+        <span class="cl-value">(+84) 978 786 930</span>
+      </a>
+      <a class="contact-link" href="mailto:hienkhang2004@gmail.com">
+        <span class="cl-icon">✉</span>
+        <span class="cl-label">Email</span>
+        <span class="cl-value">hienkhang2004@gmail.com</span>
+      </a>
+      <a class="contact-link" href="#">
+        <span class="cl-icon">📸</span>
+        <span class="cl-label">Instagram</span>
+        <span class="cl-value">__gnahkiaht</span>
+      </a>
+      <a class="contact-link" href="#">
+        <span class="cl-icon">👤</span>
+        <span class="cl-label">Facebook</span>
+        <span class="cl-value">Bạch Thái Khang</span>
+      </a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    © 2025 Bạch Thái Khang · Architectural Portfolio · ĐH Kiến trúc Hà Nội · 22KTT
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animCursor() {
+    cursor.style.left = (mx - 5) + 'px';
+    cursor.style.top = (my - 5) + 'px';
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = (rx - 18) + 'px';
+    ring.style.top = (ry - 18) + 'px';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+  document.querySelectorAll('a, button, .project-card, .activity-card, .photo-item').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2)'; ring.style.transform = 'scale(1.5)'; });
+    el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; ring.style.transform = 'scale(1)'; });
+  });
+
+  // Tab switching
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Scroll animations
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Animate skill bars
+        e.target.querySelectorAll('.skill-fill').forEach(b => b.classList.add('animated'));
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  // Also observe about section to trigger skill bars
+  const aboutSection = document.getElementById('about');
+  const skillIo = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.skill-fill').forEach(b => b.classList.add('animated'));
+      }
+    });
+  }, { threshold: 0.2 });
+  if (aboutSection) skillIo.observe(aboutSection);
+
+  // Smooth section highlighting in nav
+  const sections = document.querySelectorAll('section[id], footer[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const highlightIo = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => {
+          l.style.color = '';
+          if (l.getAttribute('href') === '#' + e.target.id) l.style.color = 'var(--rust)';
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => highlightIo.observe(s));
+</script>
+</body>
+</html>
