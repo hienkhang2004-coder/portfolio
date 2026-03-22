@@ -689,6 +689,39 @@
     el.addEventListener('mouseleave',()=>{cursor.style.transform='scale(1)';ring.style.transform='scale(1)';});
   });
 
+  // CURSOR ADAPTIVE COLOR
+  const cursorColorMap = [
+    { selector: '#projects',             color: '#ffffff', ring: 'rgba(255,255,255,0.5)' },
+    { selector: '#hobbies',              color: '#ffffff', ring: 'rgba(255,255,255,0.5)' },
+    { selector: '#contact',              color: '#ffffff', ring: 'rgba(255,255,255,0.5)' },
+    { selector: '.ai-section',           color: '#f5f0e8', ring: 'rgba(245,240,232,0.5)' },
+    { selector: '.stats-bar',            color: '#f5f0e8', ring: 'rgba(245,240,232,0.5)' },
+    { selector: '#home',                 color: '#b84c2a', ring: 'rgba(184,76,42,0.4)'  },
+    { selector: '#about',                color: '#b84c2a', ring: 'rgba(184,76,42,0.4)'  },
+    { selector: '#activities',           color: '#0e0c0a', ring: 'rgba(14,12,10,0.3)'   },
+    { selector: '#contact-form-section', color: '#b84c2a', ring: 'rgba(184,76,42,0.4)'  },
+  ];
+  let currentCursorColor = '#b84c2a';
+  let currentRingColor   = 'rgba(184,76,42,0.4)';
+  function setCursorColor(c, r){
+    if(c === currentCursorColor) return;
+    currentCursorColor = c; currentRingColor = r;
+    cursor.style.transition = 'background 0.3s ease, transform 0.1s ease';
+    ring.style.transition    = 'border-color 0.3s ease, all 0.18s ease';
+    cursor.style.background  = c;
+    ring.style.borderColor   = r;
+  }
+  const colorObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(!e.isIntersecting) return;
+      const match = cursorColorMap.find(m => e.target.matches(m.selector));
+      if(match) setCursorColor(match.color, match.ring);
+    });
+  }, { rootMargin: '-40% 0px -40% 0px' });
+  cursorColorMap.forEach(m => {
+    document.querySelectorAll(m.selector).forEach(el => colorObs.observe(el));
+  });
+
   // TABS
   function switchTab(id,btn){document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');}
 
