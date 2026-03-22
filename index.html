@@ -205,7 +205,7 @@
   .tab-panel{display:none;}
   .tab-panel.active{display:block;}
   .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5px;}
-  .project-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);position:relative;overflow:hidden;transition:all 0.3s ease;cursor:none;}
+  .project-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);position:relative;overflow:visible;transition:all 0.3s ease;cursor:none;min-height:360px;transform-style:preserve-3d;}
   .project-card-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;position:relative;}
   .project-card-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease,opacity 0.3s;opacity:0.7;}
   .project-card:hover .project-card-thumb img{transform:scale(1.05);opacity:1;}
@@ -453,6 +453,102 @@
   #particle-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.5s ease 0.5s;}
   #particle-canvas.visible{opacity:1;}
   .hero-left{position:relative;z-index:2;}
+
+  /* 1. SCROLL VELOCITY BLUR */
+  .blur-on-scroll{transition:filter 0.15s ease;}
+
+  /* 3. CARD SHINE */
+  .project-card-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.08) 50%,transparent 60%);opacity:0;transition:opacity 0.3s ease;pointer-events:none;z-index:2;}
+  .project-card:hover .project-card-thumb::after{opacity:1;}
+  .shine-layer{position:absolute;inset:0;pointer-events:none;z-index:3;border-radius:inherit;opacity:0;transition:opacity 0.2s;}
+
+  /* 8. NOISE FILTER on image hover */
+  .photo-item::before{content:'';position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;transition:opacity 0.3s ease;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");background-size:150px 150px;mix-blend-mode:overlay;}
+  .photo-item:hover::before{opacity:1;}
+
+  /* 9. TEXT OUTLINE on footer name hover */
+  .footer-name{transition:all 0.4s ease;cursor:default;}
+  .footer-name:hover{-webkit-text-stroke:2px var(--paper);color:transparent;}
+
+  /* 10. TIME GREETING */
+  #time-greeting{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:0.8rem;opacity:0;animation:ldFadeIn 0.8s ease 2.2s forwards;}
+
+  /* CLOCK */
+  .footer-clock{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:var(--muted);display:flex;flex-direction:column;gap:0.4rem;margin-top:2rem;}
+  .clock-row{display:flex;align-items:center;gap:0.6rem;}
+  .clock-flag{font-size:0.9rem;line-height:1;}
+  .clock-label{color:var(--muted);font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;width:24px;}
+  .clock-time{color:var(--paper);font-size:0.75rem;letter-spacing:0.08em;}
+  .clock-dot{width:5px;height:5px;border-radius:50%;background:var(--rust);animation:clockPulse 1s ease-in-out infinite;flex-shrink:0;}
+  @keyframes clockPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.3;transform:scale(0.6);}}
+
+  /* ── MUSIC TOGGLE ── */
+  .music-btn{background:transparent;border:1px solid var(--muted);color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;padding:0.3rem 0.7rem;cursor:none;transition:all 0.2s;display:flex;align-items:center;gap:0.4rem;white-space:nowrap;}
+  .music-btn:hover{color:var(--rust);border-color:var(--rust);}
+  .music-btn.playing{color:var(--rust);border-color:var(--rust);}
+  nav.nav-dark .music-btn{color:rgba(255,255,255,0.65);border-color:rgba(255,255,255,0.3);}
+  nav.nav-dark .music-btn:hover{color:white;border-color:white;}
+  nav.nav-dark .music-btn.playing{color:var(--warm);border-color:var(--warm);}
+  .music-bars{display:flex;align-items:flex-end;gap:2px;height:12px;}
+  .music-bar{width:2px;background:currentColor;border-radius:1px;animation:none;}
+  .music-btn.playing .music-bar:nth-child(1){animation:musicBar 0.8s ease-in-out infinite;}
+  .music-btn.playing .music-bar:nth-child(2){animation:musicBar 0.8s ease-in-out 0.15s infinite;}
+  .music-btn.playing .music-bar:nth-child(3){animation:musicBar 0.8s ease-in-out 0.3s infinite;}
+  .music-btn.playing .music-bar:nth-child(4){animation:musicBar 0.8s ease-in-out 0.45s infinite;}
+  .music-bar:nth-child(1){height:4px;}
+  .music-bar:nth-child(2){height:8px;}
+  .music-bar:nth-child(3){height:6px;}
+  .music-bar:nth-child(4){height:10px;}
+  @keyframes musicBar{0%,100%{transform:scaleY(0.4);}50%{transform:scaleY(1.4);}}
+
+  /* 1. CUSTOM CONTEXT MENU */
+  #ctx-menu{position:fixed;z-index:99996;background:var(--dark);border:1px solid rgba(255,255,255,0.1);padding:0.4rem 0;min-width:200px;opacity:0;visibility:hidden;transform:scale(0.95) translateY(-4px);transition:all 0.15s cubic-bezier(0.34,1.56,0.64,1);transform-origin:top left;}
+  #ctx-menu.show{opacity:1;visibility:visible;transform:scale(1) translateY(0);}
+  .ctx-item{display:flex;align-items:center;gap:0.8rem;padding:0.6rem 1.2rem;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;color:rgba(255,255,255,0.7);cursor:none;transition:all 0.15s;text-transform:uppercase;}
+  .ctx-item:hover{background:rgba(255,255,255,0.06);color:white;padding-left:1.6rem;}
+  .ctx-item .ctx-icon{font-size:0.85rem;width:16px;text-align:center;}
+  .ctx-sep{height:1px;background:rgba(255,255,255,0.08);margin:0.3rem 0;}
+
+  /* 3. CONFETTI */
+  .confetti-piece{position:fixed;pointer-events:none;z-index:99995;width:8px;height:8px;border-radius:1px;animation:confettiFall var(--dur,1s) ease-out forwards;}
+  @keyframes confettiFall{0%{transform:translate(0,0) rotate(0deg);opacity:1;}100%{transform:translate(var(--tx,20px),var(--ty,200px)) rotate(var(--rot,360deg));opacity:0;}}
+
+  /* 4. HERO SCROLL OPACITY */
+  .hero-left,.hero-right{transition:opacity 0.1s linear;}
+
+  /* 5. FLOATING LABELS */
+  .float-label{position:absolute;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);background:rgba(184,76,42,0.1);border:1px solid rgba(184,76,42,0.3);padding:0.3rem 0.7rem;border-radius:2px;pointer-events:none;z-index:3;animation:floatUpDown var(--float-dur,3s) ease-in-out infinite;}
+  @keyframes floatUpDown{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+  /* 6. CARD FLIP */
+  .project-card{perspective:1000px;}
+  .project-card-inner{position:relative;width:100%;height:100%;min-height:360px;transform-style:preserve-3d;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);}
+  .project-card.flipped .project-card-inner{transform:rotateY(180deg);}
+  .project-card-front,.project-card-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+  .project-card-front{background:rgba(255,255,255,0.03);}
+  .project-card-back{background:rgba(255,255,255,0.06);transform:rotateY(180deg);padding:2rem;display:flex;flex-direction:column;justify-content:center;gap:1rem;}
+  .project-card-back .back-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--warm);letter-spacing:0.05em;}
+  .project-card-back .back-desc{font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.6;font-style:italic;}
+  .project-card-back .back-flip{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;color:var(--muted);text-transform:uppercase;margin-top:auto;}
+
+  /* 7. BLUEPRINT CURSOR TRAIL */
+  .bp-trail{position:fixed;pointer-events:none;z-index:9989;opacity:0;transition:opacity 0.3s ease;}
+  .bp-trail line{stroke:var(--rust);stroke-width:0.5;opacity:0.4;}
+
+  /* 8. CAD COORDINATES */
+  #cad-coords{position:fixed;bottom:1.2rem;left:1.5rem;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;color:var(--muted);pointer-events:none;z-index:500;opacity:0.5;transition:opacity 0.2s;}
+  #cad-coords:hover{opacity:1;}
+
+  /* 9. SCALE RULER */
+  #scale-ruler{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.15em;color:var(--muted);pointer-events:none;z-index:500;display:flex;align-items:center;gap:0.5rem;opacity:0.4;}
+  #scale-ruler .ruler-bar{height:6px;width:60px;border:1px solid currentColor;border-top:none;position:relative;}
+  #scale-ruler .ruler-bar::before,#scale-ruler .ruler-bar::after{content:'';position:absolute;top:0;height:6px;width:1px;background:currentColor;}
+  #scale-ruler .ruler-bar::before{left:0;}
+  #scale-ruler .ruler-bar::after{right:0;}
+
+  /* 10. SHAKE indicator */
+  .shake-toast{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%) translateY(20px);font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;background:var(--rust);color:white;padding:0.5rem 1.2rem;opacity:0;transition:all 0.4s ease;z-index:9000;pointer-events:none;}
+  .shake-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 </style>
 </head>
 <body>
@@ -468,17 +564,35 @@
       class="dl dl-r" style="--len:2000;animation-delay:0.5s">KHANG</text>
   </svg>
   <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div id="loader-pct" style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;color:var(--muted);margin-top:-1rem;">0%</div>
   <div class="loader-sub">Architectural Portfolio · 2026</div>
+</div>
+
+<!-- CUSTOM CONTEXT MENU -->
+<div id="ctx-menu">
+  <div class="ctx-item" onclick="navigator.clipboard.writeText('hienkhang2004@gmail.com');hideCtx()"><span class="ctx-icon">✉</span>Copy Email</div>
+  <div class="ctx-item" onclick="navigator.clipboard.writeText('(+84) 978 786 930');hideCtx()"><span class="ctx-icon">📞</span>Copy Phone</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item" onclick="document.querySelector('.btn-cv').click();hideCtx()"><span class="ctx-icon">↓</span>Download CV</div>
+  <div class="ctx-item" onclick="window.open('https://www.instagram.com/__gnahkiaht/','_blank');hideCtx()"><span class="ctx-icon">📸</span>Instagram</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item" onclick="const t=themes;applyTheme(t[(t.indexOf(currentTheme)+1)%t.length]);hideCtx()"><span class="ctx-icon">🎨</span>Change Theme</div>
+  <div class="ctx-item" onclick="window.scrollTo({top:0,behavior:'smooth'});hideCtx()"><span class="ctx-icon">↑</span>Back to Top</div>
 </div>
 
 <!-- SCROLL PROGRESS -->
 <div id="scroll-progress"></div>
 
 <!-- BACK TO TOP -->
+<div id="cad-coords">X: 0000 &nbsp; Y: 0000</div>
+<div id="scale-ruler"><span>1:100</span><div class="ruler-bar"></div><span>10m</span></div>
 <button id="back-top" aria-label="Back to top">↑</button>
 
 <!-- PAGE WIPE -->
 <div id="page-wipe"></div>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" src="./assets/backgroundsound.mp3" loop preload="none"></audio>
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
@@ -503,6 +617,7 @@
     <li><a href="#hobbies">Photos</a></li>
     <li><a href="#contact-form-section">Contact</a></li>
   </ul>
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()"><div class="music-bars"><div class="music-bar"></div><div class="music-bar"></div><div class="music-bar"></div><div class="music-bar"></div></div>♪ Music</button>
   <a class="nav-lang" href="./index-vi.html">🇻🇳 Tiếng Việt</a>
 </nav>
 
@@ -510,6 +625,7 @@
 <section class="hero" id="home">
   <canvas id="particle-canvas"></canvas>
   <div class="hero-left">
+    <div id="time-greeting"></div>
     <div class="hero-label">Architectural Portfolio · 2026</div>
     <h1 class="hero-name" data-text="BACH&#10;THAI&#10;KHANG">BACH<br>THAI<br><span>KHANG</span></h1>
     <p class="hero-tagline typewriter-wrap"><span class="typewriter-text" id="typewriterText"></span></p>
@@ -521,6 +637,8 @@
     <div class="hero-cta-row">
       <a class="btn-cv" href="./assets/cv.pdf" download>↓ Download CV</a>
     </div>
+    <div class="float-label" style="bottom:8rem;left:3rem;--float-dur:3.2s">📍 Hanoi, Vietnam</div>
+    <div class="float-label" style="bottom:5rem;left:3rem;--float-dur:2.8s;animation-delay:0.5s">✅ Open to work</div>
     <div class="scroll-cue"><div class="scroll-line"></div>Scroll down</div>
   </div>
   <div class="hero-right">
@@ -645,8 +763,10 @@
   </div>
   <div class="tab-panel active" id="tab-school">
     <div class="project-grid">
-      <div class="project-card fade-up">
-        <div class="project-card-thumb">
+      <div class="project-card fade-up" onclick="flipCard(this)">
+        <div class="project-card-inner">
+          <div class="project-card-front">
+            <div class="project-card-thumb">
           <img loading="lazy" src="./assets/studio2_f1.jpg" alt="Old Quarter House" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="project-card-thumb-placeholder">Studio 02</div>
         </div>
@@ -656,11 +776,21 @@
           <div class="project-card-sub">Renovating a house in a Hanoi Old Quarter alley — optimising light flow, ventilation, and living spaces</div>
           <div class="project-card-instructor">Advisor: M.Arch. Eytan Fichman | IITC</div>
         </div>
-        <div class="project-card-arrow">↗</div>
-        <span class="dim-h">27.86 m</span><span class="dim-v">3F</span>
+            <div class="project-card-arrow">↗</div>
+            <span class="dim-h">27.86 m</span><span class="dim-v">3F</span>
+          </div>
+          <div class="project-card-back">
+            <div class="back-title">Studio 02 · Renovation</div>
+            <div class="back-desc">Spatial analysis of a Hanoi Old Quarter tube house — optimising natural light corridors, cross-ventilation, and flexible living zones within a 4m-wide footprint.</div>
+            <div class="back-meta" style="font-family:'DM Mono',monospace;font-size:0.55rem;color:var(--warm);letter-spacing:0.1em">27.86m · 3 floors · Hanoi Old Quarter</div>
+            <div class="back-flip">Click to flip back ↩</div>
+          </div>
+        </div>
       </div>
-      <div class="project-card fade-up">
-        <div class="project-card-thumb">
+      <div class="project-card fade-up" onclick="flipCard(this)">
+        <div class="project-card-inner">
+          <div class="project-card-front">
+            <div class="project-card-thumb">
           <img loading="lazy" src="./assets/studio4_hero.jpg" alt="Multi-level School" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="project-card-thumb-placeholder">Studio 04</div>
         </div>
@@ -670,11 +800,21 @@
           <div class="project-card-sub">Full school complex design — integrating landscape, functional zoning, and a contemporary facade</div>
           <div class="project-card-instructor">Advisor: Arch. Tran Nguyen Quang | Sunjin Vietnam</div>
         </div>
-        <div class="project-card-arrow">↗</div>
-        <span class="dim-h">120 m</span><span class="dim-v">5F</span>
+            <div class="project-card-arrow">↗</div>
+            <span class="dim-h">120 m</span><span class="dim-v">5F</span>
+          </div>
+          <div class="project-card-back">
+            <div class="back-title">Studio 04 · Education</div>
+            <div class="back-desc">Full campus design for a multi-level school integrating primary through secondary education. Emphasis on landscape buffers, modular classroom clusters, and a contemporary facade system.</div>
+            <div class="back-meta" style="font-family:'DM Mono',monospace;font-size:0.55rem;color:var(--warm);letter-spacing:0.1em">120m frontage · 5 floors · Hanoi</div>
+            <div class="back-flip">Click to flip back ↩</div>
+          </div>
+        </div>
       </div>
-      <div class="project-card fade-up">
-        <div class="project-card-thumb">
+      <div class="project-card fade-up" onclick="flipCard(this)">
+        <div class="project-card-inner">
+          <div class="project-card-front">
+            <div class="project-card-thumb">
           <img loading="lazy" src="./assets/urban_plan.jpg" alt="Van Quan Lake" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="project-card-thumb-placeholder">Urban Q3</div>
         </div>
@@ -684,8 +824,16 @@
           <div class="project-card-sub">Lakeside urban design — walkways, public amenities, and green-corridor intersections</div>
           <div class="project-card-instructor">Advisor: Arch. Ngo Minh Anh</div>
         </div>
-        <div class="project-card-arrow">↗</div>
-        <span class="dim-h">3.2 ha</span><span class="dim-v">Urban</span>
+            <div class="project-card-arrow">↗</div>
+            <span class="dim-h">3.2 ha</span><span class="dim-v">Urban</span>
+          </div>
+          <div class="project-card-back">
+            <div class="back-title">Urban Q3 · Masterplan</div>
+            <div class="back-desc">Lakeside urban masterplan featuring pedestrian promenades, green corridors, mixed-use commercial nodes, and ecological buffer zones around Van Quan Lake.</div>
+            <div class="back-meta" style="font-family:'DM Mono',monospace;font-size:0.55rem;color:var(--warm);letter-spacing:0.1em">3.2 ha · Urban scale · Ha Dong</div>
+            <div class="back-flip">Click to flip back ↩</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -881,6 +1029,14 @@
     <div class="footer-greeting">Let's connect</div>
     <div class="footer-name">BACH<br>THAI<br>KHANG</div>
     <p class="footer-bio">With a strong sense of responsibility and professionalism, I am confident I can contribute positively and always eager to learn and grow in the field of architecture.</p>
+    <div class="footer-clock">
+      <div class="clock-row">
+        <div class="clock-dot"></div>
+        <span class="clock-flag">🇻🇳</span>
+        <span class="clock-label">VN</span>
+        <span class="clock-time" id="clockVN">--:--:--</span>
+      </div>
+    </div>
   </div>
   <div class="footer-right">
     <div class="contact-links">
@@ -894,6 +1050,8 @@
   </div>
   <div class="footer-copy">© <span id="footerYear">2026</span> Bach Thai Khang · Architectural Portfolio · Hanoi University of Architecture · 22KTT</div>
 </footer>
+
+<div class="shake-toast" id="shakeToast">🎨 Theme changed!</div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
@@ -1536,6 +1694,359 @@
     });
 
   })();
+
+
+  // ══════════════════════════════════════
+  // 10 NEW EFFECTS
+  // ══════════════════════════════════════
+
+  // 1. SCROLL VELOCITY BLUR
+  let lastScrollY = 0, scrollVel = 0, blurRaf;
+  const blurTargets = document.querySelectorAll('section, .stats-bar, .ai-section, footer');
+  window.addEventListener('scroll', () => {
+    scrollVel = Math.abs(window.scrollY - lastScrollY);
+    lastScrollY = window.scrollY;
+    const blur = Math.min(scrollVel * 0.18, 3.5);
+    cancelAnimationFrame(blurRaf);
+    blurRaf = requestAnimationFrame(() => {
+      blurTargets.forEach(el => el.style.filter = blur > 0.3 ? `blur(${blur}px)` : '');
+      setTimeout(() => blurTargets.forEach(el => el.style.filter = ''), 80);
+    });
+  }, { passive: true });
+
+  // 2. COLOR SHIFT ON SCROLL
+  function updateHueShift() {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    const hue = Math.round(pct * 18); // 0 → 18 degrees
+    document.documentElement.style.setProperty('--hue-shift', hue + 'deg');
+  }
+  // Apply hue shift via filter on rust-colored elements dynamically
+  const hueStyle = document.createElement('style');
+  hueStyle.id = 'hue-shift-style';
+  document.head.appendChild(hueStyle);
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    const hue = Math.round(pct * 20);
+    hueStyle.textContent = `
+      .scroll-line, #scroll-progress, .skill-fill,
+      .project-card::before, .section-num, .hero-name span,
+      .hero-label, .loader-bar {
+        filter: hue-rotate(${hue}deg);
+      }
+    `;
+  }, { passive: true });
+
+  // 3. PROJECT CARD SHINE (holographic)
+  document.querySelectorAll('.project-card').forEach(card => {
+    const thumb = card.querySelector('.project-card-thumb');
+    if (!thumb) return;
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width)  * 100;
+      const y = ((e.clientY - r.top)  / r.height) * 100;
+      thumb.style.setProperty('--shine-x', x + '%');
+      thumb.style.setProperty('--shine-y', y + '%');
+      if (thumb.querySelector('img')) {
+        thumb.style.backgroundImage =
+          `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.12) 0%, transparent 60%)`;
+      }
+    });
+    card.addEventListener('mouseleave', () => {
+      thumb.style.backgroundImage = '';
+    });
+  });
+
+
+
+  // 5. AUDIO — subtle ambient tone on project card hover (Web Audio API)
+  let audioCtx;
+  function playTone(freq = 440, type = 'sine', dur = 0.18) {
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc  = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0, audioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.04, audioCtx.currentTime + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+      osc.start(audioCtx.currentTime);
+      osc.stop(audioCtx.currentTime + dur);
+    } catch(e) {}
+  }
+  const tones = [261, 293, 329, 349, 392]; // C D E F G — pentatonic
+  document.querySelectorAll('.project-card').forEach((card, i) => {
+    card.addEventListener('mouseenter', () => playTone(tones[i % tones.length] * 1.5, 'triangle', 0.22));
+  });
+  document.querySelectorAll('.activity-card').forEach((card, i) => {
+    card.addEventListener('mouseenter', () => playTone(tones[i % tones.length], 'sine', 0.15));
+  });
+  document.querySelectorAll('.photo-item').forEach((item, i) => {
+    item.addEventListener('mouseenter', () => playTone(tones[i % tones.length] * 2, 'sine', 0.1));
+  });
+
+
+  // 7. LOADER PERCENTAGE COUNTER
+  const loaderPct = document.getElementById('loader-pct');
+  if (loaderPct) {
+    let pct = 0;
+    const pctTimer = setInterval(() => {
+      pct = Math.min(pct + Math.random() * 12, 99);
+      loaderPct.textContent = Math.round(pct) + '%';
+    }, 100);
+    window.addEventListener('load', () => {
+      clearInterval(pctTimer);
+      loaderPct.textContent = '100%';
+    });
+  }
+
+  // 8. NOISE FILTER — already CSS ::before, no extra JS needed
+
+  // 9. TEXT OUTLINE — already CSS :hover, no extra JS needed
+
+  // 10. TIME-BASED GREETING
+  const greetEl = document.getElementById('time-greeting');
+  if (greetEl) {
+    const h = new Date().getHours();
+    let greet;
+    if (h >= 5  && h < 12) greet = 'Good morning, Khang ☀️';
+    else if (h >= 12 && h < 17) greet = 'Good afternoon, Khang 🌤';
+    else if (h >= 17 && h < 21) greet = 'Good evening, Khang 🌅';
+    else greet = 'Still working, Khang? 🌙';
+    greetEl.textContent = greet;
+  }
+
+
+  // ── REAL-TIME CLOCK (Vietnam) ──
+  function updateClock() {
+    const now = new Date();
+    const vn = now.toLocaleTimeString('vi-VN', {
+      timeZone: 'Asia/Ho_Chi_Minh',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hour12: false
+    });
+    const el = document.getElementById('clockVN');
+    if (el) el.textContent = vn;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+
+  // ── BACKGROUND MUSIC ──
+  const bgMusic = document.getElementById('bgMusic');
+  const musicBtn = document.getElementById('musicBtn');
+  let musicPlaying = false;
+
+  function toggleMusic() {
+    if (!bgMusic) return;
+    if (musicPlaying) {
+      bgMusic.pause();
+      musicBtn.classList.remove('playing');
+      musicPlaying = false;
+    } else {
+      bgMusic.volume = 0;
+      bgMusic.play().then(() => {
+        musicPlaying = true;
+        musicBtn.classList.add('playing');
+        // Fade in volume smoothly
+        let vol = 0;
+        const fadeIn = setInterval(() => {
+          vol = Math.min(vol + 0.02, 0.3); // max 30% volume
+          bgMusic.volume = vol;
+          if (vol >= 0.3) clearInterval(fadeIn);
+        }, 60);
+      }).catch(() => {});
+    }
+  }
+
+  // Fade out when leaving page
+  window.addEventListener('beforeunload', () => {
+    if (bgMusic && !bgMusic.paused) {
+      bgMusic.volume = 0;
+    }
+  });
+
+  // Pause when tab hidden, resume when visible
+  document.addEventListener('visibilitychange', () => {
+    if (!bgMusic || !musicPlaying) return;
+    if (document.hidden) {
+      bgMusic.pause();
+    } else {
+      bgMusic.play().catch(() => {});
+    }
+  });
+
+
+  // ══════════════════════════════════════
+  // 10 NEW COMBO EFFECTS A→Z
+  // ══════════════════════════════════════
+
+  // 1. CUSTOM RIGHT-CLICK CONTEXT MENU
+  const ctxMenu = document.getElementById('ctx-menu');
+  function hideCtx(){ ctxMenu.classList.remove('show'); }
+  document.addEventListener('contextmenu', e => {
+    e.preventDefault();
+    const x = Math.min(e.clientX, window.innerWidth  - 210);
+    const y = Math.min(e.clientY, window.innerHeight - 260);
+    ctxMenu.style.left = x + 'px';
+    ctxMenu.style.top  = y + 'px';
+    ctxMenu.classList.add('show');
+  });
+  document.addEventListener('click', hideCtx);
+  document.addEventListener('scroll', hideCtx, { passive: true });
+
+  // 2. DRAG TO EXPLORE photo mosaic
+  const mosaic = document.querySelector('.photo-mosaic');
+  if (mosaic) {
+    let isDragging = false, startX = 0, scrollLeft = 0;
+    mosaic.style.overflowX = 'auto';
+    mosaic.style.cursor = 'grab';
+    mosaic.addEventListener('mousedown', e => {
+      isDragging = true;
+      startX = e.pageX - mosaic.offsetLeft;
+      scrollLeft = mosaic.scrollLeft;
+      mosaic.style.cursor = 'grabbing';
+      mosaic.style.userSelect = 'none';
+    });
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      mosaic.style.cursor = 'grab';
+    });
+    mosaic.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - mosaic.offsetLeft;
+      mosaic.scrollLeft = scrollLeft - (x - startX) * 1.5;
+    });
+  }
+
+  // 3. DOUBLE-CLICK CONFETTI
+  document.addEventListener('dblclick', e => {
+    const colors = ['#b84c2a','#d4a96a','#f5f0e8','#c4652a','#8a7f72'];
+    for (let i = 0; i < 28; i++) {
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      const angle = (Math.random() * 360) * Math.PI / 180;
+      const dist  = 80 + Math.random() * 140;
+      el.style.cssText = `
+        left:${e.clientX}px;top:${e.clientY}px;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        --tx:${Math.cos(angle)*dist}px;
+        --ty:${Math.sin(angle)*dist + 60}px;
+        --rot:${Math.random()*720-360}deg;
+        --dur:${0.6+Math.random()*0.6}s;
+        width:${4+Math.random()*8}px;
+        height:${4+Math.random()*8}px;
+        border-radius:${Math.random()>0.5?'50%':'2px'};
+      `;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1200);
+    }
+  });
+
+  // 4. HERO SCROLL OPACITY
+  const heroLeft  = document.querySelector('.hero-left');
+  const heroRight = document.querySelector('.hero-right');
+  window.addEventListener('scroll', () => {
+    const heroH = document.querySelector('.hero')?.offsetHeight || window.innerHeight;
+    const pct   = Math.min(window.scrollY / (heroH * 0.6), 1);
+    if (heroLeft)  heroLeft.style.opacity  = 1 - pct * 0.7;
+    if (heroRight) heroRight.style.opacity = 1 - pct * 0.4;
+  }, { passive: true });
+
+  // 5. FLOATING LABELS — already HTML+CSS, no extra JS needed
+
+  // 6. PROJECT CARD FLIP
+  function flipCard(card) {
+    // Don't flip if clicking a link inside
+    card.classList.toggle('flipped');
+  }
+  // Prevent flip when clicking inner links/buttons
+  document.querySelectorAll('.project-card a, .project-card button').forEach(el => {
+    el.addEventListener('click', e => e.stopPropagation());
+  });
+
+  // 7. BLUEPRINT CURSOR TRAIL
+  const bpSvg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  bpSvg.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9989;';
+  document.body.appendChild(bpSvg);
+  const trailPoints = [];
+  const MAX_TRAIL = 18;
+  document.addEventListener('mousemove', e => {
+    trailPoints.push({ x: e.clientX, y: e.clientY, t: Date.now() });
+    if (trailPoints.length > MAX_TRAIL) trailPoints.shift();
+    // Clear old lines
+    while (bpSvg.firstChild) bpSvg.removeChild(bpSvg.firstChild);
+    // Draw technical lines
+    for (let i = 1; i < trailPoints.length; i++) {
+      const a = trailPoints[i-1], b = trailPoints[i];
+      const age = (Date.now() - b.t) / 500;
+      const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+      line.setAttribute('x1', a.x); line.setAttribute('y1', a.y);
+      line.setAttribute('x2', b.x); line.setAttribute('y2', b.y);
+      line.setAttribute('stroke', 'var(--rust)');
+      line.setAttribute('stroke-width', '0.6');
+      line.setAttribute('opacity', Math.max(0, (1 - age) * 0.35));
+      bpSvg.appendChild(line);
+      // Add tick marks every 4 points
+      if (i % 4 === 0) {
+        const tick = document.createElementNS('http://www.w3.org/2000/svg','line');
+        const dx = b.y - a.y, dy = -(b.x - a.x);
+        const len = Math.sqrt(dx*dx+dy*dy) || 1;
+        tick.setAttribute('x1', b.x - (dx/len)*4);
+        tick.setAttribute('y1', b.y - (dy/len)*4);
+        tick.setAttribute('x2', b.x + (dx/len)*4);
+        tick.setAttribute('y2', b.y + (dy/len)*4);
+        tick.setAttribute('stroke', 'var(--rust)');
+        tick.setAttribute('stroke-width', '0.5');
+        tick.setAttribute('opacity', Math.max(0, (1-age)*0.2));
+        bpSvg.appendChild(tick);
+      }
+    }
+  });
+
+  // 8. CAD COORDINATES
+  const cadEl = document.getElementById('cad-coords');
+  document.addEventListener('mousemove', e => {
+    if (cadEl) cadEl.innerHTML =
+      `X:&nbsp;${String(e.clientX).padStart(4,'0')} &nbsp; Y:&nbsp;${String(e.clientY).padStart(4,'0')}`;
+  });
+
+  // 9. SCALE RULER — changes label based on scroll depth
+  const rulerLabel = document.querySelector('#scale-ruler span:last-child');
+  const scales = ['10m','20m','50m','100m','200m'];
+  const scaleNums = ['1:100','1:200','1:500','1:1000','1:2000'];
+  const rulerNum = document.querySelector('#scale-ruler span:first-child');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    const idx = Math.min(Math.floor(pct * scales.length), scales.length - 1);
+    if (rulerLabel) rulerLabel.textContent = scales[idx];
+    if (rulerNum)   rulerNum.textContent   = scaleNums[idx];
+  }, { passive: true });
+
+  // 10. SHAKE TO RANDOMIZE THEME (DeviceMotion)
+  const shakeToast = document.getElementById('shakeToast');
+  let lastShake = 0, shakeAcc = 0;
+  if (window.DeviceMotionEvent) {
+    window.addEventListener('devicemotion', e => {
+      const a = e.accelerationIncludingGravity;
+      if (!a) return;
+      const total = Math.abs(a.x||0) + Math.abs(a.y||0) + Math.abs(a.z||0);
+      shakeAcc = shakeAcc * 0.8 + total * 0.2;
+      const now = Date.now();
+      if (shakeAcc > 28 && now - lastShake > 1500) {
+        lastShake = now;
+        const t = themes[Math.floor(Math.random() * themes.length)];
+        applyTheme(t);
+        if (shakeToast) {
+          shakeToast.classList.add('show');
+          setTimeout(() => shakeToast.classList.remove('show'), 2000);
+        }
+      }
+    });
+  }
 
 </script>
 </body>
