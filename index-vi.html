@@ -6,11 +6,11 @@
 <title>Bạch Thái Khang — Portfolio Kiến Trúc 2026</title>
 <meta name="description" content="Bạch Thái Khang — Sinh viên kiến trúc ĐH Kiến trúc Hà Nội (IITC). Portfolio gồm đồ án học thuật, dự án thực tế và quy hoạch đô thị.">
 <meta name="keywords" content="Bạch Thái Khang, portfolio kiến trúc, ĐH Kiến trúc Hà Nội, IITC, thiết kế kiến trúc, Sunjin Vietnam">
-<meta name="author" content="Bạch Thái Khang">
+<meta name="author" content="Bach Thai Khang">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Bạch Thái Khang — Portfolio Kiến Trúc 2026">
-<meta property="og:description" content="Sinh viên kiến trúc IITC · ĐH Kiến trúc Hà Nội · Đang làm việc tại Sunjin Vietnam. Đồ án trường học, nhà phố cổ, quy hoạch đô thị và dự án thực tế.">
+<meta property="og:description" content="Sinh viên kiến trúc IITC · ĐH Kiến trúc Hà Nội · Đang làm việc tại Sunjin Vietnam.">
 <meta property="og:image" content="https://gnahkiahtport.space/assets/cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,24 +21,26 @@
 <meta name="twitter:description" content="Sinh viên kiến trúc IITC · ĐH Kiến trúc Hà Nội · Sunjin Vietnam">
 <meta name="twitter:image" content="https://gnahkiahtport.space/assets/cover.jpg">
 <meta name="thumbnail" content="https://gnahkiahtport.space/assets/cover.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Bebas+Neue&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#0e0c0a;--paper:#f5f0e8;--rust:#b84c2a;--warm:#d4a96a;--muted:#8a7f72;--light:#e8e2d6;--dark:#1a1612;--accent:#c4501e;}
+  :root { --ink:#0e0c0a; --paper:#f5f0e8; --rust:#b84c2a; --warm:#d4a96a; --muted:#8a7f72; --light:#e8e2d6; --dark:#1a1612; --accent:#c4501e; }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;font-size:16px;}
-  body{font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;cursor:none;}
+  body{font-family:'Be Vietnam Pro',system-ui,Arial,sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;cursor:none;}
 
   /* LOADER */
   #loader{position:fixed;inset:0;z-index:99999;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;transition:opacity 0.6s ease,visibility 0.6s ease;}
   #loader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
   .loader-svg{width:min(480px,85vw);height:auto;display:block;}
-  .loader-svg text{font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:3;}
+  .loader-svg text{font-family:'Bebas Neue',sans-serif;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:3;}
   .dl{stroke-dasharray:var(--len,1800);stroke-dashoffset:var(--len,1800);animation:drawStroke 1s cubic-bezier(0.4,0,0.2,1) forwards;}
   .dl-r{stroke:#b84c2a;} .dl-w{stroke:#f5f0e8;}
   @keyframes drawStroke{to{stroke-dashoffset:0;}}
   .loader-bar-wrap{width:160px;height:1px;background:rgba(255,255,255,0.1);position:relative;overflow:hidden;}
   .loader-bar{position:absolute;left:0;top:0;height:100%;width:0;background:var(--rust);animation:loaderFill 1.6s cubic-bezier(0.4,0,0.2,1) 0.3s forwards;}
   @keyframes loaderFill{to{width:100%;}}
-  .loader-sub{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-top:-0.5rem;opacity:0;animation:ldFadeIn 0.5s ease 1.2s forwards;}
+  .loader-sub{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-top:-0.5rem;opacity:0;animation:ldFadeIn 0.5s ease 1.2s forwards;}
   @keyframes ldFadeIn{to{opacity:1;}}
 
   /* CURSOR */
@@ -53,9 +55,9 @@
   nav.nav-dark .nav-links a:hover{color:white;}
   nav.nav-dark .nav-lang{color:rgba(255,255,255,0.65);border-color:rgba(255,255,255,0.3);}
   nav.nav-dark .nav-lang:hover{color:white;border-color:white;}
-  .nav-logo{font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:1.1rem;letter-spacing:0.15em;color:var(--ink);text-decoration:none;}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.15em;color:var(--ink);text-decoration:none;}
   .nav-links{display:flex;gap:2.5rem;list-style:none;}
-  .nav-links a{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+  .nav-links a{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
   .nav-links a:hover{color:var(--rust);}
 
   /* THEME TOGGLE */
@@ -77,7 +79,7 @@
   body.theme-dark #about{background:#0e0c0a;}
   body.theme-dark #activities{background:#1a1612;}
   body.theme-dark .activity-card{background:#0e0c0a;color:#f5f0e8;}
-  body.theme-dark .act-desc{color:#7a7068;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;}
+  body.theme-dark .act-desc{color:#7a7068;}
   body.theme-dark #contact-form-section{background:#0e0c0a;}
   body.theme-dark .cf-input,.theme-dark .cf-textarea{color:#f5f0e8;border-bottom-color:#2a2520;}
   body.theme-dark .timeline-dot{background:#0e0c0a;}
@@ -88,9 +90,9 @@
   body.theme-blueprint #projects{background:#050e1a;}
   body.theme-blueprint #activities{background:#0d2137;}
   body.theme-blueprint .activity-card{background:#0a1929;color:#e0f4ff;}
-  body.theme-blueprint .act-desc{color:#7bb8cc;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;}
+  body.theme-blueprint .act-desc{color:#7bb8cc;}
   body.theme-blueprint #contact-form-section{background:#0a1929;}
-  body.theme-blueprint .cf-input,.theme-blueprint .cf-textarea{color:#e0f4ff;border-bottom-color:#0d3350;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;}
+  body.theme-blueprint .cf-input,.theme-blueprint .cf-textarea{color:#e0f4ff;border-bottom-color:#0d3350;}
   body.theme-blueprint .timeline-dot{background:#0a1929;}
   body.theme-blueprint .stats-bar{background:#00bcd4;}
   body.theme-blueprint .ai-section{background:#00838f;}
@@ -117,74 +119,75 @@
   body.theme-mono .btn-cv{background:#111;border-color:#111;}
   body.theme-mono .btn-cv:hover{background:transparent;color:#111;}
 
+  /* smooth theme transition */
   body{transition:background 0.4s ease,color 0.4s ease;}
-  .nav-lang{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--muted);padding:0.3rem 0.8rem;transition:all 0.2s;}
+  .nav-lang{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--muted);padding:0.3rem 0.8rem;transition:all 0.2s;}
   .nav-lang:hover{color:var(--rust);border-color:var(--rust);}
 
   /* HERO */
   .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
   .hero-left{display:flex;flex-direction:column;justify-content:flex-end;padding:8rem 3rem 5rem;position:relative;z-index:2;}
-  .hero-label{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1.5rem;}
-  .hero-name{font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:clamp(4rem,8vw,8rem);line-height:0.9;color:var(--ink);letter-spacing:0.02em;}
+  .hero-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1.5rem;}
+  .hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,8vw,8rem);line-height:0.9;color:var(--ink);letter-spacing:0.02em;}
   .hero-name span{color:var(--rust);}
-  .hero-tagline{font-size:1.1rem;font-style:italic;color:var(--muted);margin-top:1.5rem;font-weight:300;max-width:320px;line-height:1.7;font-family:'Be Vietnam Pro',system-ui,Arial,sans-serif;}
-  .hero-meta{display:flex;gap:3rem;margin-top:3rem;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;}
+  .hero-tagline{font-size:1.25rem;font-style:italic;color:var(--muted);margin-top:1.5rem;font-weight:300;max-width:320px;line-height:1.6;}
+  .hero-meta{display:flex;gap:3rem;margin-top:3rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;}
   .hero-meta span{display:block;}
   .hero-meta strong{color:var(--ink);font-size:0.75rem;}
   .hero-cta-row{display:flex;gap:1rem;margin-top:2.5rem;}
-  .btn-cv{display:inline-flex;align-items:center;gap:0.6rem;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.75rem 1.4rem;background:var(--rust);color:white;text-decoration:none;border:1px solid var(--rust);transition:all 0.2s;}
+  .btn-cv{display:inline-flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.75rem 1.4rem;background:var(--rust);color:white;text-decoration:none;border:1px solid var(--rust);transition:all 0.2s;}
   .btn-cv:hover{background:transparent;color:var(--rust);}
   .hero-right{position:relative;overflow:hidden;}
   .hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--rust) 0%,#3a1f12 100%);opacity:0.88;z-index:1;}
-  .hero-bg-text{position:absolute;font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:28vw;color:rgba(255,255,255,0.04);z-index:2;bottom:-2rem;right:-2rem;line-height:1;pointer-events:none;user-select:none;}
+  .hero-bg-text{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:28vw;color:rgba(255,255,255,0.04);z-index:2;bottom:-2rem;right:-2rem;line-height:1;pointer-events:none;user-select:none;}
   .hero-right-content{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:space-between;padding:6rem 3rem 4rem;color:white;}
   .hero-portrait-wrap{display:flex;justify-content:center;}
   .hero-portrait{width:160px;height:160px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);flex-shrink:0;}
   .hero-portrait img{width:100%;height:100%;object-fit:cover;object-position:center top;}
-  .hero-portrait-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.55rem;letter-spacing:0.1em;color:rgba(255,255,255,0.35);text-align:center;padding:1rem;}
+  .hero-portrait-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;color:rgba(255,255,255,0.35);text-align:center;padding:1rem;}
   .hero-portrait-placeholder svg{opacity:0.4;}
-  .hero-role{font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:1rem;letter-spacing:0.3em;color:rgba(255,255,255,0.5);margin-bottom:1rem;}
+  .hero-role{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.3em;color:rgba(255,255,255,0.5);margin-bottom:1rem;}
   .hero-school{font-size:2rem;font-weight:300;line-height:1.3;margin-bottom:2rem;}
-  .hero-contact-list{display:flex;flex-direction:column;gap:0.4rem;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.65rem;color:rgba(255,255,255,0.6);letter-spacing:0.08em;}
+  .hero-contact-list{display:flex;flex-direction:column;gap:0.4rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:rgba(255,255,255,0.6);letter-spacing:0.08em;}
   .hero-contact-list a{color:rgba(255,255,255,0.8);text-decoration:none;}
   .hero-contact-list a:hover{color:white;}
-  .scroll-cue{position:absolute;bottom:2rem;left:3rem;display:flex;align-items:center;gap:1rem;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);z-index:5;}
+  .scroll-cue{position:absolute;bottom:2rem;left:3rem;display:flex;align-items:center;gap:1rem;font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);z-index:5;}
   .scroll-line{width:40px;height:1px;background:var(--rust);animation:scrollPulse 1.5s ease-in-out infinite;}
   @keyframes scrollPulse{0%,100%{width:40px;opacity:1;}50%{width:60px;opacity:0.5;}}
 
   /* STATS */
   .stats-bar{background:var(--rust);padding:2.5rem 3rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
-  .stat-num{font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:clamp(2.5rem,5vw,4rem);color:white;letter-spacing:0.05em;line-height:1;}
+  .stat-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);color:white;letter-spacing:0.05em;line-height:1;}
   .stat-num .stat-suffix{font-size:0.6em;color:rgba(255,255,255,0.6);}
-  .stat-label{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:0.4rem;}
+  .stat-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:0.4rem;}
 
   /* SECTIONS */
   section{padding:7rem 3rem;}
   .section-header{display:flex;align-items:baseline;gap:1.5rem;margin-bottom:4rem;border-bottom:1px solid var(--light);padding-bottom:1.5rem;}
-  .section-num{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.65rem;color:var(--rust);letter-spacing:0.15em;}
-  .section-title{font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:0.05em;color:var(--ink);}
-  .section-en{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;margin-left:auto;text-transform:uppercase;}
+  .section-num{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--rust);letter-spacing:0.15em;}
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:0.05em;color:var(--ink);}
+  .section-en{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;margin-left:auto;text-transform:uppercase;}
 
   /* ABOUT */
   .about-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;}
-  .about-block h3{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:1px solid var(--light);}
+  .about-block h3{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:1px solid var(--light);}
   .timeline-item{display:grid;grid-template-columns:auto 1fr;gap:0 1.2rem;margin-bottom:1.8rem;position:relative;}
   .timeline-item::before{content:'';position:absolute;left:0;top:0.5rem;bottom:-1.8rem;width:1px;background:var(--light);}
   .timeline-item:last-child::before{display:none;}
   .timeline-dot{width:8px;height:8px;border-radius:50%;background:var(--paper);border:1.5px solid var(--rust);margin-top:0.35rem;position:relative;z-index:1;flex-shrink:0;}
-  .timeline-period{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;color:var(--muted);letter-spacing:0.08em;margin-bottom:0.2rem;}
-  .timeline-org{font-size:0.95rem;font-weight:600;color:var(--ink);margin-bottom:0.2rem;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;}
-  .timeline-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;}
+  .timeline-period{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);letter-spacing:0.08em;margin-bottom:0.2rem;}
+  .timeline-org{font-size:0.95rem;font-weight:600;color:var(--ink);margin-bottom:0.2rem;}
+  .timeline-desc{font-size:0.85rem;color:var(--muted);line-height:1.5;font-style:italic;}
   .skills-grid{display:flex;flex-direction:column;gap:0.8rem;}
   .skill-row{display:flex;align-items:center;gap:1rem;position:relative;}
-  .skill-name{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.65rem;letter-spacing:0.08em;color:var(--ink);width:80px;flex-shrink:0;}
-  .skill-pct{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.58rem;color:var(--muted);width:32px;text-align:right;flex-shrink:0;opacity:0;transition:opacity 0.4s ease 0.8s;}
+  .skill-name{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;color:var(--ink);width:80px;flex-shrink:0;}
+  .skill-pct{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--muted);width:32px;text-align:right;flex-shrink:0;opacity:0;transition:opacity 0.4s ease 0.8s;}
   .skill-fill.animated~.skill-pct,.skill-row:has(.skill-fill.animated) .skill-pct{opacity:1;}
   .skill-bar{flex:1;height:3px;background:var(--light);position:relative;overflow:hidden;}
   .skill-fill{position:absolute;left:0;top:0;height:100%;background:var(--rust);width:0;transition:width 1s cubic-bezier(0.4,0,0.2,1);}
   .skill-fill.animated{width:var(--w);}
   .about-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:0.5rem;}
-  .tag{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.8rem;border:1px solid var(--rust);color:var(--rust);border-radius:2px;transition:all 0.2s;}
+  .tag{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.8rem;border:1px solid var(--rust);color:var(--rust);border-radius:2px;transition:all 0.2s;}
   .tag:hover{background:var(--rust);color:white;}
 
   /* PROJECTS */
@@ -194,7 +197,7 @@
   #projects .section-header{border-bottom-color:rgba(255,255,255,0.08);}
   #projects .section-en{color:rgba(255,255,255,0.3);}
   .project-tabs{display:flex;margin-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.1);}
-  .tab-btn{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.8rem 1.8rem;border:none;background:transparent;color:rgba(255,255,255,0.35);cursor:none;position:relative;transition:color 0.2s;}
+  .tab-btn{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.8rem 1.8rem;border:none;background:transparent;color:rgba(255,255,255,0.35);cursor:none;position:relative;transition:color 0.2s;}
   .tab-btn::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--warm);transform:scaleX(0);transition:transform 0.2s;}
   .tab-btn.active{color:var(--warm);}
   .tab-btn.active::after{transform:scaleX(1);}
@@ -206,15 +209,15 @@
   .project-card-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;position:relative;}
   .project-card-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease,opacity 0.3s;opacity:0.7;}
   .project-card:hover .project-card-thumb img{transform:scale(1.05);opacity:1;}
-  .project-card-thumb-placeholder{width:100%;height:100%;background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,rgba(212,169,106,0.08) 100%);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:3rem;color:rgba(255,255,255,0.06);letter-spacing:0.1em;}
+  .project-card-thumb-placeholder{width:100%;height:100%;background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,rgba(212,169,106,0.08) 100%);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:3rem;color:rgba(255,255,255,0.06);letter-spacing:0.1em;}
   .project-card-body{padding:2rem 2.5rem 2.5rem;}
   .project-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:0;background:var(--warm);transition:height 0.3s ease;z-index:1;}
   .project-card:hover{background:rgba(255,255,255,0.06);}
   .project-card:hover::before{height:100%;}
-  .project-card-num{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;color:var(--warm);letter-spacing:0.15em;margin-bottom:0.8rem;}
-  .project-card-title{font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:1.6rem;letter-spacing:0.05em;color:white;margin-bottom:0.5rem;line-height:1.1;}
-  .project-card-sub{font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:1.2rem;line-height:1.5;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;}
-  .project-card-instructor{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;color:rgba(255,255,255,0.25);letter-spacing:0.08em;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.06);}
+  .project-card-num{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--warm);letter-spacing:0.15em;margin-bottom:0.8rem;}
+  .project-card-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.05em;color:white;margin-bottom:0.5rem;line-height:1.1;}
+  .project-card-sub{font-size:0.85rem;font-style:italic;color:rgba(255,255,255,0.4);margin-bottom:1.2rem;line-height:1.4;}
+  .project-card-instructor{font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(255,255,255,0.25);letter-spacing:0.08em;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.06);}
   .project-card-arrow{position:absolute;bottom:2rem;right:2rem;font-size:1.2rem;color:rgba(255,255,255,0.15);transition:all 0.3s;}
   .project-card:hover .project-card-arrow{color:var(--warm);transform:translate(3px,-3px);}
   .real-project-item{display:grid;grid-template-columns:1fr 2fr;gap:3rem;padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06);align-items:start;}
@@ -222,21 +225,21 @@
   .rp-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;margin-top:0.6rem;}
   .rp-thumb img{width:100%;height:100%;object-fit:cover;opacity:0.75;transition:opacity 0.3s,transform 0.4s;}
   .real-project-item:hover .rp-thumb img{opacity:1;transform:scale(1.03);}
-  .rp-thumb-placeholder{width:100%;height:100%;background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;color:rgba(255,255,255,0.15);letter-spacing:0.1em;}
-  .rp-label{font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:1.5rem;letter-spacing:0.05em;color:white;line-height:1.2;}
-  .rp-type{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;color:var(--warm);letter-spacing:0.12em;text-transform:uppercase;margin-top:0.5rem;}
-  .rp-desc{font-size:1rem;color:rgba(255,255,255,0.55);line-height:1.7;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;}
+  .rp-thumb-placeholder{width:100%;height:100%;background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(255,255,255,0.15);letter-spacing:0.1em;}
+  .rp-label{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.05em;color:white;line-height:1.2;}
+  .rp-type{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--warm);letter-spacing:0.12em;text-transform:uppercase;margin-top:0.5rem;}
+  .rp-desc{font-size:1rem;color:rgba(255,255,255,0.55);line-height:1.7;font-style:italic;}
   .rp-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;}
-  .rp-tag{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.58rem;padding:0.25rem 0.7rem;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.4);border-radius:2px;letter-spacing:0.08em;}
+  .rp-tag{font-family:'DM Mono',monospace;font-size:0.58rem;padding:0.25rem 0.7rem;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.4);border-radius:2px;letter-spacing:0.08em;}
 
   /* AI */
   .ai-section{background:var(--rust);padding:4rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
-  .ai-label{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.65rem;letter-spacing:0.2em;color:rgba(255,255,255,0.6);text-transform:uppercase;margin-bottom:1rem;}
-  .ai-title{font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);color:white;line-height:1;letter-spacing:0.03em;margin-bottom:1.5rem;}
-  .ai-desc{font-size:1rem;color:rgba(255,255,255,0.75);line-height:1.7;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;}
+  .ai-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;color:rgba(255,255,255,0.6);text-transform:uppercase;margin-bottom:1rem;}
+  .ai-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);color:white;line-height:1;letter-spacing:0.03em;margin-bottom:1.5rem;}
+  .ai-desc{font-size:1.1rem;color:rgba(255,255,255,0.75);line-height:1.7;font-style:italic;}
   .before-after{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;}
   .ba-box{background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.2);padding:1.5rem;border-radius:4px;overflow:hidden;}
-  .ba-label{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.58rem;letter-spacing:0.15em;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-bottom:0.8rem;}
+  .ba-label{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-bottom:0.8rem;}
   .ba-img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;border-radius:2px;}
   .ba-visual{display:flex;flex-direction:column;gap:0.4rem;}
   .ba-row{height:8px;background:rgba(255,255,255,0.15);border-radius:2px;}
@@ -251,8 +254,8 @@
   .activity-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--rust);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
   .activity-card:hover::after{transform:scaleX(1);}
   .act-icon{font-size:2rem;margin-bottom:1rem;}
-  .act-title{font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:1.2rem;letter-spacing:0.05em;color:var(--ink);margin-bottom:0.6rem;}
-  .act-desc{font-size:0.9rem;color:var(--muted);line-height:1.6;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;}
+  .act-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.05em;color:var(--ink);margin-bottom:0.6rem;}
+  .act-desc{font-size:0.9rem;color:var(--muted);line-height:1.6;font-style:italic;}
 
   /* HOBBIES */
   #hobbies{background:var(--ink);padding-top:5rem;padding-bottom:5rem;}
@@ -267,47 +270,47 @@
   .photo-item:nth-child(9){grid-column:span 2;grid-row:span 2;}
   .photo-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease,opacity 0.3s;opacity:0.85;}
   .photo-item:hover img{transform:scale(1.05);opacity:1;}
-  .photo-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;color:rgba(255,255,255,0.12);transition:all 0.3s;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;letter-spacing:0.1em;text-align:center;padding:1rem;}
+  .photo-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;color:rgba(255,255,255,0.12);transition:all 0.3s;font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-align:center;padding:1rem;}
   .photo-item:hover .photo-placeholder{color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.03);}
   .photo-icon{font-size:1.8rem;margin-bottom:0.3rem;}
-  .photo-caption{font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.25);margin-top:0.3rem;line-height:1.4;}
+  .photo-caption{font-style:italic;font-family:'Be Vietnam Pro',system-ui,Arial,sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.25);margin-top:0.3rem;line-height:1.4;}
   .photo-item::after{content:'⊕';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);font-size:2rem;color:white;opacity:0;transition:all 0.25s ease;pointer-events:none;z-index:2;text-shadow:0 2px 12px rgba(0,0,0,0.5);}
   .photo-item:hover::after{transform:translate(-50%,-50%) scale(1);opacity:1;}
 
   /* CONTACT FORM */
   #contact-form-section{background:var(--paper);padding:7rem 3rem;}
   .contact-form-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
-  .contact-form-info h3{font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:2rem;color:var(--ink);letter-spacing:0.05em;margin-bottom:1rem;line-height:1.1;}
-  .contact-form-info p{font-size:1rem;color:var(--muted);line-height:1.7;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;max-width:360px;}
+  .contact-form-info h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--ink);letter-spacing:0.05em;margin-bottom:1rem;line-height:1.1;}
+  .contact-form-info p{font-size:1rem;color:var(--muted);line-height:1.7;font-style:italic;max-width:360px;}
   .cfi-links{display:flex;flex-direction:column;gap:0.8rem;margin-top:2rem;}
-  .cfi-link{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:0.6rem;transition:color 0.2s;}
+  .cfi-link{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:0.6rem;transition:color 0.2s;}
   .cfi-link:hover{color:var(--rust);}
   .cf-form{display:flex;flex-direction:column;gap:1.2rem;}
   .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
   .cf-field{display:flex;flex-direction:column;gap:0.4rem;}
-  .cf-label{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);}
-  .cf-input,.cf-textarea{background:transparent;border:none;border-bottom:1px solid var(--light);padding:0.6rem 0;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:1rem;color:var(--ink);outline:none;transition:border-color 0.2s;resize:none;cursor:none;}
+  .cf-label{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);}
+  .cf-input,.cf-textarea{background:transparent;border:none;border-bottom:1px solid var(--light);padding:0.6rem 0;font-family:'Be Vietnam Pro',system-ui,Arial,sans-serif;font-size:1rem;color:var(--ink);outline:none;transition:border-color 0.2s;resize:none;cursor:none;}
   .cf-input:focus,.cf-textarea:focus{border-bottom-color:var(--rust);}
   .cf-textarea{height:100px;}
-  .cf-submit{align-self:flex-start;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.85rem 2rem;background:var(--ink);color:var(--paper);border:1px solid var(--ink);cursor:none;transition:all 0.2s;}
+  .cf-submit{align-self:flex-start;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.85rem 2rem;background:var(--ink);color:var(--paper);border:1px solid var(--ink);cursor:none;transition:all 0.2s;}
   .cf-submit:hover{background:var(--rust);border-color:var(--rust);color:white;}
-  .cf-success{display:none;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.65rem;letter-spacing:0.12em;color:var(--rust);padding:1rem 0;}
+  .cf-success{display:none;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;color:var(--rust);padding:1rem 0;}
   .cf-success.show{display:block;}
 
   /* FOOTER */
   footer{background:var(--dark);padding:5rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;}
-  .footer-greeting{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.65rem;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:1rem;}
-  .footer-name{font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:clamp(3rem,7vw,6rem);color:var(--paper);line-height:0.9;letter-spacing:0.02em;margin-bottom:1.5rem;}
-  .footer-bio{font-size:1rem;color:var(--muted);line-height:1.7;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;max-width:420px;}
+  .footer-greeting{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:1rem;}
+  .footer-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);color:var(--paper);line-height:0.9;letter-spacing:0.02em;margin-bottom:1.5rem;}
+  .footer-bio{font-size:1rem;color:var(--muted);line-height:1.7;font-style:italic;max-width:420px;}
   .contact-links{display:flex;flex-direction:column;gap:1rem;}
   .contact-link{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.5rem;border:1px solid rgba(255,255,255,0.08);color:white;text-decoration:none;transition:all 0.2s;position:relative;overflow:hidden;}
   .contact-link::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:var(--warm);transform:scaleY(0);transition:transform 0.2s;}
   .contact-link:hover::before{transform:scaleY(1);}
   .contact-link:hover{background:rgba(255,255,255,0.04);}
   .cl-icon{font-size:1rem;width:20px;text-align:center;}
-  .cl-label{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);min-width:80px;}
+  .cl-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);min-width:80px;}
   .cl-value{font-size:0.9rem;color:rgba(255,255,255,0.7);}
-  .footer-copy{grid-column:span 2;text-align:center;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;color:rgba(255,255,255,0.75);letter-spacing:0.1em;padding-top:3rem;border-top:1px solid rgba(255,255,255,0.12);margin-top:2rem;}
+  .footer-copy{grid-column:span 2;text-align:center;font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(255,255,255,0.75);letter-spacing:0.1em;padding-top:3rem;border-top:1px solid rgba(255,255,255,0.12);margin-top:2rem;}
 
   /* ANIMATIONS */
   .fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
@@ -322,11 +325,11 @@
   .lightbox-img-wrap{position:relative;max-width:90vw;max-height:88vh;transform:scale(0.88);opacity:0;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s ease;}
   .lightbox.active .lightbox-img-wrap{transform:scale(1);opacity:1;}
   .lightbox-img{display:block;max-width:90vw;max-height:88vh;width:auto;height:auto;object-fit:contain;box-shadow:0 32px 80px rgba(0,0,0,0.6);}
-  .lightbox-caption{position:absolute;bottom:-2.4rem;left:0;right:0;text-align:center;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.62rem;letter-spacing:0.15em;color:rgba(255,255,255,0.4);text-transform:uppercase;}
-  .lightbox-close{position:fixed;top:2rem;right:2.5rem;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);font-size:1.2rem;cursor:none;transition:all 0.2s;background:transparent;font-family:'DM Mono','Courier New',Courier,monospace;}
+  .lightbox-caption{position:absolute;bottom:-2.4rem;left:0;right:0;text-align:center;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.15em;color:rgba(255,255,255,0.4);text-transform:uppercase;}
+  .lightbox-close{position:fixed;top:2rem;right:2.5rem;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);font-size:1.2rem;cursor:none;transition:all 0.2s;background:transparent;font-family:'DM Mono',monospace;}
   .lightbox-close:hover{border-color:var(--rust);color:var(--rust);}
-  .lightbox-counter{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;letter-spacing:0.2em;color:rgba(255,255,255,0.3);}
-  .lightbox-nav{position:fixed;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);font-size:1rem;cursor:none;transition:all 0.2s;background:transparent;font-family:'DM Mono','Courier New',Courier,monospace;}
+  .lightbox-counter{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;color:rgba(255,255,255,0.3);}
+  .lightbox-nav{position:fixed;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);font-size:1rem;cursor:none;transition:all 0.2s;background:transparent;font-family:'DM Mono',monospace;}
   .lightbox-nav:hover{border-color:var(--rust);color:var(--rust);}
   .lightbox-prev{left:2rem;}
   .lightbox-next{right:2rem;}
@@ -355,13 +358,13 @@
   #scroll-progress{position:fixed;top:0;left:0;width:0%;height:2px;background:var(--rust);z-index:9999;transition:width 0.1s linear;pointer-events:none;}
 
   /* SECTION WATERMARK NUMBER */
-  .section-watermark{position:absolute;right:-0.05em;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:clamp(6rem,18vw,14rem);color:var(--rust);opacity:0.04;line-height:1;pointer-events:none;user-select:none;z-index:0;}
+  .section-watermark{position:absolute;right:-0.05em;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',sans-serif;font-size:clamp(6rem,18vw,14rem);color:var(--rust);opacity:0.04;line-height:1;pointer-events:none;user-select:none;z-index:0;}
   section{position:relative;overflow:hidden;}
 
   /* IMAGE TILT 3D */
-  .project-card-thumb,.rp-thumb{transform-style:preserve-3d;will-change:transform;}
+  .project-card-thumb,.rp-thumb,.ba-box{transform-style:preserve-3d;will-change:transform;}
 
-  /* SKELETON SHIMMER */
+  /* IMAGE SKELETON SHIMMER */
   @keyframes shimmer{0%{background-position:-200% 0;}100%{background-position:200% 0;}}
   .img-skeleton{background:linear-gradient(90deg,var(--light) 25%,rgba(255,255,255,0.5) 50%,var(--light) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;}
 
@@ -375,10 +378,10 @@
   #page-wipe.wipe-in{transition:transform 0.45s cubic-bezier(0.76,0,0.24,1);transform:translateX(0);}
   #page-wipe.wipe-out{transition:transform 0.45s cubic-bezier(0.76,0,0.24,1) 0.05s;transform:translateX(100%);}
 
-  /* DIMENSION LINES */
+  /* DIMENSION LINES on project card hover */
   .project-card::after{content:'';position:absolute;inset:8px;border:1px dashed rgba(212,169,106,0);transition:border-color 0.3s ease;pointer-events:none;z-index:2;}
   .project-card:hover::after{border-color:rgba(212,169,106,0.25);}
-  .project-card .dim-h,.project-card .dim-v{position:absolute;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.48rem;letter-spacing:0.1em;color:rgba(212,169,106,0);transition:color 0.3s ease;pointer-events:none;z-index:3;}
+  .project-card .dim-h,.project-card .dim-v{position:absolute;font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:0.1em;color:rgba(212,169,106,0);transition:color 0.3s ease;pointer-events:none;z-index:3;}
   .project-card:hover .dim-h,.project-card:hover .dim-v{color:rgba(212,169,106,0.5);}
   .project-card .dim-h{bottom:12px;left:50%;transform:translateX(-50%);}
   .project-card .dim-v{right:12px;top:50%;transform:translateY(-50%) rotate(90deg);}
@@ -387,7 +390,7 @@
   body::after{content:'';position:fixed;inset:0;z-index:99990;pointer-events:none;opacity:0.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:200px 200px;}
 
   /* MORPH CURSOR LABEL */
-  #cursor-label{position:fixed;pointer-events:none;z-index:9997;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:white;background:var(--rust);padding:0.25rem 0.6rem;opacity:0;transform:translate(14px,-50%) scale(0.8);transition:opacity 0.2s ease,transform 0.2s ease;white-space:nowrap;}
+  #cursor-label{position:fixed;pointer-events:none;z-index:9997;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:white;background:var(--rust);padding:0.25rem 0.6rem;opacity:0;transform:translate(14px,-50%) scale(0.8);transition:opacity 0.2s ease,transform 0.2s ease;white-space:nowrap;}
   #cursor-label.show{opacity:1;transform:translate(14px,-50%) scale(1);}
 
   /* GLITCH */
@@ -464,10 +467,10 @@
   .footer-name:hover{-webkit-text-stroke:2px var(--paper);color:transparent;}
 
   /* 10. TIME GREETING */
-  #time-greeting{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:0.8rem;opacity:0;animation:ldFadeIn 0.8s ease 2.2s forwards;}
+  #time-greeting{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:0.8rem;opacity:0;animation:ldFadeIn 0.8s ease 2.2s forwards;}
 
   /* CLOCK */
-  .footer-clock{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;letter-spacing:0.12em;color:var(--muted);display:flex;flex-direction:column;gap:0.4rem;margin-top:2rem;}
+  .footer-clock{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:var(--muted);display:flex;flex-direction:column;gap:0.4rem;margin-top:2rem;}
   .clock-row{display:flex;align-items:center;gap:0.6rem;}
   .clock-flag{font-size:0.9rem;line-height:1;}
   .clock-label{color:var(--muted);font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;width:24px;}
@@ -476,7 +479,7 @@
   @keyframes clockPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.3;transform:scale(0.6);}}
 
   /* ── MUSIC TOGGLE ── */
-  .music-btn{background:transparent;border:1px solid var(--muted);color:var(--muted);font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.62rem;letter-spacing:0.12em;padding:0.3rem 0.7rem;cursor:none;transition:all 0.2s;display:flex;align-items:center;gap:0.4rem;white-space:nowrap;}
+  .music-btn{background:transparent;border:1px solid var(--muted);color:var(--muted);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;padding:0.3rem 0.7rem;cursor:none;transition:all 0.2s;display:flex;align-items:center;gap:0.4rem;white-space:nowrap;}
   .music-btn:hover{color:var(--rust);border-color:var(--rust);}
   .music-btn.playing{color:var(--rust);border-color:var(--rust);}
   nav.nav-dark .music-btn{color:rgba(255,255,255,0.65);border-color:rgba(255,255,255,0.3);}
@@ -497,7 +500,7 @@
   /* 1. CUSTOM CONTEXT MENU */
   #ctx-menu{position:fixed;z-index:99996;background:var(--dark);border:1px solid rgba(255,255,255,0.1);padding:0.4rem 0;min-width:200px;opacity:0;visibility:hidden;transform:scale(0.95) translateY(-4px);transition:all 0.15s cubic-bezier(0.34,1.56,0.64,1);transform-origin:top left;}
   #ctx-menu.show{opacity:1;visibility:visible;transform:scale(1) translateY(0);}
-  .ctx-item{display:flex;align-items:center;gap:0.8rem;padding:0.6rem 1.2rem;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.62rem;letter-spacing:0.1em;color:rgba(255,255,255,0.7);cursor:none;transition:all 0.15s;text-transform:uppercase;}
+  .ctx-item{display:flex;align-items:center;gap:0.8rem;padding:0.6rem 1.2rem;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;color:rgba(255,255,255,0.7);cursor:none;transition:all 0.15s;text-transform:uppercase;}
   .ctx-item:hover{background:rgba(255,255,255,0.06);color:white;padding-left:1.6rem;}
   .ctx-item .ctx-icon{font-size:0.85rem;width:16px;text-align:center;}
   .ctx-sep{height:1px;background:rgba(255,255,255,0.08);margin:0.3rem 0;}
@@ -510,7 +513,7 @@
   .hero-left,.hero-right{transition:opacity 0.1s linear;}
 
   /* 5. FLOATING LABELS */
-  .float-label{position:absolute;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);background:rgba(184,76,42,0.1);border:1px solid rgba(184,76,42,0.3);padding:0.3rem 0.7rem;border-radius:2px;pointer-events:none;z-index:3;animation:floatUpDown var(--float-dur,3s) ease-in-out infinite;}
+  .float-label{position:absolute;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);background:rgba(184,76,42,0.1);border:1px solid rgba(184,76,42,0.3);padding:0.3rem 0.7rem;border-radius:2px;pointer-events:none;z-index:3;animation:floatUpDown var(--float-dur,3s) ease-in-out infinite;}
   @keyframes floatUpDown{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 
   /* 6. CARD FLIP */
@@ -520,27 +523,27 @@
   .project-card-front,.project-card-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
   .project-card-front{background:rgba(255,255,255,0.03);}
   .project-card-back{background:rgba(255,255,255,0.06);transform:rotateY(180deg);padding:2rem;display:flex;flex-direction:column;justify-content:center;gap:1rem;}
-  .project-card-back .back-title{font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:1.2rem;color:var(--warm);letter-spacing:0.05em;}
+  .project-card-back .back-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--warm);letter-spacing:0.05em;}
   .project-card-back .back-desc{font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.6;font-style:italic;}
-  .project-card-back .back-flip{font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.55rem;letter-spacing:0.15em;color:var(--muted);text-transform:uppercase;margin-top:auto;}
+  .project-card-back .back-flip{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;color:var(--muted);text-transform:uppercase;margin-top:auto;}
 
   /* 7. BLUEPRINT CURSOR TRAIL */
   .bp-trail{position:fixed;pointer-events:none;z-index:9989;opacity:0;transition:opacity 0.3s ease;}
   .bp-trail line{stroke:var(--rust);stroke-width:0.5;opacity:0.4;}
 
   /* 8. CAD COORDINATES */
-  #cad-coords{position:fixed;bottom:1.2rem;left:1.5rem;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.55rem;letter-spacing:0.12em;color:var(--muted);pointer-events:none;z-index:500;opacity:0.5;transition:opacity 0.2s;}
+  #cad-coords{position:fixed;bottom:1.2rem;left:1.5rem;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;color:var(--muted);pointer-events:none;z-index:500;opacity:0.5;transition:opacity 0.2s;}
   #cad-coords:hover{opacity:1;}
 
   /* 9. SCALE RULER */
-  #scale-ruler{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.5rem;letter-spacing:0.15em;color:var(--muted);pointer-events:none;z-index:500;display:flex;align-items:center;gap:0.5rem;opacity:0.4;}
+  #scale-ruler{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.15em;color:var(--muted);pointer-events:none;z-index:500;display:flex;align-items:center;gap:0.5rem;opacity:0.4;}
   #scale-ruler .ruler-bar{height:6px;width:60px;border:1px solid currentColor;border-top:none;position:relative;}
   #scale-ruler .ruler-bar::before,#scale-ruler .ruler-bar::after{content:'';position:absolute;top:0;height:6px;width:1px;background:currentColor;}
   #scale-ruler .ruler-bar::before{left:0;}
   #scale-ruler .ruler-bar::after{right:0;}
 
   /* 10. SHAKE indicator */
-  .shake-toast{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%) translateY(20px);font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;background:var(--rust);color:white;padding:0.5rem 1.2rem;opacity:0;transition:all 0.4s ease;z-index:9000;pointer-events:none;}
+  .shake-toast{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%) translateY(20px);font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;background:var(--rust);color:white;padding:0.5rem 1.2rem;opacity:0;transition:all 0.4s ease;z-index:9000;pointer-events:none;}
   .shake-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
   /* ── PROJECT SLIDESHOW ── */
@@ -555,10 +558,164 @@
   .project-card:hover .slide-btn{opacity:1;}
   .slide-btn-prev{left:6px;}
   .slide-btn-next{right:6px;}
-  .slide-counter{position:absolute;top:6px;right:8px;font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.5rem;letter-spacing:0.1em;color:rgba(255,255,255,0.6);z-index:4;background:rgba(0,0,0,0.3);padding:0.15rem 0.4rem;}
+  .slide-counter{position:absolute;top:6px;right:8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;color:rgba(255,255,255,0.6);z-index:4;background:rgba(0,0,0,0.3);padding:0.15rem 0.4rem;}
+
+  /* ── MESSENGER CHAT POPUP ── */
+  #chat-btn{position:fixed;bottom:2.5rem;right:5rem;z-index:600;background:#0099ff;border:none;border-radius:50%;width:52px;height:52px;display:flex;align-items:center;justify-content:center;cursor:none;box-shadow:0 4px 20px rgba(0,153,255,0.4);transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.3s ease;}
+  #chat-btn:hover{transform:scale(1.12);box-shadow:0 6px 28px rgba(0,153,255,0.6);}
+  #chat-btn svg{width:26px;height:26px;}
+  #chat-popup{position:fixed;bottom:7rem;right:5rem;z-index:601;width:300px;background:white;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.18);overflow:hidden;opacity:0;visibility:hidden;transform:translateY(12px) scale(0.96);transform-origin:bottom right;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);}
+  #chat-popup.open{opacity:1;visibility:visible;transform:translateY(0) scale(1);}
+  .chat-header{background:linear-gradient(135deg,#0099ff,#0066cc);padding:1.2rem 1.2rem 2.5rem;color:white;position:relative;}
+  .chat-header-avatar{width:52px;height:52px;border-radius:50%;border:2px solid rgba(255,255,255,0.5);object-fit:cover;margin-bottom:0.6rem;}
+  .chat-header-avatar-placeholder{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:0.6rem;}
+  .chat-header-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.1rem;letter-spacing:0.05em;margin-bottom:0.15rem;}
+  .chat-header-status{font-family:'DM Mono','Courier New',monospace;font-size:0.55rem;letter-spacing:0.12em;opacity:0.8;display:flex;align-items:center;gap:0.4rem;}
+  .chat-status-dot{width:6px;height:6px;border-radius:50%;background:#4cff91;animation:statusPulse 2s ease-in-out infinite;}
+  @keyframes statusPulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+  .chat-bubble-wrap{background:white;padding:1rem 1rem 0;margin-top:-1.2rem;position:relative;}
+  .chat-bubble{background:#f0f0f0;border-radius:18px 18px 18px 4px;padding:0.7rem 1rem;font-size:0.85rem;color:#111;line-height:1.5;margin-bottom:0.5rem;display:inline-block;max-width:85%;}
+  .chat-bubble-time{font-size:0.6rem;color:#999;margin-left:0.5rem;}
+  .chat-cta{padding:0.8rem 1rem 1rem;}
+  .chat-cta-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;width:100%;padding:0.75rem;background:#0099ff;color:white;border-radius:24px;text-decoration:none;font-family:'DM Mono','Courier New',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;transition:background 0.2s,transform 0.15s;}
+  .chat-cta-btn:hover{background:#0077dd;transform:translateY(-1px);}
+  .chat-close{position:absolute;top:0.7rem;right:0.8rem;background:transparent;border:none;color:rgba(255,255,255,0.7);font-size:1.1rem;cursor:none;line-height:1;padding:0.2rem;}
+  .chat-close:hover{color:white;}
+  .chat-typing{display:flex;align-items:center;gap:4px;padding:0.5rem 0 0.8rem 0;}
+  .chat-typing span{width:7px;height:7px;border-radius:50%;background:#bbb;animation:typingDot 1.2s ease-in-out infinite;}
+  .chat-typing span:nth-child(2){animation-delay:0.2s;}
+  .chat-typing span:nth-child(3){animation-delay:0.4s;}
+  @keyframes typingDot{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
+  .chat-notify{position:absolute;top:-4px;right:-4px;width:18px;height:18px;background:#ff3b30;border-radius:50%;font-size:0.6rem;color:white;display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-weight:700;animation:notifyPop 0.4s cubic-bezier(0.34,1.56,0.64,1) 2s both;}
+  @keyframes notifyPop{from{transform:scale(0);}to{transform:scale(1);}}
+
+  @media(max-width:900px){
+    #chat-btn{right:1.2rem;bottom:5rem;}
+    #chat-popup{right:1rem;width:calc(100vw - 2rem);max-width:320px;}
+  }
+  @keyframes chatBounce{0%{transform:scale(1);}40%{transform:scale(1.2);}70%{transform:scale(0.95);}100%{transform:scale(1);}}
+
+  /* ── LIQUID GLASS ── */
+  /* SVG filter for displacement/distortion */
+  .liquid-glass {
+    position: relative;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px) saturate(180%) brightness(1.05);
+    -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.05);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 16px;
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.18),
+      inset 0 1px 0 rgba(255,255,255,0.25),
+      inset 0 -1px 0 rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255,255,255,0.15) 0%,
+      rgba(255,255,255,0.03) 40%,
+      rgba(255,255,255,0.08) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+    border-radius: inherit;
+  }
+  /* Specular highlight on top edge */
+  .liquid-glass::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(255,255,255,0.6) 30%,
+      rgba(255,255,255,0.8) 50%,
+      rgba(255,255,255,0.6) 70%,
+      transparent
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Apply to chat popup */
+  #chat-popup {
+    background: rgba(255,255,255,0.75) !important;
+    backdrop-filter: blur(40px) saturate(200%) brightness(1.1) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(200%) brightness(1.1) !important;
+    border: 1px solid rgba(255,255,255,0.5) !important;
+    box-shadow:
+      0 16px 48px rgba(0,0,0,0.15),
+      0 2px 8px rgba(0,0,0,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.8) !important;
+  }
+
+  /* Apply to nav when scrolling */
+  nav.nav-dark {
+    background: rgba(15,12,10,0.45) !important;
+    backdrop-filter: blur(24px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04);
+  }
+
+  /* Apply to theme toggle pill */
+  .theme-toggle {
+    background: rgba(255,255,255,0.12) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+
+  /* Lightbox glass effect */
+  .lightbox-close,
+  .lightbox-nav {
+    background: rgba(255,255,255,0.08) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  }
+
+  /* Music button glass */
+  .music-btn {
+    background: rgba(255,255,255,0.06) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+  nav.nav-dark .music-btn {
+    background: rgba(255,255,255,0.1) !important;
+    border-color: rgba(255,255,255,0.2) !important;
+  }
+
+  /* Back to top glass */
+  #back-top {
+    background: rgba(14,12,10,0.6) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+
+  /* Activity cards glass on light bg */
+  #activities .activity-card {
+    background: rgba(255,255,255,0.7) !important;
+    backdrop-filter: blur(20px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9);
+  }
+
+  /* Easter egg glass */
+  #eggOverlay > div:first-child ~ div {
+    backdrop-filter: blur(8px);
+  }
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Bebas+Neue&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -573,7 +730,7 @@
       class="dl dl-r" style="--len:2000;animation-delay:0.5s">KHANG</text>
   </svg>
   <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
-  <div id="loader-pct" style="font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.65rem;letter-spacing:0.2em;color:var(--muted);margin-top:-1rem;">0%</div>
+  <div id="loader-pct" style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;color:var(--muted);margin-top:-1rem;">0%</div>
   <div class="loader-sub">Portfolio Kiến Trúc · 2026</div>
 </div>
 
@@ -613,15 +770,15 @@
   <div class="nav-left">
     <a class="nav-logo" href="#">BTK.26</a>
     <div class="theme-toggle">
-      <div class="theme-dot active" data-theme="light" title="Sáng"></div>
-      <div class="theme-dot" data-theme="dark" title="Tối"></div>
+      <div class="theme-dot active" data-theme="light" title="Light"></div>
+      <div class="theme-dot" data-theme="dark" title="Dark"></div>
       <div class="theme-dot" data-theme="blueprint" title="Blueprint"></div>
       <div class="theme-dot" data-theme="mono" title="Mono"></div>
     </div>
   </div>
   <ul class="nav-links">
     <li><a href="#about">Hồ sơ</a></li>
-    <li><a href="#projects">Đồ án</a></li>
+    <li><a href="#đồ án">Đồ án</a></li>
     <li><a href="#activities">Hoạt động</a></li>
     <li><a href="#hobbies">Ảnh</a></li>
     <li><a href="#contact-form-section">Liên hệ</a></li>
@@ -636,7 +793,7 @@
   <div class="hero-left">
     <div id="time-greeting"></div>
     <div class="hero-label">Portfolio Kiến Trúc · 2026</div>
-    <h1 class="hero-name" data-text="BẠCH&#10;THÁI&#10;KHANG">BẠCH<br>THÁI<br><span>KHANG</span></h1>
+    <h1 class="hero-name" data-text="BACH&#10;THAI&#10;KHANG">BẠCH<br>THÁI<br><span>KHANG</span></h1>
     <p class="hero-tagline typewriter-wrap"><span class="typewriter-text" id="typewriterText"></span></p>
     <div class="hero-meta">
       <div><span>Trường</span><strong>ĐH Kiến trúc HN</strong></div>
@@ -655,7 +812,7 @@
     <div class="hero-right-content">
       <div class="hero-portrait-wrap">
         <div class="hero-portrait">
-          <img src="./assets/avatar.jpg" alt="Bạch Thái Khang" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="./assets/avatar.jpg" alt="Bach Thai Khang" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="hero-portrait-placeholder" style="display:none">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="20" cy="14" r="6"/><path d="M6 34c0-7.732 6.268-14 14-14s14 6.268 14 14"/></svg>
             <span>avatar.jpg</span>
@@ -696,7 +853,7 @@
   </div>
 </div>
 
-<!-- HỒ SƠ -->
+<!-- ABOUT -->
 <section id="about">
   <svg class="draw-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
     <path class="draw-path" style="--path-len:2400" d="M0,380 L100,380 L100,20 L120,20 L120,380 L800,380"/>
@@ -707,14 +864,14 @@
   <div class="section-watermark">01</div>
   <div class="section-header">
     <span class="section-num">01</span>
-    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">H</span><span class="char" style="transition-delay:0.04s">Ồ</span></span> <span class="word"><span class="char" style="transition-delay:0.00s">S</span><span class="char" style="transition-delay:0.04s">Ơ</span></span></span></h2>
-    <span class="section-en">Profile & CV</span>
+    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">P</span><span class="char" style="transition-delay:0.04s">R</span><span class="char" style="transition-delay:0.08s">O</span><span class="char" style="transition-delay:0.12s">F</span><span class="char" style="transition-delay:0.16s">I</span><span class="char" style="transition-delay:0.20s">L</span><span class="char" style="transition-delay:0.24s">E</span></span></span></h2>
+    <span class="section-en">CV & Skills</span>
   </div>
   <div class="about-grid">
     <div class="about-block fade-up">
-      <h3>Học tập &amp; Kinh nghiệm</h3>
-      <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">05/2025 – Nay</div><div class="timeline-org">Sunjin Vietnam JV</div><div class="timeline-desc">Đội ngũ concept — đóng góp ý tưởng trường học, nhà ở xã hội</div></div></div>
-      <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">03/2024 – 09/2024</div><div class="timeline-org">HAD Architects</div><div class="timeline-desc">Thực tập sinh — Revit, triển khai nhà dân &amp; chung cư cao tầng</div></div></div>
+      <h3>Education & Experience</h3>
+      <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">05/2025 – Nay</div><div class="timeline-org">Sunjin Vietnam JV</div><div class="timeline-desc">Đội concept — đóng góp ý tưởng trường học, nhà ở xã hội</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">03/2024 – 09/2024</div><div class="timeline-org">HAD Architects</div><div class="timeline-desc">Architecture intern — Revit production for residential & high-rise</div></div></div>
       <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">10/2022 – 05/2023</div><div class="timeline-org">APA Academy</div><div class="timeline-desc">Đào tạo phần mềm: SketchUp, AutoCAD, Revit, Corona, 3ds Max</div></div></div>
       <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">2022 – 2027</div><div class="timeline-org">ĐH Kiến trúc Hà Nội</div><div class="timeline-desc">Sinh viên kiến trúc — chuyên ngành IITC</div></div></div>
       <div class="timeline-item"><div class="timeline-dot"></div><div><div class="timeline-period">2019 – 2022</div><div class="timeline-org">THPT Quang Trung – Hà Đông</div><div class="timeline-desc">Tốt nghiệp THPT</div></div></div>
@@ -743,16 +900,16 @@
       <div style="margin-top:2rem">
         <h3 style="margin-bottom:1rem">Thành tựu</h3>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem">
-          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;padding-left:1rem;border-left:2px solid var(--rust)">Luôn hoàn thành đúng deadline 100%, điểm khá–tốt trong học tập và đồ án</li>
-          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;padding-left:1rem;border-left:2px solid var(--warm)">Được đánh giá có trách nhiệm, tinh thần cao trong làm việc nhóm</li>
-          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;padding-left:1rem;border-left:2px solid var(--rust)">Tham gia phát triển ý tưởng nhiều dự án thành công, được mentor ghi nhận</li>
+          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-style:italic;padding-left:1rem;border-left:2px solid var(--rust)">Luôn hoàn thành đúng deadline 100%, điểm khá–tốt trong học tập</li>
+          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-style:italic;padding-left:1rem;border-left:2px solid var(--warm)">Được đánh giá có trách nhiệm, tinh thần cao trong làm việc nhóm</li>
+          <li style="font-size:0.9rem;color:var(--muted);line-height:1.6;font-style:italic;padding-left:1rem;border-left:2px solid var(--rust)">Tham gia phát triển ý tưởng nhiều dự án thành công, được mentor ghi nhận</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ĐỒ ÁN -->
+<!-- PROJECTS -->
 <section id="projects">
   <svg class="draw-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
     <path class="draw-path" style="--path-len:3000;stroke:#d4a96a" d="M0,390 L50,390 L50,10 L750,10 L750,390 L800,390"/>
@@ -763,8 +920,8 @@
   <div class="section-watermark">02</div>
   <div class="section-header">
     <span class="section-num">02</span>
-    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">Đ</span><span class="char" style="transition-delay:0.04s">Ồ</span></span> <span class="word"><span class="char" style="transition-delay:0.00s">Á</span><span class="char" style="transition-delay:0.04s">N</span></span></span></h2>
-    <span class="section-en">Works & Projects</span>
+    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">P</span><span class="char" style="transition-delay:0.04s">R</span><span class="char" style="transition-delay:0.08s">O</span><span class="char" style="transition-delay:0.12s">J</span><span class="char" style="transition-delay:0.16s">E</span><span class="char" style="transition-delay:0.20s">C</span><span class="char" style="transition-delay:0.24s">T</span><span class="char" style="transition-delay:0.28s">S</span></span></span></h2>
+    <span class="section-en">Works & Portfolio</span>
   </div>
   <div class="project-tabs">
     <button class="tab-btn active" onclick="switchTab('school',this)">Đồ án trong trường</button>
@@ -798,8 +955,8 @@
           <div class="project-card-back">
             <div class="back-title">Studio 02 · Cải tạo</div>
             <div class="back-desc">Phân tích không gian nhà ống phố cổ Hà Nội — tối ưu hành lang ánh sáng tự nhiên, thông gió chéo và không gian sinh hoạt linh hoạt trong mặt tiền 4m.</div>
-            <div class="back-meta" style="font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.55rem;color:var(--warm);letter-spacing:0.1em">27.86m · 3 tầng · Phố cổ Hà Nội</div>
-            <div class="back-flip">Click to flip back ↩</div>
+            <div class="back-meta" style="font-family:'DM Mono',monospace;font-size:0.55rem;color:var(--warm);letter-spacing:0.1em">27.86m · 3 tầng · Phố cổ Hà Nội</div>
+            <div class="back-flip">Bấm để lật lại ↩</div>
           </div>
         </div>
       </div>
@@ -829,8 +986,8 @@
           <div class="project-card-back">
             <div class="back-title">Studio 04 · Giáo dục</div>
             <div class="back-desc">Thiết kế tổng thể trường liên cấp tích hợp từ tiểu học đến THPT. Nhấn mạnh vùng đệm cảnh quan, cụm phòng học mô-đun và hệ thống mặt đứng hiện đại.</div>
-            <div class="back-meta" style="font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.55rem;color:var(--warm);letter-spacing:0.1em">120m mặt tiền · 5 tầng · Hà Nội</div>
-            <div class="back-flip">Click to flip back ↩</div>
+            <div class="back-meta" style="font-family:'DM Mono',monospace;font-size:0.55rem;color:var(--warm);letter-spacing:0.1em">120m mặt tiền · 5 tầng · Hà Nội</div>
+            <div class="back-flip">Bấm để lật lại ↩</div>
           </div>
         </div>
       </div>
@@ -849,7 +1006,7 @@
           <div class="slide-counter"><span class="slide-cur">1</span>/5</div>
         </div>
         <div class="project-card-body">
-          <div class="project-card-num">Quy hoạch Q3</div>
+          <div class="project-card-num">Urban Q3</div>
           <div class="project-card-title">Đô thị hồ Văn Quán</div>
           <div class="project-card-sub">Quy hoạch đô thị ven hồ — thiết kế dạo bộ, tiện ích công cộng và nút giao hành lang xanh</div>
           <div class="project-card-instructor">GVHD: Kts. Ngô Minh Ánh</div>
@@ -860,8 +1017,8 @@
           <div class="project-card-back">
             <div class="back-title">Quy hoạch Q3 · Đô thị</div>
             <div class="back-desc">Quy hoạch đô thị ven hồ Văn Quán — thiết kế dạo bộ, hành lang xanh, nút thương mại hỗn hợp và vùng đệm sinh thái.</div>
-            <div class="back-meta" style="font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.55rem;color:var(--warm);letter-spacing:0.1em">3.2 ha · Quy mô đô thị · Hà Đông</div>
-            <div class="back-flip">Click to flip back ↩</div>
+            <div class="back-meta" style="font-family:'DM Mono',monospace;font-size:0.55rem;color:var(--warm);letter-spacing:0.1em">3.2 ha · Quy mô đô thị · Hà Đông</div>
+            <div class="back-flip">Bấm để lật lại ↩</div>
           </div>
         </div>
       </div>
@@ -927,13 +1084,13 @@
         </div>
       </div>
       <div>
-        <p class="rp-desc">Trường liên cấp 3 cấp (Tiểu học – THCS – THPT) tại xã Si Pa Phìn, Điện Biên. Quy mô 31 lớp học, đáp ứng hơn 1.000 học sinh từ xã Si Pa Phìn và các vùng lân cận. Công trình gồm hệ thống phòng học hiện đại, khu nội trú, nhà đa năng, thư viện, phòng bộ môn, sân bóng và bể bơi — mô hình giáo dục chuẩn mực giữa vùng biên giới Tây Bắc.</p>
+        <p class="rp-desc">Trường liên cấp 3 cấp (Tiểu học – THCS – THPT) tại xã Si Pa Phìn, Điện Biên. Quy mô 31 lớp học, đáp ứng hơn 1.000 học sinh từ xã Si Pa Phìn và các vùng lân cận. Công trình gồm hệ thống phòng học hiện đại, khu nội trú, nhà đa năng, thư viện, phòng bộ môn, sân bóng và bể bơi.</p>
         <div class="rp-tags"><span class="rp-tag">Concept</span><span class="rp-tag">Sunjin Vietnam</span></div>
       </div>
     </div>
     <div class="real-project-item fade-up">
       <div>
-        <div class="rp-label">AI Mặt đứng</div>
+        <div class="rp-label">AI Facade Ideation</div>
         <div class="rp-type">Before / After · Freelance</div>
         <div class="rp-thumb">
           <img loading="lazy" src="./assets/ai_after.jpg" alt="AI Facade" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -941,7 +1098,7 @@
         </div>
       </div>
       <div>
-        <p class="rp-desc">Ứng dụng AI vào phát triển ý tưởng mặt đứng công trình — chuyển đổi khối trắng thành phương án kiến trúc có vật liệu, màu sắc và cảnh quan đầy đủ cho Lotus Grand Hotel.</p>
+        <p class="rp-desc">Applied AI tools to facade design ideation — transforming a blank 3D mass into a full architectural proposal with materials, colours, and landscaping for Lotus Grand Hotel.</p>
         <div class="rp-tags"><span class="rp-tag">AI Tools</span><span class="rp-tag">Photoshop</span><span class="rp-tag">SketchUp</span></div>
       </div>
     </div>
@@ -953,7 +1110,7 @@
   <div>
     <div class="ai-label">Điểm mạnh đặc trưng</div>
     <div class="ai-title">ỨNG DỤNG AI TRONG KIẾN TRÚC</div>
-    <p class="ai-desc">Khai thác công cụ AI để rút ngắn thời gian phát triển concept, tạo ra nhiều phương án đa dạng và hỗ trợ trực quan hoá ý tưởng một cách nhanh chóng — lợi thế cạnh tranh trong môi trường thực tế.</p>
+    <p class="ai-desc">Khai thác công cụ AI để rút ngắn thời gian phát triển concept, tạo ra nhiều phương án đa dạng và hỗ trợ trực quan hoá ý tưởng — lợi thế cạnh tranh trong môi trường thực tế.</p>
   </div>
   <div>
     <div class="before-after">
@@ -972,7 +1129,7 @@
   </div>
 </div>
 
-<!-- HOẠT ĐỘNG -->
+<!-- ACTIVITIES -->
 <section id="activities">
   <svg class="draw-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
     <path class="draw-path" style="--path-len:2000" d="M0,390 L800,390"/>
@@ -983,20 +1140,20 @@
   <div class="section-watermark">03</div>
   <div class="section-header">
     <span class="section-num">03</span>
-    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">H</span><span class="char" style="transition-delay:0.04s">O</span><span class="char" style="transition-delay:0.08s">Ạ</span><span class="char" style="transition-delay:0.12s">T</span></span> <span class="word"><span class="char" style="transition-delay:0.00s">Đ</span><span class="char" style="transition-delay:0.04s">Ộ</span><span class="char" style="transition-delay:0.08s">N</span><span class="char" style="transition-delay:0.12s">G</span></span></span></h2>
+    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">A</span><span class="char" style="transition-delay:0.04s">C</span><span class="char" style="transition-delay:0.08s">T</span><span class="char" style="transition-delay:0.12s">I</span><span class="char" style="transition-delay:0.16s">V</span><span class="char" style="transition-delay:0.20s">I</span><span class="char" style="transition-delay:0.24s">T</span><span class="char" style="transition-delay:0.28s">I</span><span class="char" style="transition-delay:0.32s">E</span><span class="char" style="transition-delay:0.36s">S</span></span></span></h2>
     <span class="section-en">Extra-curricular</span>
   </div>
   <div class="activities-grid">
-    <div class="activity-card fade-up"><div class="act-icon">🏆</div><div class="act-title">Cuộc thi sinh viên</div><p class="act-desc">Tham gia các cuộc thi sáng tác kiến trúc tại Trường Đại học Kiến trúc Hà Nội, trải nghiệm làm việc nhóm cường độ cao và phát triển ý tưởng dưới áp lực thời gian</p></div>
-    <div class="activity-card fade-up"><div class="act-icon">🏗️</div><div class="act-title">Thực địa công trường</div><p class="act-desc">Tham quan và thực địa công trình đang xây dựng — hiểu quy trình thi công thực tế, đọc bản vẽ kỹ thuật và giao tiếp với các kỹ sư công trường</p></div>
-    <div class="activity-card fade-up"><div class="act-icon">🌿</div><div class="act-title">Khảo sát thực địa</div><p class="act-desc">Các chuyến thực địa khảo sát địa hình, cảnh quan và bối cảnh văn hoá phục vụ đồ án thiết kế — từ núi đồi đến đô thị trung tâm</p></div>
-    <div class="activity-card fade-up"><div class="act-icon">🎨</div><div class="act-title">Triển lãm &amp; Workshop</div><p class="act-desc">Tham gia các workshop nội thất, triển lãm kiến trúc và sự kiện chuyên ngành trong và ngoài trường để mở rộng kiến thức và mạng lưới nghề nghiệp</p></div>
+    <div class="activity-card fade-up"><div class="act-icon">🏆</div><div class="act-title">Cuộc thi sinh viên</div><p class="act-desc">Tham gia các cuộc thi sáng tác kiến trúc tại Trường Đại học Kiến trúc Hà Nội — làm việc nhóm cường độ cao và phát triển ý tưởng dưới áp lực thời gian</p></div>
+    <div class="activity-card fade-up"><div class="act-icon">🏗️</div><div class="act-title">Thực địa công trường</div><p class="act-desc">Tham quan công trình đang xây dựng — hiểu quy trình thi công thực tế, đọc bản vẽ kỹ thuật và giao tiếp với kỹ sư công trường</p></div>
+    <div class="activity-card fade-up"><div class="act-icon">🌿</div><div class="act-title">Khảo sát thực địa</div><p class="act-desc">Các chuyến thực địa khảo sát địa hình, cảnh quan và bối cảnh văn hoá phục vụ đồ án — từ núi đồi đến đô thị trung tâm</p></div>
+    <div class="activity-card fade-up"><div class="act-icon">🎨</div><div class="act-title">Exhibitions & Workshops</div><p class="act-desc">Tham gia các workshop nội thất, triển lãm kiến trúc và sự kiện chuyên ngành để mở rộng kiến thức và mạng lưới nghề nghiệp</p></div>
     <div class="activity-card fade-up"><div class="act-icon">🤝</div><div class="act-title">Làm việc nhóm</div><p class="act-desc">Kinh nghiệm dẫn dắt và tham gia nhóm trong nhiều dự án đa dạng — từ quy hoạch đô thị đến thiết kế công trình dân dụng và thương mại</p></div>
-    <div class="activity-card fade-up"><div class="act-icon">📐</div><div class="act-title">Mô hình vật lý</div><p class="act-desc">Thực hành làm mô hình thủ công bằng vật liệu như bìa carton, gỗ và xốp — phát triển tư duy không gian 3 chiều và kỹ năng trình bày ý tưởng</p></div>
+    <div class="activity-card fade-up"><div class="act-icon">📐</div><div class="act-title">Mô hình vật lý</div><p class="act-desc">Thực hành làm mô hình thủ công bằng bìa carton, gỗ và xốp — phát triển tư duy không gian 3 chiều và kỹ năng trình bày ý tưởng</p></div>
   </div>
 </section>
 
-<!-- NHIẾP ẢNH -->
+<!-- PHOTOGRAPHY -->
 <section id="hobbies">
   <svg class="draw-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
     <path class="draw-path" style="--path-len:2800;stroke:#d4a96a" d="M0,10 L800,10 M0,390 L800,390"/>
@@ -1007,23 +1164,23 @@
   <div class="section-watermark">04</div>
   <div class="section-header">
     <span class="section-num">04</span>
-    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">N</span><span class="char" style="transition-delay:0.04s">H</span><span class="char" style="transition-delay:0.08s">I</span><span class="char" style="transition-delay:0.12s">Ế</span><span class="char" style="transition-delay:0.16s">P</span></span> <span class="word"><span class="char" style="transition-delay:0.00s">Ả</span><span class="char" style="transition-delay:0.04s">N</span><span class="char" style="transition-delay:0.08s">H</span></span></span></h2>
+    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">P</span><span class="char" style="transition-delay:0.04s">H</span><span class="char" style="transition-delay:0.08s">O</span><span class="char" style="transition-delay:0.12s">T</span><span class="char" style="transition-delay:0.16s">O</span><span class="char" style="transition-delay:0.20s">G</span><span class="char" style="transition-delay:0.24s">R</span><span class="char" style="transition-delay:0.28s">A</span><span class="char" style="transition-delay:0.32s">P</span><span class="char" style="transition-delay:0.36s">H</span><span class="char" style="transition-delay:0.40s">Y</span></span></span></h2>
     <span class="section-en">Photography Hobbies</span>
   </div>
   <div class="photo-mosaic">
-    <div class="photo-item"><img loading="lazy" src="./assets/photo1.jpg" alt="Hoàng hôn hồ Hà Nội" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌅</span><span>Hoàng hôn hồ Hà Nội</span><span class="photo-caption">Ánh sáng vàng phản chiếu mặt nước</span></div></div>
-    <div class="photo-item"><img loading="lazy" src="./assets/photo2.jpg" alt="Công viên" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌳</span><span>Công viên mùa thu</span><span class="photo-caption">Hàng cây xanh mát, bóng tối và ánh sáng</span></div></div>
-    <div class="photo-item"><img loading="lazy" src="./assets/photo3.jpg" alt="Cầu" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌉</span><span>Cầu hoàng hôn</span><span class="photo-caption">Di tích lịch sử bắc qua dòng sông</span></div></div>
-    <div class="photo-item"><img loading="lazy" src="./assets/photo4.jpg" alt="Kiến trúc cổ" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🏛️</span><span>Không gian kiến trúc</span><span class="photo-caption">Chi tiết cổng, tường và ánh sáng tự nhiên</span></div></div>
-    <div class="photo-item"><img loading="lazy" src="./assets/photo5.jpg" alt="Cầu thang" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🔲</span><span>Chi tiết kiến trúc</span><span class="photo-caption">Cầu thang xoắn ốc — nhịp điệu không gian</span></div></div>
-    <div class="photo-item"><img loading="lazy" src="./assets/photo6.jpg" alt="Hạ Long" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌊</span><span>Hoàng hôn Hạ Long</span><span class="photo-caption">Trời và nước hoà quyện</span></div></div>
-    <div class="photo-item"><img loading="lazy" src="./assets/photo7.jpg" alt="Bãi biển" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🏖️</span><span>Bãi cát trắng</span><span class="photo-caption">Cát và mây — thiên nhiên thuần khiết</span></div></div>
-    <div class="photo-item"><img loading="lazy" src="./assets/photo8.jpg" alt="Hang động" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">☁️</span><span>Hang động ven biển</span><span class="photo-caption">Cửa hang nhìn ra biển xanh</span></div></div>
-    <div class="photo-item"><img loading="lazy" src="./assets/photo13.jpg" alt="Ngõ phố cổ" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌿</span><span>Ngõ phố cổ</span><span class="photo-caption">Kiến trúc Pháp cũ và cây leo</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo1.jpg" alt="Lake sunset Hanoi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌅</span><span>Hoàng hôn hồ Hà Nội</span><span class="photo-caption">Ánh sáng vàng phản chiếu mặt nước</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo2.jpg" alt="Park" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌳</span><span>Công viên mùa thu</span><span class="photo-caption">Hàng cây xanh mát, bóng tối và ánh sáng</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo3.jpg" alt="Bridge" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌉</span><span>Cầu hoàng hôn</span><span class="photo-caption">Di tích lịch sử bắc qua dòng sông</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo4.jpg" alt="Architecture" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🏛️</span><span>Không gian kiến trúc</span><span class="photo-caption">Chi tiết cổng, tường và ánh sáng tự nhiên</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo5.jpg" alt="Staircase" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🔲</span><span>Chi tiết kiến trúc</span><span class="photo-caption">Cầu thang xoắn ốc — nhịp điệu không gian</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo6.jpg" alt="Ha Long Bay" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌊</span><span>Hoàng hôn Hạ Long</span><span class="photo-caption">Trời và nước hoà quyện</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo7.jpg" alt="Beach" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🏖️</span><span>Bãi cát trắng</span><span class="photo-caption">Cát và mây — thiên nhiên thuần khiết</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo8.jpg" alt="Cave" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">☁️</span><span>Hang động ven biển</span><span class="photo-caption">Cửa hang nhìn ra biển xanh</span></div></div>
+    <div class="photo-item"><img loading="lazy" src="./assets/photo13.jpg" alt="Old quarter alley" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none"><span class="photo-icon">🌿</span><span>Ngõ phố cổ</span><span class="photo-caption">Kiến trúc Pháp cũ và cây leo</span></div></div>
   </div>
 </section>
 
-<!-- LIÊN HỆ / FORM -->
+<!-- CONTACT FORM -->
 <section id="contact-form-section">
   <svg class="draw-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
     <path class="draw-path" style="--path-len:2200" d="M0,390 L50,390 L50,10 L750,10 L750,390 L800,390"/>
@@ -1034,8 +1191,8 @@
   <div class="section-watermark">05</div>
   <div class="section-header">
     <span class="section-num">05</span>
-    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">L</span><span class="char" style="transition-delay:0.04s">I</span><span class="char" style="transition-delay:0.08s">Ê</span><span class="char" style="transition-delay:0.12s">N</span></span> <span class="word"><span class="char" style="transition-delay:0.00s">H</span><span class="char" style="transition-delay:0.04s">Ệ</span></span></span></h2>
-    <span class="section-en">Get in touch</span>
+    <h2 class="section-title"><span class="split-reveal"><span class="word"><span class="char" style="transition-delay:0.00s">G</span><span class="char" style="transition-delay:0.04s">E</span><span class="char" style="transition-delay:0.08s">T</span></span> <span class="word"><span class="char" style="transition-delay:0.00s">I</span><span class="char" style="transition-delay:0.04s">N</span></span> <span class="word"><span class="char" style="transition-delay:0.00s">T</span><span class="char" style="transition-delay:0.04s">O</span><span class="char" style="transition-delay:0.08s">U</span><span class="char" style="transition-delay:0.12s">C</span><span class="char" style="transition-delay:0.16s">H</span></span></span></h2>
+    <span class="section-en">Gửi tin nhắn</span>
   </div>
   <div class="contact-form-wrap">
     <div class="contact-form-info">
@@ -1048,7 +1205,7 @@
         <a class="cfi-link" href="https://www.facebook.com/khagg7z7/" target="_blank">👤 Bạch Thái Khang</a>
       </div>
     </div>
-    <!-- Thay YOUR_FORM_ID bằng ID thật từ formspree.io/forms → New Form -->
+    <!-- Replace YOUR_FORM_ID at formspree.io/forms → New Form → copy the ID -->
     <form class="cf-form" id="contactForm" action="https://formspree.io/f/xvzwjoba" method="POST">
       <div class="cf-row">
         <div class="cf-field">
@@ -1079,7 +1236,7 @@
   <div class="footer-left">
     <div class="footer-greeting">Hãy kết nối cùng tôi</div>
     <div class="footer-name">BẠCH<br>THÁI<br>KHANG</div>
-    <p class="footer-bio">Với tinh thần trách nhiệm và nghiêm túc trong công việc nghề nghiệp, tôi tự tin có thể đóng góp tích cực và luôn mong muốn học hỏi, phát triển không ngừng trong lĩnh vực kiến trúc.</p>
+    <p class="footer-bio">Với tinh thần trách nhiệm và nghiêm túc trong công việc, tôi tự tin có thể đóng góp tích cực và luôn mong muốn học hỏi, phát triển không ngừng trong lĩnh vực kiến trúc.</p>
     <div class="footer-clock">
       <div class="clock-row">
         <div class="clock-dot"></div>
@@ -1096,13 +1253,49 @@
       <a class="contact-link" href="https://www.instagram.com/__gnahkiaht/" target="_blank" rel="noopener"><span class="cl-icon">📸</span><span class="cl-label">Instagram</span><span class="cl-value">__gnahkiaht</span></a>
       <a class="contact-link" href="https://www.facebook.com/khagg7z7/" target="_blank" rel="noopener"><span class="cl-icon">👤</span><span class="cl-label">Facebook</span><span class="cl-value">Bạch Thái Khang</span></a>
       <a class="contact-link" href="./assets/cv.pdf" download><span class="cl-icon">↓</span><span class="cl-label">Tải xuống</span><span class="cl-value">Curriculum Vitae (PDF)</span></a>
-      <a class="contact-link" href="./index.html"><span class="cl-icon">🇬🇧</span><span class="cl-label">Ngôn ngữ</span><span class="cl-value">View English Version</span></a>
+      <a class="contact-link" href="./index.html"><span class="cl-icon">🇻🇳</span><span class="cl-label">Ngôn ngữ</span><span class="cl-value">View English Version</span></a>
     </div>
   </div>
   <div class="footer-copy">© <span id="footerYear">2026</span> Bạch Thái Khang · Portfolio Kiến Trúc · ĐH Kiến trúc Hà Nội · 22KTT</div>
 </footer>
 
 <div class="shake-toast" id="shakeToast">🎨 Đã đổi theme!</div>
+
+<!-- MESSENGER CHAT POPUP -->
+<div id="chat-popup">
+  <div class="chat-header">
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+    <img class="chat-header-avatar" src="./assets/avatar.jpg" alt="Khang"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="chat-header-avatar-placeholder" style="display:none">👤</div>
+    <div class="chat-header-name">Bạch Thái Khang</div>
+    <div class="chat-header-status">
+      <span class="chat-status-dot"></span>
+      Typically replies instantly
+    </div>
+  </div>
+  <div class="chat-bubble-wrap">
+    <div class="chat-bubble">
+      Hi there! 👋 I'm Khang — architecture student & designer.
+    </div>
+    <div class="chat-bubble" style="animation-delay:0.3s">
+      Have a project in mind or want to collaborate? Send me a message!
+    </div>
+    <div class="chat-typing" id="chatTyping">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="chat-cta">
+    <a class="chat-cta-btn" href="https://m.me/khagg7z7" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.914 1.32 5.52 3.4 7.28V22l3.1-1.7c.83.23 1.71.35 2.5.35 5.523 0 10-4.145 10-9.243C21 6.145 17.523 2 12 2zm1.07 12.46l-2.55-2.72-4.98 2.72 5.48-5.82 2.61 2.72 4.92-2.72-5.48 5.82z"/></svg>
+      Continue in Messenger
+    </a>
+  </div>
+</div>
+<button id="chat-btn" onclick="toggleChat()" aria-label="Chat Messenger">
+  <div class="chat-notify">1</div>
+  <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.914 1.32 5.52 3.4 7.28V22l3.1-1.7c.83.23 1.71.35 2.5.35 5.523 0 10-4.145 10-9.243C21 6.145 17.523 2 12 2zm1.07 12.46l-2.55-2.72-4.98 2.72 5.48-5.82 2.61 2.72 4.92-2.72-5.48 5.82z"/></svg>
+</button>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
@@ -1179,12 +1372,6 @@
     const hueEl = document.getElementById('hue-shift-style');
     if (hueEl) hueEl.textContent = '';
 
-    // 9. Tắt scroll velocity blur JS (override)
-    window.addEventListener('scroll', () => {
-      document.querySelectorAll('section, .stats-bar, .ai-section, footer')
-        .forEach(el => el.style.filter = '');
-    }, { passive: true });
-
     // 10. Tắt hero opacity fade (quá nặng trên mobile)
     const heroLeftEl  = document.querySelector('.hero-left');
     const heroRightEl = document.querySelector('.hero-right');
@@ -1207,6 +1394,9 @@
   });
 
   // CURSOR ADAPTIVE COLOR
+  // dark bg (projects, hobbies, footer) → white cursor
+  // rust/orange bg (ai-section, stats-bar) → white cursor
+  // light bg (hero-left, about, activities, contact-form) → rust cursor
   const cursorColorMap = [
     { selector: '#projects',             color: '#ffffff', ring: 'rgba(255,255,255,0.5)' },
     { selector: '#hobbies',              color: '#ffffff', ring: 'rgba(255,255,255,0.5)' },
@@ -1255,7 +1445,7 @@
     if(entries[0].isIntersecting&&!counted){
       counted=true;
       document.querySelectorAll('.count').forEach(el=>{
-        const target=+el.dataset.target;let cur=0;
+        const target=+el.dataset.target; let cur=0;
         const step=Math.ceil(target/30);
         const t=setInterval(()=>{cur=Math.min(cur+step,target);el.textContent=cur;if(cur>=target)clearInterval(t);},40);
       });
@@ -1303,8 +1493,8 @@
   // ══════════════════════════════════════
 
   // 1. CURSOR TRAIL
-  const trailPool=[];
-  const TRAIL_COUNT=10;
+  const trailPool = [];
+  const TRAIL_COUNT = 10;
   for(let i=0;i<TRAIL_COUNT;i++){
     const d=document.createElement('div');
     d.style.cssText='position:fixed;pointer-events:none;z-index:9990;border-radius:50%;width:6px;height:6px;opacity:0;transition:opacity 0.4s ease;transform:translate(-50%,-50%)';
@@ -1315,6 +1505,7 @@
   document.addEventListener('mousemove',e=>{
     trailTick=(trailTick+1)%TRAIL_COUNT;
     const t=trailPool[trailTick];
+    t.x=e.clientX; t.y=e.clientY;
     t.el.style.left=e.clientX+'px';
     t.el.style.top=e.clientY+'px';
     t.el.style.background=currentCursorColor;
@@ -1334,7 +1525,7 @@
     setTimeout(()=>r.remove(),700);
   });
 
-  // 3. HERO PARALLAX
+  // 3. HERO PARALLAX (mouse move on hero section)
   const heroName=document.querySelector('.hero-name');
   const heroTagline=document.querySelector('.hero-tagline');
   const heroSection=document.querySelector('.hero');
@@ -1368,7 +1559,7 @@
     });
   });
 
-  // 5. TEXT SCRAMBLE
+  // 5. TEXT SCRAMBLE on section titles
   const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#';
   function scramble(el){
     const original=el.textContent;
@@ -1393,7 +1584,7 @@
   },{threshold:0.5});
   document.querySelectorAll('.section-title').forEach(t=>scrambleObs.observe(t));
 
-  // 6. GRID OVERLAY (phím G)
+  // 6. GRID OVERLAY (press G)
   const gridOverlay=document.createElement('div');
   gridOverlay.style.cssText='position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:0;transition:opacity 0.3s ease;background-image:linear-gradient(rgba(184,76,42,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(184,76,42,0.08) 1px,transparent 1px);background-size:40px 40px;';
   document.body.appendChild(gridOverlay);
@@ -1405,7 +1596,7 @@
     }
   });
 
-  // TÍNH NĂNG MỚI
+  // NEW FEATURES
 
   // A. SCROLL PROGRESS BAR
   const progressBar=document.getElementById('scroll-progress');
@@ -1453,7 +1644,7 @@
     setTimeout(()=>wipe.classList.remove('wipe-out'),500);
   });
 
-  // E. SKELETON SHIMMER
+  // E. SKELETON SHIMMER on images before load
   document.querySelectorAll('img').forEach(img=>{
     if(!img.complete){
       img.classList.add('img-skeleton');
@@ -1474,11 +1665,14 @@
     });
     localStorage.setItem('btk-theme',t);
   }
+  // Load saved theme
   const savedTheme=localStorage.getItem('btk-theme');
   if(savedTheme) applyTheme(savedTheme);
+  // Dot click
   document.querySelectorAll('.theme-dot').forEach(d=>{
     d.addEventListener('click',()=>applyTheme(d.dataset.theme));
   });
+  // Keyboard: press T to cycle themes
   document.addEventListener('keydown',e=>{
     if((e.key==='t'||e.key==='T')&&!e.ctrlKey&&!e.metaKey){
       const idx=(themes.indexOf(currentTheme)+1)%themes.length;
@@ -1486,17 +1680,17 @@
     }
   });
 
-  // 8. EASTER EGG — bấm phím K
+  // 8. EASTER EGG — press K
   const eggOverlay=document.createElement('div');
   eggOverlay.style.cssText='position:fixed;inset:0;z-index:99998;background:rgba(14,12,10,0.96);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;opacity:0;visibility:hidden;transition:opacity 0.4s ease;cursor:none;';
   eggOverlay.innerHTML=`
-    <div style="font-family:'Bebas Neue',Impact,'Arial Narrow',Arial,sans-serif;font-size:clamp(3rem,8vw,6rem);color:#b84c2a;letter-spacing:0.1em;text-align:center;line-height:1">BÍ MẬT<br><span style="color:#f5f0e8">ĐÃ TÌM THẤY</span></div>
-    <div style="font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.7rem;letter-spacing:0.2em;color:#8a7f72;text-transform:uppercase;text-align:center;max-width:400px;line-height:2">
-      Bạch Thái Khang · Sinh viên Kiến Trúc · Gamer · Explorer<br>
-      Sinh 2004 · Hà Nội · Thích esports &amp; chụp ảnh<br>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,6rem);color:#b84c2a;letter-spacing:0.1em;text-align:center;line-height:1">YOU FOUND<br><span style="color:#f5f0e8">THE SECRET</span></div>
+    <div style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:#8a7f72;text-transform:uppercase;text-align:center;max-width:400px;line-height:2">
+      Bach Thai Khang · Architecture Student · Gamer · Explorer<br>
+      Born 2004 · Hanoi · Loves esports &amp; photography<br>
       <span style="color:#b84c2a">hienkhang2004@gmail.com</span>
     </div>
-    <div style="font-family:'DM Mono','Courier New',Courier,monospace;font-size:0.58rem;letter-spacing:0.15em;color:#4a4a4a;text-transform:uppercase;margin-top:1rem">Bấm bất kỳ đâu để đóng · Bấm K lần nữa để toggle</div>
+    <div style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;color:#4a4a4a;text-transform:uppercase;margin-top:1rem">Click anywhere to close · Press K again to toggle</div>
   `;
   document.body.appendChild(eggOverlay);
   document.addEventListener('keydown',e=>{
@@ -1608,8 +1802,7 @@
   const splitObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        // stagger chars with delay already set inline
-        e.target.classList.add('revealed');
+      e.target.classList.add('revealed');
         splitObs.unobserve(e.target);
       }
     });
@@ -1908,10 +2101,6 @@
     });
   }
 
-  // 8. NOISE FILTER — already CSS ::before, no extra JS needed
-
-  // 9. TEXT OUTLINE — already CSS :hover, no extra JS needed
-
   // 10. TIME-BASED GREETING
   const greetEl = document.getElementById('time-greeting');
   if (greetEl) {
@@ -2202,6 +2391,47 @@
   document.querySelectorAll('.project-card-thumb, .rp-thumb').forEach(wrap => {
     wrap._slideIdx = 0;
     showSlide(wrap, 0);
+  });
+
+
+  // ── MESSENGER CHAT POPUP ──
+  let chatOpen = false;
+  let chatTypingDone = false;
+
+  function toggleChat() {
+    const popup = document.getElementById('chat-popup');
+    const notify = document.querySelector('.chat-notify');
+    chatOpen = !chatOpen;
+    popup.classList.toggle('open', chatOpen);
+    // Hide notification dot when opened
+    if (chatOpen && notify) {
+      notify.style.display = 'none';
+      // Show typing then hide after 2s
+      if (!chatTypingDone) {
+        chatTypingDone = true;
+        const typing = document.getElementById('chatTyping');
+        if (typing) setTimeout(() => typing.style.display = 'none', 2000);
+      }
+    }
+  }
+
+  // Auto-open after 8s with a little bounce
+  setTimeout(() => {
+    const btn = document.getElementById('chat-btn');
+    if (btn) {
+      btn.style.animation = 'chatBounce 0.6s cubic-bezier(0.34,1.56,0.64,1)';
+      setTimeout(() => btn.style.animation = '', 600);
+    }
+  }, 8000);
+
+  // Close when clicking outside
+  document.addEventListener('click', e => {
+    const popup = document.getElementById('chat-popup');
+    const btn   = document.getElementById('chat-btn');
+    if (chatOpen && popup && btn && !popup.contains(e.target) && !btn.contains(e.target)) {
+      chatOpen = false;
+      popup.classList.remove('open');
+    }
   });
 
 </script>
