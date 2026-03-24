@@ -363,7 +363,6 @@
 
   /* IMAGE TILT 3D */
   .project-card-thumb,.rp-thumb,.ba-box{transform-style:preserve-3d;will-change:transform;}
-  .tilt-wrap{transform-style:preserve-3d;transition:transform 0.15s ease;will-change:transform;}
 
   /* IMAGE SKELETON SHIMMER */
   @keyframes shimmer{0%{background-position:-200% 0;}100%{background-position:200% 0;}}
@@ -453,9 +452,6 @@
   #particle-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.5s ease 0.5s;}
   #particle-canvas.visible{opacity:1;}
   .hero-left{position:relative;z-index:2;}
-
-  /* 1. SCROLL VELOCITY BLUR */
-  .blur-on-scroll{transition:filter 0.15s ease;}
 
   /* 3. CARD SHINE */
   .project-card-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.08) 50%,transparent 60%);opacity:0;transition:opacity 0.3s ease;pointer-events:none;z-index:2;}
@@ -549,6 +545,20 @@
   /* 10. SHAKE indicator */
   .shake-toast{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%) translateY(20px);font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;background:var(--rust);color:white;padding:0.5rem 1.2rem;opacity:0;transition:all 0.4s ease;z-index:9000;pointer-events:none;}
   .shake-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  /* ── PROJECT SLIDESHOW ── */
+  .project-card-thumb{position:relative;overflow:hidden;}
+  .slide-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease;display:block;}
+  .slide-img.active{opacity:0.7;position:relative;}
+  .project-card:hover .slide-img.active{opacity:1;}
+  .slide-dots{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);display:flex;gap:4px;z-index:4;}
+  .slide-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.35);border:none;cursor:none;padding:0;transition:background 0.2s,transform 0.2s;}
+  .slide-dot.active{background:white;transform:scale(1.3);}
+  .slide-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:4;background:rgba(0,0,0,0.35);border:none;color:white;font-size:0.9rem;width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:none;opacity:0;transition:opacity 0.2s;backdrop-filter:blur(4px);}
+  .project-card:hover .slide-btn{opacity:1;}
+  .slide-btn-prev{left:6px;}
+  .slide-btn-next{right:6px;}
+  .slide-counter{position:absolute;top:6px;right:8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;color:rgba(255,255,255,0.6);z-index:4;background:rgba(0,0,0,0.3);padding:0.15rem 0.4rem;}
 </style>
 </head>
 <body>
@@ -766,9 +776,16 @@
       <div class="project-card fade-up" onclick="flipCard(this)">
         <div class="project-card-inner">
           <div class="project-card-front">
-            <div class="project-card-thumb">
-          <img loading="lazy" src="./assets/studio2_f1.jpg" alt="Old Quarter House" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="project-card-thumb-placeholder">Studio 02</div>
+            <div class="project-card-thumb" onmouseenter="startSlide(this)" onmouseleave="stopSlide(this)">
+          <img loading="lazy" class="slide-img active" src="./assets/studio2_f1.jpg" alt="Old Quarter House 1" style="width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/studio2_f2.jpg" alt="Old Quarter House 2" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/studio2_f3.jpg" alt="Old Quarter House 3" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/studio2_f4.jpg" alt="Old Quarter House 4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/studio2_f5.jpg" alt="Old Quarter House 5" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <button class="slide-btn slide-btn-prev" onclick="prevSlide(this.closest('.project-card-thumb'),event)">&#8249;</button>
+          <button class="slide-btn slide-btn-next" onclick="nextSlide(this.closest('.project-card-thumb'),event)">&#8250;</button>
+          <div class="slide-dots"><button class="slide-dot  active" onclick="goSlide(this.closest('.project-card-thumb'),0,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.project-card-thumb'),1,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.project-card-thumb'),2,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.project-card-thumb'),3,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.project-card-thumb'),4,event)"></button></div>
+          <div class="slide-counter"><span class="slide-cur">1</span>/5</div>
         </div>
         <div class="project-card-body">
           <div class="project-card-num">Studio 02</div>
@@ -790,9 +807,16 @@
       <div class="project-card fade-up" onclick="flipCard(this)">
         <div class="project-card-inner">
           <div class="project-card-front">
-            <div class="project-card-thumb">
-          <img loading="lazy" src="./assets/studio4_hero.jpg" alt="Multi-level School" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="project-card-thumb-placeholder">Studio 04</div>
+            <div class="project-card-thumb" onmouseenter="startSlide(this)" onmouseleave="stopSlide(this)">
+          <img loading="lazy" class="slide-img active" src="./assets/studio4_hero.jpg" alt="Multi-level School 1" style="width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/studio4_f2.jpg" alt="Multi-level School 2" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/studio4_f3.jpg" alt="Multi-level School 3" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/studio4_f4.jpg" alt="Multi-level School 4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/studio4_f5.jpg" alt="Multi-level School 5" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <button class="slide-btn slide-btn-prev" onclick="prevSlide(this.closest('.project-card-thumb'),event)">&#8249;</button>
+          <button class="slide-btn slide-btn-next" onclick="nextSlide(this.closest('.project-card-thumb'),event)">&#8250;</button>
+          <div class="slide-dots"><button class="slide-dot  active" onclick="goSlide(this.closest('.project-card-thumb'),0,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.project-card-thumb'),1,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.project-card-thumb'),2,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.project-card-thumb'),3,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.project-card-thumb'),4,event)"></button></div>
+          <div class="slide-counter"><span class="slide-cur">1</span>/5</div>
         </div>
         <div class="project-card-body">
           <div class="project-card-num">Studio 04</div>
@@ -814,9 +838,16 @@
       <div class="project-card fade-up" onclick="flipCard(this)">
         <div class="project-card-inner">
           <div class="project-card-front">
-            <div class="project-card-thumb">
-          <img loading="lazy" src="./assets/urban_plan.jpg" alt="Van Quan Lake" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="project-card-thumb-placeholder">Urban Q3</div>
+            <div class="project-card-thumb" onmouseenter="startSlide(this)" onmouseleave="stopSlide(this)">
+          <img loading="lazy" class="slide-img active" src="./assets/urban_plan.jpg" alt="Van Quan Lake 1" style="width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/urban_f2.jpg" alt="Van Quan Lake 2" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/urban_f3.jpg" alt="Van Quan Lake 3" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/urban_f4.jpg" alt="Van Quan Lake 4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/urban_f5.jpg" alt="Van Quan Lake 5" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <button class="slide-btn slide-btn-prev" onclick="prevSlide(this.closest('.project-card-thumb'),event)">&#8249;</button>
+          <button class="slide-btn slide-btn-next" onclick="nextSlide(this.closest('.project-card-thumb'),event)">&#8250;</button>
+          <div class="slide-dots"><button class="slide-dot  active" onclick="goSlide(this.closest('.project-card-thumb'),0,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.project-card-thumb'),1,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.project-card-thumb'),2,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.project-card-thumb'),3,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.project-card-thumb'),4,event)"></button></div>
+          <div class="slide-counter"><span class="slide-cur">1</span>/5</div>
         </div>
         <div class="project-card-body">
           <div class="project-card-num">Urban Q3</div>
@@ -842,9 +873,16 @@
       <div>
         <div class="rp-label">Indochine Restaurant</div>
         <div class="rp-type">Facade Design</div>
-        <div class="rp-thumb">
-          <img loading="lazy" src="./assets/indochine_hero.jpg" alt="Indochine" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="rp-thumb-placeholder">Indochine</div>
+        <div class="rp-thumb" style="position:relative;overflow:hidden;aspect-ratio:16/9" onmouseenter="startSlide(this)" onmouseleave="stopSlide(this)">
+          <img loading="lazy" class="slide-img active" src="./assets/indochine_hero.jpg" alt="Indochine 1" style="position:relative;width:100%;height:100%;object-fit:cover;opacity:0.75;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/indochine_f2.jpg" alt="Indochine 2" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/indochine_f3.jpg" alt="Indochine 3" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/indochine_f4.jpg" alt="Indochine 4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/indochine_f5.jpg" alt="Indochine 5" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <button class="slide-btn slide-btn-prev" onclick="prevSlide(this.closest('.rp-thumb'),event)">&#8249;</button>
+          <button class="slide-btn slide-btn-next" onclick="nextSlide(this.closest('.rp-thumb'),event)">&#8250;</button>
+          <div class="slide-dots"><button class="slide-dot  active" onclick="goSlide(this.closest('.rp-thumb'),0,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.rp-thumb'),1,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.rp-thumb'),2,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.rp-thumb'),3,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.rp-thumb'),4,event)"></button></div>
+          <div class="slide-counter"><span class="slide-cur">1</span>/5</div>
         </div>
       </div>
       <div>
@@ -856,9 +894,16 @@
       <div>
         <div class="rp-label">Middle School 1B – Co Nhue</div>
         <div class="rp-type">Concept Design · Bac Tu Liem</div>
-        <div class="rp-thumb">
-          <img loading="lazy" src="./assets/school1b_hero.jpg" alt="School 1B" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="rp-thumb-placeholder">School 1B</div>
+        <div class="rp-thumb" style="position:relative;overflow:hidden;aspect-ratio:16/9" onmouseenter="startSlide(this)" onmouseleave="stopSlide(this)">
+          <img loading="lazy" class="slide-img active" src="./assets/school1b_hero.jpg" alt="School 1B 1" style="position:relative;width:100%;height:100%;object-fit:cover;opacity:0.75;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/school1b_f2.jpg" alt="School 1B 2" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/school1b_f3.jpg" alt="School 1B 3" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/school1b_f4.jpg" alt="School 1B 4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/school1b_f5.jpg" alt="School 1B 5" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <button class="slide-btn slide-btn-prev" onclick="prevSlide(this.closest('.rp-thumb'),event)">&#8249;</button>
+          <button class="slide-btn slide-btn-next" onclick="nextSlide(this.closest('.rp-thumb'),event)">&#8250;</button>
+          <div class="slide-dots"><button class="slide-dot  active" onclick="goSlide(this.closest('.rp-thumb'),0,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.rp-thumb'),1,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.rp-thumb'),2,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.rp-thumb'),3,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.rp-thumb'),4,event)"></button></div>
+          <div class="slide-counter"><span class="slide-cur">1</span>/5</div>
         </div>
       </div>
       <div>
@@ -870,9 +915,16 @@
       <div>
         <div class="rp-label">Si Pa Phin School</div>
         <div class="rp-type">Concept Design · Si Pa Phin, Dien Bien</div>
-        <div class="rp-thumb">
-          <img loading="lazy" src="./assets/sipaphin_hero.jpg" alt="Si Pa Phin Multi-level School" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="rp-thumb-placeholder">Si Pa Phin</div>
+        <div class="rp-thumb" style="position:relative;overflow:hidden;aspect-ratio:16/9" onmouseenter="startSlide(this)" onmouseleave="stopSlide(this)">
+          <img loading="lazy" class="slide-img active" src="./assets/sipaphin_hero.jpg" alt="Si Pa Phin 1" style="position:relative;width:100%;height:100%;object-fit:cover;opacity:0.75;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/sipaphin_f2.jpg" alt="Si Pa Phin 2" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/sipaphin_f3.jpg" alt="Si Pa Phin 3" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/sipaphin_f4.jpg" alt="Si Pa Phin 4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <img loading="lazy" class="slide-img" src="./assets/sipaphin_f5.jpg" alt="Si Pa Phin 5" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease">
+          <button class="slide-btn slide-btn-prev" onclick="prevSlide(this.closest('.rp-thumb'),event)">&#8249;</button>
+          <button class="slide-btn slide-btn-next" onclick="nextSlide(this.closest('.rp-thumb'),event)">&#8250;</button>
+          <div class="slide-dots"><button class="slide-dot  active" onclick="goSlide(this.closest('.rp-thumb'),0,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.rp-thumb'),1,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.rp-thumb'),2,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.rp-thumb'),3,event)"></button><button class="slide-dot" onclick="goSlide(this.closest('.rp-thumb'),4,event)"></button></div>
+          <div class="slide-counter"><span class="slide-cur">1</span>/5</div>
         </div>
       </div>
       <div>
@@ -1068,6 +1120,75 @@
 <script>
   // LOADER
   window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hidden'),1800));
+
+  // ══════════════════════════════════════
+  // MOBILE OPTIMIZATION
+  // ══════════════════════════════════════
+  const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent)
+    || window.innerWidth < 768;
+
+  if (isMobile) {
+    // 2. Tắt particle canvas — tốn GPU nhất
+    const pCanvas = document.getElementById('particle-canvas');
+    if (pCanvas) pCanvas.style.display = 'none';
+
+    // 3. Tắt blueprint SVG trail
+    const bpSvgEl = document.querySelector('svg[style*="position:fixed"]');
+    if (bpSvgEl) bpSvgEl.style.display = 'none';
+
+    // 4. Tắt cursor custom (mobile không có chuột)
+    const cursorEl  = document.getElementById('cursor');
+    const ringEl    = document.getElementById('cursorRing');
+    const blendEl   = document.getElementById('cursorBlend');
+    const labelEl   = document.getElementById('cursor-label');
+    [cursorEl, ringEl, blendEl, labelEl].forEach(el => { if(el) el.style.display = 'none'; });
+    document.body.style.cursor = 'auto';
+
+    // 5. Tắt grain texture (opacity = 0)
+    const grainStyle = document.createElement('style');
+    grainStyle.textContent = 'body::after{display:none!important;}';
+    document.head.appendChild(grainStyle);
+
+    // 6. Tắt tilt 3D trên ảnh — gây lag khi touch scroll
+    document.querySelectorAll('.project-card-thumb, .rp-thumb').forEach(el => {
+      el.style.transform = 'none';
+      const clone = el.cloneNode(true);
+      el.parentNode.replaceChild(clone, el);
+    });
+
+    // 7. Giảm số lượng fade-up animation — chỉ giữ opacity, bỏ translateY
+    const mobileAnimStyle = document.createElement('style');
+    mobileAnimStyle.textContent = `
+      .fade-up { transform: none !important; transition: opacity 0.5s ease !important; }
+      .fade-up.visible { opacity: 1 !important; transform: none !important; }
+      .split-reveal .char { transform: none !important; transition: opacity 0.4s ease !important; }
+      .split-reveal.revealed .char { opacity: 1 !important; }
+      .section-watermark { display: none; }
+      .draw-svg { display: none; }
+      .float-label { display: none; }
+      #cad-coords { display: none; }
+      #scale-ruler { display: none; }
+      .project-card { perspective: none !important; }
+      .project-card-inner { transform-style: flat !important; }
+      body::after { display: none !important; }
+      * { transition-duration: 0.2s !important; }
+      .loader-bar, .draw-path, .skill-fill { transition-duration: 0.8s !important; }
+    `;
+    document.head.appendChild(mobileAnimStyle);
+
+    // 8. Tắt hue shift on scroll
+    const hueEl = document.getElementById('hue-shift-style');
+    if (hueEl) hueEl.textContent = '';
+
+    // 10. Tắt hero opacity fade (quá nặng trên mobile)
+    const heroLeftEl  = document.querySelector('.hero-left');
+    const heroRightEl = document.querySelector('.hero-right');
+    if (heroLeftEl)  heroLeftEl.style.opacity  = '1';
+    if (heroRightEl) heroRightEl.style.opacity = '1';
+
+    console.log('[Mobile] Heavy effects disabled for better performance');
+  }
+
 
   // CURSOR
   const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
@@ -1489,8 +1610,7 @@
   const splitObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        // stagger chars with delay already set inline
-        e.target.classList.add('revealed');
+      e.target.classList.add('revealed');
         splitObs.unobserve(e.target);
       }
     });
@@ -1700,19 +1820,6 @@
   // 10 NEW EFFECTS
   // ══════════════════════════════════════
 
-  // 1. SCROLL VELOCITY BLUR
-  let lastScrollY = 0, scrollVel = 0, blurRaf;
-  const blurTargets = document.querySelectorAll('section, .stats-bar, .ai-section, footer');
-  window.addEventListener('scroll', () => {
-    scrollVel = Math.abs(window.scrollY - lastScrollY);
-    lastScrollY = window.scrollY;
-    const blur = Math.min(scrollVel * 0.18, 3.5);
-    cancelAnimationFrame(blurRaf);
-    blurRaf = requestAnimationFrame(() => {
-      blurTargets.forEach(el => el.style.filter = blur > 0.3 ? `blur(${blur}px)` : '');
-      setTimeout(() => blurTargets.forEach(el => el.style.filter = ''), 80);
-    });
-  }, { passive: true });
 
   // 2. COLOR SHIFT ON SCROLL
   function updateHueShift() {
@@ -1801,10 +1908,6 @@
       loaderPct.textContent = '100%';
     });
   }
-
-  // 8. NOISE FILTER — already CSS ::before, no extra JS needed
-
-  // 9. TEXT OUTLINE — already CSS :hover, no extra JS needed
 
   // 10. TIME-BASED GREETING
   const greetEl = document.getElementById('time-greeting');
@@ -2047,6 +2150,56 @@
       }
     });
   }
+
+
+  // ── PROJECT SLIDESHOW ──
+  function getSlides(wrap) {
+    return Array.from(wrap.querySelectorAll('.slide-img'));
+  }
+  function getDots(wrap) {
+    return Array.from(wrap.querySelectorAll('.slide-dot'));
+  }
+  function showSlide(wrap, idx) {
+    const slides = getSlides(wrap);
+    const dots   = getDots(wrap);
+    const cur    = wrap.querySelector('.slide-cur');
+    if (!slides.length) return;
+    idx = (idx + slides.length) % slides.length;
+    slides.forEach((s,i) => {
+      s.classList.toggle('active', i === idx);
+      s.style.opacity = i === idx ? (wrap.classList.contains('rp-thumb') ? '0.75' : '0.85') : '0';
+      if (i === idx) s.style.position = 'relative';
+      else s.style.position = 'absolute';
+    });
+    dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+    if (cur) cur.textContent = idx + 1;
+    wrap._slideIdx = idx;
+  }
+  function nextSlide(wrap, e) {
+    if (e) { e.stopPropagation(); e.preventDefault(); }
+    showSlide(wrap, (wrap._slideIdx || 0) + 1);
+  }
+  function prevSlide(wrap, e) {
+    if (e) { e.stopPropagation(); e.preventDefault(); }
+    showSlide(wrap, (wrap._slideIdx || 0) - 1);
+  }
+  function goSlide(wrap, idx, e) {
+    if (e) { e.stopPropagation(); e.preventDefault(); }
+    showSlide(wrap, idx);
+  }
+  function startSlide(wrap) {
+    if (wrap._slideTimer) return;
+    wrap._slideTimer = setInterval(() => nextSlide(wrap), 1800);
+  }
+  function stopSlide(wrap) {
+    clearInterval(wrap._slideTimer);
+    wrap._slideTimer = null;
+  }
+  // Init all slideshows
+  document.querySelectorAll('.project-card-thumb, .rp-thumb').forEach(wrap => {
+    wrap._slideIdx = 0;
+    showSlide(wrap, 0);
+  });
 
 </script>
 </body>
