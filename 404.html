@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found · Bach Thai Khang</title>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0e0c0a;--paper:#f5f0e8;--rust:#b84c2a;--warm:#d4a96a;--muted:#8a7f72;--dark:#1a1612;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;font-size:16px;}
+  body{
+    font-family:'Cormorant Garamond',serif;
+    background:var(--dark);
+    color:var(--paper);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    overflow:hidden;
+    cursor:none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor{width:8px;height:8px;background:var(--rust);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;mix-blend-mode:normal;transition:transform 0.1s ease;}
+  .cursor-ring{width:32px;height:32px;border:2px solid var(--rust);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:all 0.18s ease;opacity:0.6;}
+
+  /* BIG 404 */
+  .error-num{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(10rem,25vw,20rem);
+    line-height:0.85;
+    letter-spacing:0.05em;
+    color:transparent;
+    -webkit-text-stroke:1px rgba(255,255,255,0.06);
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    user-select:none;
+    pointer-events:none;
+    white-space:nowrap;
+  }
+
+  /* CONTENT */
+  .container{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2rem;
+    padding:2rem;
+  }
+  .label{
+    font-family:'DM Mono',monospace;
+    font-size:0.6rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--rust);
+    animation:fadeIn 0.6s ease both;
+  }
+  .title{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(2rem,6vw,4rem);
+    letter-spacing:0.08em;
+    color:var(--paper);
+    animation:fadeIn 0.6s ease 0.15s both;
+  }
+  .desc{
+    font-size:1.1rem;
+    font-style:italic;
+    color:var(--muted);
+    max-width:380px;
+    line-height:1.7;
+    font-weight:300;
+    animation:fadeIn 0.6s ease 0.3s both;
+  }
+  .links{
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+    justify-content:center;
+    animation:fadeIn 0.6s ease 0.45s both;
+  }
+  .btn{
+    font-family:'DM Mono',monospace;
+    font-size:0.62rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    padding:0.8rem 1.8rem;
+    text-decoration:none;
+    transition:all 0.2s ease;
+    cursor:none;
+  }
+  .btn-primary{background:var(--rust);color:white;border:1px solid var(--rust);}
+  .btn-primary:hover{background:transparent;color:var(--rust);}
+  .btn-secondary{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.12);}
+  .btn-secondary:hover{color:var(--paper);border-color:rgba(255,255,255,0.3);}
+
+  /* DIVIDER LINE */
+  .divider{
+    width:60px;
+    height:1px;
+    background:var(--rust);
+    animation:expandLine 0.8s ease 0.6s both;
+  }
+  @keyframes expandLine{from{width:0;opacity:0;}to{width:60px;opacity:1;}}
+
+  /* COORDS */
+  .coords{
+    font-family:'DM Mono',monospace;
+    font-size:0.52rem;
+    letter-spacing:0.15em;
+    color:rgba(255,255,255,0.15);
+    margin-top:1rem;
+    animation:fadeIn 0.6s ease 0.8s both;
+  }
+
+  /* GRID BG */
+  body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(184,76,42,0.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(184,76,42,0.04) 1px,transparent 1px);
+    background-size:50px 50px;
+    pointer-events:none;
+    z-index:1;
+  }
+
+  /* CORNER MARKERS */
+  .corner{position:fixed;width:20px;height:20px;opacity:0.2;}
+  .corner::before,.corner::after{content:'';position:absolute;background:var(--rust);}
+  .corner::before{width:100%;height:1px;top:0;left:0;}
+  .corner::after{width:1px;height:100%;top:0;left:0;}
+  .tl{top:2rem;left:2rem;}
+  .tr{top:2rem;right:2rem;transform:scaleX(-1);}
+  .bl{bottom:2rem;left:2rem;transform:scaleY(-1);}
+  .br{bottom:2rem;right:2rem;transform:scale(-1);}
+
+  @keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+
+  @media(max-width:540px){
+    .links{flex-direction:column;align-items:center;}
+    .btn{width:220px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
+
+<div class="error-num">404</div>
+
+<div class="container">
+  <div class="label">Error 404 · Page not found</div>
+  <div class="title">Lost in the blueprint</div>
+  <div class="divider"></div>
+  <p class="desc">The page you're looking for doesn't exist — it may have been moved, renamed, or never built.</p>
+  <div class="links">
+    <a class="btn btn-primary" href="./index.html">← Back to Portfolio</a>
+    <a class="btn btn-secondary" href="./index-vi.html">🇻🇳 Tiếng Việt</a>
+  </div>
+  <div class="coords">BTK · 21.0285°N 105.8542°E · HANOI</div>
+</div>
+
+<script>
+  const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  function anim(){
+    cursor.style.left=(mx-4)+'px';cursor.style.top=(my-4)+'px';
+    rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;
+    ring.style.left=(rx-16)+'px';ring.style.top=(ry-16)+'px';
+    requestAnimationFrame(anim);
+  }
+  anim();
+  document.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('mouseenter',()=>{cursor.style.transform='scale(2)';ring.style.transform='scale(1.5)';});
+    a.addEventListener('mouseleave',()=>{cursor.style.transform='';ring.style.transform='';});
+  });
+</script>
+</body>
+</html>
