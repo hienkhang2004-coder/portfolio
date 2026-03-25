@@ -1,13 +1,16 @@
 {
-  "name": "Bach Thai Khang — Portfolio",
+  "name": "Bach Thai Khang — Architectural Portfolio 2026",
   "short_name": "BTK Portfolio",
-  "description": "Architecture student portfolio — Hanoi University of Architecture, IITC program",
+  "description": "Architecture student portfolio — Hanoi University of Architecture, IITC program. Featuring school projects, real-world design, and urban planning.",
   "start_url": "/",
+  "scope": "/",
+  "id": "btk-portfolio",
   "display": "standalone",
-  "background_color": "#1a1612",
-  "theme_color": "#b84c2a",
+  "background_color": "#fef9f1",
+  "theme_color": "#983514",
   "orientation": "portrait-primary",
   "lang": "en",
+  "dir": "ltr",
   "icons": [
     {
       "src": "./favicon.svg",
@@ -21,8 +24,10 @@
       "src": "./assets/cover.jpg",
       "sizes": "1200x630",
       "type": "image/jpeg",
-      "label": "Bach Thai Khang Portfolio"
+      "label": "Bach Thai Khang — Architectural Portfolio",
+      "form_factor": "wide"
     }
   ],
-  "categories": ["portfolio", "design", "architecture"]
+  "categories": ["portfolio", "design", "architecture", "education"],
+  "prefer_related_applications": false
 }

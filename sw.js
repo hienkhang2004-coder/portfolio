@@ -13,6 +13,7 @@ const PRECACHE_ASSETS = [
   './index-vi.html',
   './404.html',
   './style.css',
+  './design-upgrade.css',
   './script.js',
   './manifest.json',
   './favicon.svg',

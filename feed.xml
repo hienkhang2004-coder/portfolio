@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bach Thai Khang — Architectural Portfolio</title>
+    <title>Bach Thai Khang — Architectural Portfolio 2026</title>
     <link>https://gnahkiahtport.space/</link>
-    <description>Architecture student portfolio — Hanoi University of Architecture, IITC program. Featuring school projects, real-world design work, and urban planning.</description>
+    <description>Architecture student portfolio by Bach Thai Khang — Hanoi University of Architecture, IITC program. School projects, real-world design at Sunjin Vietnam, and urban planning.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 25 Mar 2026 00:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Tue, 25 Mar 2026 21:00:00 +0700</lastBuildDate>
+    <managingEditor>hienkhang2004@gmail.com (Bach Thai Khang)</managingEditor>
+    <webMaster>hienkhang2004@gmail.com (Bach Thai Khang)</webMaster>
+    <ttl>1440</ttl>
     <atom:link href="https://gnahkiahtport.space/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://gnahkiahtport.space/assets/cover.jpg</url>
-      <title>Bach Thai Khang Portfolio</title>
+      <title>Bach Thai Khang — Architectural Portfolio 2026</title>
       <link>https://gnahkiahtport.space/</link>
     </image>
 

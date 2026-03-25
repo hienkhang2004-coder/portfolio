@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /404.html
 
 Sitemap: https://gnahkiahtport.space/sitemap.xml
+
+# BTK Portfolio — gnahkiahtport.space
+# Last updated: 2026-03-25
+# Files: index.html, index-vi.html, 404.html
+# Assets: style.css, design-upgrade.css, script.js

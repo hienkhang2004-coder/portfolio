@@ -1,0 +1,725 @@
+/* ═══════════════════════════════════════════════════
+   DESIGN UPGRADE — Editorial Architecture System
+   Based on DESIGN.md: "The Monolith & The Void"
+   Load AFTER style.css — all rules override base styles
+   ═══════════════════════════════════════════════════ */
+
+/* ── GOOGLE FONTS (loaded via HTML <link>) ──
+   Newsreader: Display/Titles (serif, classical)
+   Manrope:    Body text (sans-serif, modern)
+   Space Grotesk: Labels/metadata (technical)
+   ─────────────────────────────────────────── */
+
+/* ══════════════════════════════════════
+   1. COLOR PALETTE — Warm Neutrals
+   ══════════════════════════════════════ */
+:root {
+  --ink: #1d1c17;
+  --paper: #fef9f1;
+  --rust: #983514;
+  --warm: #d4a96a;
+  --muted: #8a7f72;
+  --light: #f2ede5;
+  --dark: #1a1612;
+  --accent: #B84C2A;
+  --surface-low: #f7f2ea;
+  --surface-high: #ebe6de;
+  --on-primary: #ffeeea;
+  --shadow-tint: rgba(29, 28, 23, 0.06);
+}
+
+/* ══════════════════════════════════════
+   2. GLOBAL RESET — 0px Border Radius
+   ══════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+/* Exceptions: cursor dots remain circular */
+.cursor,
+.cursor-ring,
+#cursorBlend,
+.theme-dot,
+.clock-dot,
+.chat-status-dot {
+  border-radius: 50% !important;
+}
+
+body {
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Vietnamese version */
+body.lang-vi {
+  font-family: 'Manrope', 'Be Vietnam Pro', system-ui, sans-serif;
+}
+
+/* ══════════════════════════════════════
+   3. TYPOGRAPHY — Structural Hierarchy
+   ══════════════════════════════════════ */
+
+/* Display — Newsreader (serif, classical) */
+.hero-name,
+.hero-bg-text,
+.stat-num,
+.section-title,
+.footer-name,
+.loader-svg text,
+h1, h2 {
+  font-family: 'Newsreader', 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Label/Meta — Space Grotesk (technical, blueprint) */
+.hero-label,
+.hero-meta,
+.hero-contact-list,
+.hero-portrait-placeholder,
+.hero-role,
+.nav-links a,
+.nav-lang,
+.nav-logo,
+.scroll-cue,
+.stat-label,
+.section-num,
+.section-watermark,
+.skill-name,
+.skill-pct,
+.tag,
+.timeline-year,
+.act-meta,
+.project-card-label,
+.rp-label,
+.rp-meta,
+.photo-caption,
+.footer-greeting,
+.footer-clock,
+.footer-copy,
+.contact-link .cl-label,
+.contact-link .cl-value,
+.cf-label,
+.cf-submit,
+.btn-cv,
+.loader-sub,
+.cfi-link,
+.btn-view-cv,
+label,
+.float-label span,
+#cad-coords,
+#scale-ruler {
+  font-family: 'Space Grotesk', 'DM Mono', monospace;
+}
+
+/* Body — Manrope (clean, functional) */
+.hero-tagline,
+.about-text,
+.about-bio,
+.act-desc,
+.project-card-desc,
+.rp-desc,
+.footer-bio,
+.contact-form-info p,
+p {
+  font-family: 'Manrope', system-ui, sans-serif;
+}
+
+/* ══════════════════════════════════════
+   4. NAV — Glassmorphism
+   ══════════════════════════════════════ */
+nav {
+  background: rgba(254, 249, 241, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(29, 28, 23, 0.04);
+}
+
+nav.nav-dark {
+  background: rgba(26, 22, 18, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* ══════════════════════════════════════
+   5. HERO — Monolith Typography
+   ══════════════════════════════════════ */
+.hero-name {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.hero-tagline {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.8;
+}
+
+.hero-left {
+  padding: 10rem 4rem 6rem;
+}
+
+.hero-right-content {
+  padding: 8rem 4rem 5rem;
+}
+
+.hero-school {
+  font-family: 'Newsreader', serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.hero-role {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+}
+
+/* ══════════════════════════════════════
+   6. BUTTONS — Structural Block
+   ══════════════════════════════════════ */
+.btn-cv {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.8rem;
+  background: linear-gradient(135deg, var(--rust), var(--accent));
+  border: none;
+  color: var(--on-primary);
+  transition: all 0.3s ease;
+}
+
+.btn-cv:hover {
+  background: transparent;
+  outline: 2px solid var(--rust);
+  color: var(--rust);
+}
+
+/* Tertiary button — text + underline */
+.nav-lang {
+  font-family: 'Space Grotesk', sans-serif;
+  border: none;
+  border-bottom: 2px solid var(--rust);
+  padding: 0.3rem 0;
+  transition: border-width 0.3s ease;
+}
+
+.nav-lang:hover {
+  border-bottom-width: 3px;
+  border-color: var(--rust);
+}
+
+/* ══════════════════════════════════════
+   7. SECTIONS — Extreme Vertical Spacing
+   ══════════════════════════════════════ */
+section {
+  padding: 9rem 4rem;
+}
+
+.section-title {
+  font-family: 'Newsreader', serif;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+
+.section-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 300;
+}
+
+/* No-Line Rule: remove borders between sections */
+section + section {
+  border-top: none;
+}
+
+/* ══════════════════════════════════════
+   8. CARDS — Gallery Plate
+   ══════════════════════════════════════ */
+.activity-card {
+  background: var(--surface-low);
+  border: none;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.activity-card:hover {
+  transform: translateY(-4px);
+}
+
+.project-card {
+  border: none;
+}
+
+.project-card-thumb,
+.rp-thumb {
+  overflow: hidden;
+}
+
+.project-card-thumb img,
+.rp-thumb img {
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.project-card:hover .project-card-thumb img,
+.project-card:hover .rp-thumb img {
+  transform: scale(1.05);
+}
+
+/* ══════════════════════════════════════
+   9. INPUT FIELDS — Technical Draft
+   ══════════════════════════════════════ */
+.cf-input,
+.cf-textarea {
+  border: none;
+  border-bottom: 1px solid rgba(29, 28, 23, 0.15);
+  background: transparent;
+  font-family: 'Manrope', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.cf-input:focus,
+.cf-textarea:focus {
+  border-bottom-color: var(--rust);
+  outline: none;
+}
+
+.cf-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.cf-submit {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  background: linear-gradient(135deg, var(--rust), var(--accent));
+  border: none;
+  color: var(--on-primary);
+}
+
+/* ══════════════════════════════════════
+   10. STATS BAR
+   ══════════════════════════════════════ */
+.stats-bar {
+  background: linear-gradient(135deg, var(--rust), var(--accent));
+  padding: 3.5rem 4rem;
+}
+
+.stat-num {
+  font-family: 'Newsreader', serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ══════════════════════════════════════
+   11. FOOTER
+   ══════════════════════════════════════ */
+.footer-name {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+}
+
+.footer-greeting {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+}
+
+.footer-bio {
+  font-family: 'Manrope', sans-serif;
+  line-height: 1.8;
+}
+
+.footer-copy {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.contact-link {
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.3s ease;
+}
+
+.contact-link:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ══════════════════════════════════════
+   12. ELEVATION — Tonal Layering
+   ══════════════════════════════════════ */
+
+/* Lightbox ambient shadow (only exception) */
+.lightbox-img-wrap {
+  box-shadow: 0 20px 80px var(--shadow-tint);
+}
+
+/* Ghost borders for interactive elements */
+.theme-toggle {
+  border: 1px solid rgba(29, 28, 23, 0.08);
+  background: rgba(254, 249, 241, 0.5);
+}
+
+nav.nav-dark .theme-toggle {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ══════════════════════════════════════
+   13. ABOUT SECTION
+   ══════════════════════════════════════ */
+.about-block h3 {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.about-text,
+.about-bio {
+  font-family: 'Manrope', sans-serif;
+  line-height: 1.9;
+  text-align: left;
+}
+
+.skill-name {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.skill-fill {
+  background: var(--rust);
+}
+
+.tag {
+  font-family: 'Space Grotesk', sans-serif;
+  border-color: rgba(29, 28, 23, 0.15);
+  color: var(--muted);
+}
+
+/* ══════════════════════════════════════
+   14. PROJECTS
+   ══════════════════════════════════════ */
+#projects {
+  padding: 9rem 4rem;
+}
+
+.project-card-label,
+.rp-label {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.project-card-title,
+.recent-title {
+  font-family: 'Newsreader', serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.project-card-desc,
+.rp-desc {
+  font-family: 'Manrope', sans-serif;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.rp-meta {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ══════════════════════════════════════
+   15. CHAT POPUP
+   ══════════════════════════════════════ */
+.chat-header-name {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+}
+
+.chat-header-status {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.chat-bubble {
+  font-family: 'Manrope', sans-serif;
+}
+
+.chat-cta-btn {
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ══════════════════════════════════════
+   16. AI SECTION
+   ══════════════════════════════════════ */
+.ai-section {
+  background: linear-gradient(135deg, var(--rust), #3a1f12);
+}
+
+.ai-title {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+}
+
+.ai-text {
+  font-family: 'Manrope', sans-serif;
+  line-height: 1.8;
+}
+
+/* ══════════════════════════════════════
+   17. TIMELINE
+   ══════════════════════════════════════ */
+.timeline-year {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.timeline-title {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+}
+
+.timeline-desc {
+  font-family: 'Manrope', sans-serif;
+  line-height: 1.8;
+}
+
+/* ══════════════════════════════════════
+   18. LOADER
+   ══════════════════════════════════════ */
+.loader-svg text {
+  font-family: 'Newsreader', serif;
+}
+
+.loader-sub {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.dl-r {
+  stroke: var(--rust);
+}
+
+.dl-w {
+  stroke: var(--paper);
+}
+
+/* ══════════════════════════════════════
+   19. SCROLL PROGRESS
+   ══════════════════════════════════════ */
+#scroll-progress {
+  background: var(--rust);
+}
+
+/* ══════════════════════════════════════
+   20. PHOTOGRAPHY / HOBBIES
+   ══════════════════════════════════════ */
+.photo-item {
+  overflow: hidden;
+}
+
+.photo-item img {
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.photo-item:hover img {
+  transform: scale(1.05);
+}
+
+.photo-caption {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ══════════════════════════════════════
+   21. THEME OVERRIDES (dark, blueprint, mono)
+   ══════════════════════════════════════ */
+
+/* Dark theme */
+body.theme-dark {
+  --ink: #fef9f1;
+  --paper: #0e0c0a;
+  --rust: #c4652a;
+  --accent: #d47a3a;
+  --muted: #7a7068;
+  --light: #1e1a16;
+  --dark: #050403;
+  --surface-low: #161210;
+  --surface-high: #1e1a16;
+  --on-primary: #ffeeea;
+  --shadow-tint: rgba(0, 0, 0, 0.3);
+}
+
+body.theme-dark nav {
+  background: rgba(14, 12, 10, 0.8);
+  backdrop-filter: blur(20px);
+}
+
+/* Blueprint theme */
+body.theme-blueprint {
+  --surface-low: #0d2137;
+  --surface-high: #112a45;
+  --on-primary: #e0f4ff;
+  --shadow-tint: rgba(0, 0, 0, 0.4);
+}
+
+body.theme-blueprint nav {
+  background: rgba(10, 25, 41, 0.8);
+  backdrop-filter: blur(20px);
+}
+
+body.theme-blueprint .stats-bar {
+  background: linear-gradient(135deg, #00bcd4, #0097a7);
+}
+
+body.theme-blueprint .ai-section {
+  background: linear-gradient(135deg, #00838f, #006064);
+}
+
+body.theme-blueprint .cf-submit {
+  background: linear-gradient(135deg, #00bcd4, #0097a7);
+}
+
+body.theme-blueprint .btn-cv {
+  background: linear-gradient(135deg, #00bcd4, #0097a7);
+}
+
+/* Mono theme */
+body.theme-mono {
+  --surface-low: #f5f5f5;
+  --surface-high: #e8e8e8;
+  --on-primary: #fff;
+  --shadow-tint: rgba(0, 0, 0, 0.08);
+}
+
+body.theme-mono nav {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+}
+
+body.theme-mono .stats-bar {
+  background: linear-gradient(135deg, #111, #333);
+}
+
+body.theme-mono .btn-cv {
+  background: linear-gradient(135deg, #111, #333);
+}
+
+body.theme-mono .cf-submit {
+  background: linear-gradient(135deg, #111, #333);
+}
+
+/* ══════════════════════════════════════
+   22. DARK MODE AUTO-DETECT
+   ══════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme-set]) {
+    --ink: #fef9f1;
+    --paper: #0e0c0a;
+    --rust: #c4652a;
+    --accent: #d47a3a;
+    --muted: #7a7068;
+    --light: #1e1a16;
+    --dark: #050403;
+    --surface-low: #161210;
+    --surface-high: #1e1a16;
+  }
+}
+
+/* ══════════════════════════════════════
+   23. PRINT STYLESHEET
+   ══════════════════════════════════════ */
+@media print {
+  * {
+    border-radius: 0 !important;
+  }
+
+  nav,
+  .cursor,
+  .cursor-ring,
+  #cursorBlend,
+  .cursor-label,
+  #scroll-progress,
+  #back-top,
+  #page-wipe,
+  #chat-popup,
+  #chat-btn,
+  .theme-toggle,
+  .scroll-cue,
+  .loader,
+  #loader {
+    display: none !important;
+  }
+
+  body {
+    font-family: 'Newsreader', Georgia, serif;
+    background: white !important;
+    color: #1d1c17 !important;
+    cursor: auto !important;
+  }
+
+  section {
+    padding: 2rem 0;
+    page-break-inside: avoid;
+  }
+
+  .hero {
+    min-height: auto;
+    display: block;
+  }
+
+  .hero-right {
+    display: none;
+  }
+}
+
+/* ══════════════════════════════════════
+   24. REDUCED MOTION
+   ══════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ══════════════════════════════════════
+   25. RESPONSIVE — Mobile adjustments
+   ══════════════════════════════════════ */
+@media (max-width: 768px) {
+  section {
+    padding: 5rem 1.5rem;
+  }
+
+  .hero-left {
+    padding: 6rem 1.5rem 3rem;
+  }
+
+  .hero-name {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  nav {
+    padding: 1rem 1.5rem;
+  }
+
+  .stats-bar {
+    padding: 2rem 1.5rem;
+  }
+}
