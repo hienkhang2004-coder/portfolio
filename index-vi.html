@@ -4,6 +4,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+  function handleGoogleSignIn(response) {
+    try {
+      const payload = JSON.parse(atob(response.credential.split('.')[1]));
+      const name = payload.given_name || payload.name || '';
+      if (name) {
+        localStorage.setItem('btk-visitor-name', name);
+        localStorage.setItem('btk-visitor-photo', payload.picture || '');
+        const wrapper = document.getElementById('gsi-wrapper');
+        if (wrapper) wrapper.style.display = 'none';
+        if (typeof updateGreetingWithName === 'function') updateGreetingWithName(name);
+      }
+    } catch(e) { console.warn('[GIS] Error:', e); }
+  }
+  </script>
   <title>Bạch Thái Khang — Portfolio Kiến Trúc 2026</title>
   <meta name="description"
     content="Bạch Thái Khang — Sinh viên kiến trúc ĐH Kiến trúc Hà Nội (IITC). Portfolio gồm đồ án học thuật, dự án thực tế và quy hoạch đô thị.">
@@ -4029,6 +4045,21 @@
     <canvas id="particle-canvas"></canvas>
     <div class="hero-left">
       <div id="time-greeting"></div>
+      <div id="gsi-wrapper" style="margin-bottom:0.8rem;display:none;">
+        <div id="g_id_onload"
+          data-client_id="179742915108-61pjg03gi2qdrqcn78p31hu9r5akuatm.apps.googleusercontent.com"
+          data-callback="handleGoogleSignIn"
+          data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin"
+          data-type="standard"
+          data-size="small"
+          data-theme="outline"
+          data-text="sign_in_with"
+          data-shape="rectangular"
+          data-logo_alignment="left">
+        </div>
+      </div>
       <div class="hero-label">Portfolio Kiến Trúc · 2026</div>
       <h1 class="hero-name" data-text="BACH&#10;THAI&#10;KHANG">BẠCH<br>THÁI<br><span>KHANG</span></h1>
       <p class="hero-tagline typewriter-wrap"><span class="typewriter-text" id="typewriterText"></span></p>
@@ -5714,16 +5745,34 @@
       });
     }
 
-    // 10. TIME-BASED GREETING
+    // 10. TIME-BASED GREETING with Google Sign-In
     const greetEl = document.getElementById('time-greeting');
-    if (greetEl) {
+    const gsiWrapper = document.getElementById('gsi-wrapper');
+    const savedVisitorName = localStorage.getItem('btk-visitor-name');
+
+    window.updateGreetingWithName = function(name) {
+      if (!greetEl) return;
+      const h = new Date().getHours();
+      let g;
+      if (h >= 5 && h < 12) g = 'Chào buổi sáng, ' + name + '! ☀️';
+      else if (h >= 12 && h < 17) g = 'Chào buổi chiều, ' + name + '! 🌤';
+      else if (h >= 17 && h < 21) g = 'Chào buổi tối, ' + name + '! 🌅';
+      else g = 'Vẫn còn thức à, ' + name + '? 🌙';
+      greetEl.textContent = g;
+      if (gsiWrapper) gsiWrapper.style.display = 'none';
+    };
+
+    if (savedVisitorName) {
+      window.updateGreetingWithName(savedVisitorName);
+    } else if (greetEl) {
       const h = new Date().getHours();
       let greet;
-      if (h >= 5 && h < 12) greet = 'Chào buổi sáng, Khang ☀️';
-      else if (h >= 12 && h < 17) greet = 'Chào buổi chiều, Khang 🌤';
-      else if (h >= 17 && h < 21) greet = 'Chào buổi tối, Khang 🌅';
-      else greet = 'Vẫn còn thức à, Khang? 🌙';
+      if (h >= 5 && h < 12) greet = 'Chào buổi sáng, chào mừng bạn! ☀️';
+      else if (h >= 12 && h < 17) greet = 'Chào buổi chiều, chào mừng bạn! 🌤';
+      else if (h >= 17 && h < 21) greet = 'Chào buổi tối, chào mừng bạn! 🌅';
+      else greet = 'Vẫn còn thức à? Cũng như mình vậy! 🌙';
       greetEl.textContent = greet;
+      if (gsiWrapper) gsiWrapper.style.display = '';
     }
 
 

@@ -723,3 +723,19 @@ body.theme-mono .cf-submit {
     padding: 2rem 1.5rem;
   }
 }
+
+/* ══════════════════════════════════════
+   26. GOOGLE SIGN-IN
+   ══════════════════════════════════════ */
+#gsi-wrapper {
+  margin-bottom: 0.8rem;
+}
+
+#time-greeting {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 0.5rem;
+}

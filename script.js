@@ -1,4 +1,4 @@
-﻿  // LOADER
+  // LOADER
   window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hidden'),1800));
 
   // ======================================
@@ -759,16 +759,34 @@
     });
   }
 
-  // 10. TIME-BASED GREETING
+  // 10. TIME-BASED GREETING with Google Sign-In
   const greetEl = document.getElementById('time-greeting');
-  if (greetEl) {
+  const gsiWrapper = document.getElementById('gsi-wrapper');
+  const savedVisitorName = localStorage.getItem('btk-visitor-name');
+
+  window.updateGreetingWithName = function(name) {
+    if (!greetEl) return;
+    const h = new Date().getHours();
+    let g;
+    if (h >= 5 && h < 12) g = 'Good morning, ' + name + '! â˜€ï¸';
+    else if (h >= 12 && h < 17) g = 'Good afternoon, ' + name + '! ðŸŒ¤';
+    else if (h >= 17 && h < 21) g = 'Good evening, ' + name + '! ðŸŒ…';
+    else g = 'Still up, ' + name + '? ðŸŒ™';
+    greetEl.textContent = g;
+    if (gsiWrapper) gsiWrapper.style.display = 'none';
+  };
+
+  if (savedVisitorName) {
+    window.updateGreetingWithName(savedVisitorName);
+  } else if (greetEl) {
     const h = new Date().getHours();
     let greet;
-    if (h >= 5  && h < 12) greet = 'Good morning, Khang â˜€ï¸';
-    else if (h >= 12 && h < 17) greet = 'Good afternoon, Khang ðŸŒ¤';
-    else if (h >= 17 && h < 21) greet = 'Good evening, Khang ðŸŒ…';
-    else greet = 'Still working, Khang? ðŸŒ™';
+    if (h >= 5 && h < 12) greet = 'Good morning, welcome! â˜€ï¸';
+    else if (h >= 12 && h < 17) greet = 'Good afternoon, welcome! ðŸŒ¤';
+    else if (h >= 17 && h < 21) greet = 'Good evening, welcome! ðŸŒ…';
+    else greet = 'Burning the midnight oil too? ðŸŒ™';
     greetEl.textContent = greet;
+    if (gsiWrapper) gsiWrapper.style.display = '';
   }
 
 
