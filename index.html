@@ -12,12 +12,51 @@ function handleGoogleSignIn(response) {
     if (name) {
       localStorage.setItem('btk-visitor-name', name);
       localStorage.setItem('btk-visitor-photo', payload.picture || '');
-      const wrapper = document.getElementById('gsi-wrapper');
-      if (wrapper) wrapper.style.display = 'none';
+      updateNavSignIn(name);
       if (typeof updateGreetingWithName === 'function') updateGreetingWithName(name);
     }
   } catch(e) { console.warn('[GIS] Error:', e); }
 }
+function updateNavSignIn(name) {
+  const nameEl = document.getElementById('gsi-visitor-name');
+  const signInBtn = document.getElementById('gsi-signin-btn');
+  const signOutBtn = document.getElementById('gsi-signout-btn');
+  if (name) {
+    if (nameEl) { nameEl.textContent = name; nameEl.style.display = ''; }
+    if (signInBtn) signInBtn.style.display = 'none';
+    if (signOutBtn) signOutBtn.style.display = '';
+  } else {
+    if (nameEl) nameEl.style.display = 'none';
+    if (signInBtn) signInBtn.style.display = '';
+    if (signOutBtn) signOutBtn.style.display = 'none';
+  }
+}
+function triggerGoogleSignIn() {
+  const hiddenBtn = document.querySelector('#gsi-hidden-btn .g_id_signin div[role="button"]');
+  if (hiddenBtn) hiddenBtn.click();
+  else {
+    const iframe = document.querySelector('#gsi-hidden-btn iframe');
+    if (iframe) iframe.click();
+    else google.accounts.id.prompt();
+  }
+}
+function signOutVisitor() {
+  localStorage.removeItem('btk-visitor-name');
+  localStorage.removeItem('btk-visitor-photo');
+  updateNavSignIn(null);
+  const greetEl = document.getElementById('time-greeting');
+  if (greetEl) {
+    const h = new Date().getHours();
+    if (h >= 5 && h < 12) greetEl.textContent = 'Good morning, welcome!';
+    else if (h >= 12 && h < 17) greetEl.textContent = 'Good afternoon, welcome!';
+    else if (h >= 17 && h < 21) greetEl.textContent = 'Good evening, welcome!';
+    else greetEl.textContent = 'Burning the midnight oil too?';
+  }
+}
+document.addEventListener('DOMContentLoaded', function() {
+  var n = localStorage.getItem('btk-visitor-name');
+  updateNavSignIn(n);
+});
 </script>
 <title>Bach Thai Khang — Architectural Portfolio 2026</title>
 <meta name="description" content="Bach Thai Khang — Architecture student at Hanoi University of Architecture (IITC). Portfolio featuring school projects, real-world design work, and urban planning.">
@@ -936,6 +975,26 @@ function handleGoogleSignIn(response) {
   </ul>
   <button class="music-btn" id="musicBtn" onclick="toggleMusic()"><div class="music-bars"><div class="music-bar"></div><div class="music-bar"></div><div class="music-bar"></div><div class="music-bar"></div></div>♪ Music</button>
   <a class="nav-lang" href="./index-vi.html">🇻🇳 Tiếng Việt</a>
+  <div id="gsi-nav" class="gsi-nav">
+    <span id="gsi-visitor-name" class="gsi-visitor-name" style="display:none;"></span>
+    <a id="gsi-signin-btn" class="gsi-signin-btn" href="#" onclick="triggerGoogleSignIn();return false;" style="display:none;">Sign in</a>
+    <a id="gsi-signout-btn" class="gsi-signout-btn" href="#" onclick="signOutVisitor();return false;" style="display:none;" title="Sign out">×</a>
+  </div>
+  <div id="g_id_onload"
+    data-client_id="179742915108-61pjg03gi2qdrqcn78p31hu9r5akuatm.apps.googleusercontent.com"
+    data-callback="handleGoogleSignIn"
+    data-auto_prompt="false">
+  </div>
+  <div id="gsi-hidden-btn" style="display:none;">
+    <div class="g_id_signin"
+      data-type="standard"
+      data-size="large"
+      data-theme="outline"
+      data-text="sign_in_with"
+      data-shape="rectangular"
+      data-logo_alignment="left">
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -943,21 +1002,7 @@ function handleGoogleSignIn(response) {
   <canvas id="particle-canvas"></canvas>
   <div class="hero-left">
     <div id="time-greeting"></div>
-    <div id="gsi-wrapper" style="margin-bottom:0.8rem;display:none;">
-      <div id="g_id_onload"
-        data-client_id="179742915108-61pjg03gi2qdrqcn78p31hu9r5akuatm.apps.googleusercontent.com"
-        data-callback="handleGoogleSignIn"
-        data-auto_prompt="false">
-      </div>
-      <div class="g_id_signin"
-        data-type="standard"
-        data-size="small"
-        data-theme="outline"
-        data-text="sign_in_with"
-        data-shape="rectangular"
-        data-logo_alignment="left">
-      </div>
-    </div>
+
     <div class="hero-label">Architectural Portfolio · 2026</div>
     <h1 class="hero-name" data-text="BACH&#10;THAI&#10;KHANG">BACH<br>THAI<br><span>KHANG</span></h1>
     <p class="hero-tagline typewriter-wrap"><span class="typewriter-text" id="typewriterText"></span></p>
