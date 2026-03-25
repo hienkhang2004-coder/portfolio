@@ -63,6 +63,9 @@
   {"@context":"https://schema.org","@type":"CreativeWork","name":"Si Pa Phin Multi-Level School","description":"Three-level school for 1000+ students in Si Pa Phin commune, Dien Bien.","image":"https://gnahkiahtport.space/assets/sipaphin_hero.jpg","author":{"@type":"Person","name":"Bach Thai Khang"}}
 ]
 </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gnahkiahtport.space/"},{"@type":"ListItem","position":2,"name":"About","item":"https://gnahkiahtport.space/#about"},{"@type":"ListItem","position":3,"name":"Projects","item":"https://gnahkiahtport.space/#projects"},{"@type":"ListItem","position":4,"name":"Contact","item":"https://gnahkiahtport.space/#contact"}]}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
   :root { --ink:#0e0c0a; --paper:#f5f0e8; --rust:#b84c2a; --warm:#d4a96a; --muted:#8a7f72; --light:#e8e2d6; --dark:#1a1612; --accent:#c4501e; }
@@ -1749,17 +1752,7 @@
   },{threshold:0.5});
   document.querySelectorAll('.section-title').forEach(t=>scrambleObs.observe(t));
 
-  // 6. GRID OVERLAY (press G)
-  const gridOverlay=document.createElement('div');
-  gridOverlay.style.cssText='position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:0;transition:opacity 0.3s ease;background-image:linear-gradient(rgba(184,76,42,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(184,76,42,0.08) 1px,transparent 1px);background-size:40px 40px;';
-  document.body.appendChild(gridOverlay);
-  let gridOn=false;
-  document.addEventListener('keydown',e=>{
-    if(e.key==='g'||e.key==='G'){
-      gridOn=!gridOn;
-      gridOverlay.style.opacity=gridOn?'1':'0';
-    }
-  });
+
 
   // NEW FEATURES
 
@@ -1830,45 +1823,25 @@
     });
     localStorage.setItem('btk-theme',t);
   }
-  // Load saved theme
+  // Load saved theme or auto-detect dark mode
   const savedTheme=localStorage.getItem('btk-theme');
-  if(savedTheme) applyTheme(savedTheme);
+  if(savedTheme) {
+    applyTheme(savedTheme);
+  } else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    applyTheme('dark');
+  }
+  // Listen for OS theme changes
+  if(window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if(!localStorage.getItem('btk-theme')) applyTheme(e.matches ? 'dark' : 'light');
+    });
+  }
   // Dot click
   document.querySelectorAll('.theme-dot').forEach(d=>{
-    d.addEventListener('click',()=>applyTheme(d.dataset.theme));
-  });
-  // Keyboard: press T to cycle themes
-  document.addEventListener('keydown',e=>{
-    if((e.key==='t'||e.key==='T')&&!e.ctrlKey&&!e.metaKey){
-      const idx=(themes.indexOf(currentTheme)+1)%themes.length;
-      applyTheme(themes[idx]);
-    }
-  });
-
-  // 8. EASTER EGG — press K
-  const eggOverlay=document.createElement('div');
-  eggOverlay.style.cssText='position:fixed;inset:0;z-index:99998;background:rgba(14,12,10,0.96);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;opacity:0;visibility:hidden;transition:opacity 0.4s ease;cursor:none;';
-  eggOverlay.innerHTML=`
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,6rem);color:#b84c2a;letter-spacing:0.1em;text-align:center;line-height:1">YOU FOUND<br><span style="color:#f5f0e8">THE SECRET</span></div>
-    <div style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:#8a7f72;text-transform:uppercase;text-align:center;max-width:400px;line-height:2">
-      Bach Thai Khang · Architecture Student · Gamer · Explorer<br>
-      Born 2004 · Hanoi · Loves esports &amp; photography<br>
-      <span style="color:#b84c2a">hienkhang2004@gmail.com</span>
-    </div>
-    <div style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;color:#4a4a4a;text-transform:uppercase;margin-top:1rem">Click anywhere to close · Press K again to toggle</div>
-  `;
-  document.body.appendChild(eggOverlay);
-  document.addEventListener('keydown',e=>{
-    if(lb.classList.contains('active'))return;
-    if(e.key==='k'||e.key==='K'){
-      const visible=eggOverlay.style.visibility==='visible';
-      eggOverlay.style.opacity=visible?'0':'1';
-      eggOverlay.style.visibility=visible?'hidden':'visible';
-    }
-  });
-  eggOverlay.addEventListener('click',()=>{
-    eggOverlay.style.opacity='0';
-    setTimeout(()=>eggOverlay.style.visibility='hidden',400);
+    d.addEventListener('click',()=>{
+      applyTheme(d.dataset.theme);
+      document.body.setAttribute('data-theme-set','1');
+    });
   });
 
   // ══════════════════════════════════════

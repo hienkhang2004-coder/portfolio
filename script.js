@@ -1,22 +1,22 @@
 ﻿  // LOADER
   window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hidden'),1800));
 
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ======================================
   // MOBILE OPTIMIZATION
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ======================================
   const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent)
     || window.innerWidth < 768;
 
   if (isMobile) {
-    // 2. Táº¯t particle canvas â€” tá»‘n GPU nháº¥t
+    // 2. Disable particle canvas - heaviest GPU usage
     const pCanvas = document.getElementById('particle-canvas');
     if (pCanvas) pCanvas.style.display = 'none';
 
-    // 3. Táº¯t blueprint SVG trail
+    // 3. Disable blueprint SVG trail
     const bpSvgEl = document.querySelector('svg[style*="position:fixed"]');
     if (bpSvgEl) bpSvgEl.style.display = 'none';
 
-    // 4. Táº¯t cursor custom (mobile khÃ´ng cÃ³ chuá»™t)
+    // 4. Disable custom cursor (no mouse on mobile)
     const cursorEl  = document.getElementById('cursor');
     const ringEl    = document.getElementById('cursorRing');
     const blendEl   = document.getElementById('cursorBlend');
@@ -24,19 +24,19 @@
     [cursorEl, ringEl, blendEl, labelEl].forEach(el => { if(el) el.style.display = 'none'; });
     document.body.style.cursor = 'auto';
 
-    // 5. Táº¯t grain texture (opacity = 0)
+    // 5. Disable grain texture (opacity = 0)
     const grainStyle = document.createElement('style');
     grainStyle.textContent = 'body::after{display:none!important;}';
     document.head.appendChild(grainStyle);
 
-    // 6. Táº¯t tilt 3D trÃªn áº£nh â€” gÃ¢y lag khi touch scroll
+    // 6. Disable 3D tilt on images - causes lag on touch scroll
     document.querySelectorAll('.project-card-thumb, .rp-thumb').forEach(el => {
       el.style.transform = 'none';
       const clone = el.cloneNode(true);
       el.parentNode.replaceChild(clone, el);
     });
 
-    // 7. Giáº£m sá»‘ lÆ°á»£ng fade-up animation â€” chá»‰ giá»¯ opacity, bá» translateY
+    // 7. Reduce fade-up animations - keep opacity only, remove translateY
     const mobileAnimStyle = document.createElement('style');
     mobileAnimStyle.textContent = `
       .fade-up { transform: none !important; transition: opacity 0.5s ease !important; }
@@ -56,11 +56,11 @@
     `;
     document.head.appendChild(mobileAnimStyle);
 
-    // 8. Táº¯t hue shift on scroll
+    // 8. Disable hue shift on scroll
     const hueEl = document.getElementById('hue-shift-style');
     if (hueEl) hueEl.textContent = '';
 
-    // 10. Táº¯t hero opacity fade (quÃ¡ náº·ng trÃªn mobile)
+    // 10. Disable hero opacity fade (too heavy on mobile)
     const heroLeftEl  = document.querySelector('.hero-left');
     const heroRightEl = document.querySelector('.hero-right');
     if (heroLeftEl)  heroLeftEl.style.opacity  = '1';
@@ -82,9 +82,9 @@
   });
 
   // CURSOR ADAPTIVE COLOR
-  // dark bg (projects, hobbies, footer) â†’ white cursor
-  // rust/orange bg (ai-section, stats-bar) â†’ white cursor
-  // light bg (hero-left, about, activities, contact-form) â†’ rust cursor
+  // dark bg (projects, hobbies, footer) -> white cursor
+  // rust/orange bg (ai-section, stats-bar) -> white cursor
+  // light bg (hero-left, about, activities, contact-form) -> rust cursor
   const cursorColorMap = [
     { selector: '#projects',             color: '#ffffff', ring: 'rgba(255,255,255,0.5)' },
     { selector: '#hobbies',              color: '#ffffff', ring: 'rgba(255,255,255,0.5)' },
@@ -176,9 +176,9 @@
   lb.addEventListener('click',e=>{if(e.target===lb)closeLightbox();});
   document.addEventListener('keydown',e=>{if(!lb.classList.contains('active'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft'){lbIndex=(lbIndex-1+lbImages.length)%lbImages.length;showLbImage();}if(e.key==='ArrowRight'){lbIndex=(lbIndex+1)%lbImages.length;showLbImage();}});
 
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ======================================
   // FUN UI FEATURES
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ======================================
 
   // 1. CURSOR TRAIL
   const trailPool = [];
@@ -272,17 +272,7 @@
   },{threshold:0.5});
   document.querySelectorAll('.section-title').forEach(t=>scrambleObs.observe(t));
 
-  // 6. GRID OVERLAY (press G)
-  const gridOverlay=document.createElement('div');
-  gridOverlay.style.cssText='position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:0;transition:opacity 0.3s ease;background-image:linear-gradient(rgba(184,76,42,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(184,76,42,0.08) 1px,transparent 1px);background-size:40px 40px;';
-  document.body.appendChild(gridOverlay);
-  let gridOn=false;
-  document.addEventListener('keydown',e=>{
-    if(e.key==='g'||e.key==='G'){
-      gridOn=!gridOn;
-      gridOverlay.style.opacity=gridOn?'1':'0';
-    }
-  });
+
 
   // NEW FEATURES
 
@@ -353,50 +343,30 @@
     });
     localStorage.setItem('btk-theme',t);
   }
-  // Load saved theme
+  // Load saved theme or auto-detect dark mode
   const savedTheme=localStorage.getItem('btk-theme');
-  if(savedTheme) applyTheme(savedTheme);
+  if(savedTheme) {
+    applyTheme(savedTheme);
+  } else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    applyTheme('dark');
+  }
+  // Listen for OS theme changes
+  if(window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if(!localStorage.getItem('btk-theme')) applyTheme(e.matches ? 'dark' : 'light');
+    });
+  }
   // Dot click
   document.querySelectorAll('.theme-dot').forEach(d=>{
-    d.addEventListener('click',()=>applyTheme(d.dataset.theme));
-  });
-  // Keyboard: press T to cycle themes
-  document.addEventListener('keydown',e=>{
-    if((e.key==='t'||e.key==='T')&&!e.ctrlKey&&!e.metaKey){
-      const idx=(themes.indexOf(currentTheme)+1)%themes.length;
-      applyTheme(themes[idx]);
-    }
+    d.addEventListener('click',()=>{
+      applyTheme(d.dataset.theme);
+      document.body.setAttribute('data-theme-set','1');
+    });
   });
 
-  // 8. EASTER EGG â€” press K
-  const eggOverlay=document.createElement('div');
-  eggOverlay.style.cssText='position:fixed;inset:0;z-index:99998;background:rgba(14,12,10,0.96);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;opacity:0;visibility:hidden;transition:opacity 0.4s ease;cursor:none;';
-  eggOverlay.innerHTML=`
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,6rem);color:#b84c2a;letter-spacing:0.1em;text-align:center;line-height:1">YOU FOUND<br><span style="color:#f5f0e8">THE SECRET</span></div>
-    <div style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:#8a7f72;text-transform:uppercase;text-align:center;max-width:400px;line-height:2">
-      Bach Thai Khang Â· Architecture Student Â· Gamer Â· Explorer<br>
-      Born 2004 Â· Hanoi Â· Loves esports &amp; photography<br>
-      <span style="color:#b84c2a">hienkhang2004@gmail.com</span>
-    </div>
-    <div style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;color:#4a4a4a;text-transform:uppercase;margin-top:1rem">Click anywhere to close Â· Press K again to toggle</div>
-  `;
-  document.body.appendChild(eggOverlay);
-  document.addEventListener('keydown',e=>{
-    if(lb.classList.contains('active'))return;
-    if(e.key==='k'||e.key==='K'){
-      const visible=eggOverlay.style.visibility==='visible';
-      eggOverlay.style.opacity=visible?'0':'1';
-      eggOverlay.style.visibility=visible?'hidden':'visible';
-    }
-  });
-  eggOverlay.addEventListener('click',()=>{
-    eggOverlay.style.opacity='0';
-    setTimeout(()=>eggOverlay.style.visibility='hidden',400);
-  });
-
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ======================================
   // POLISH FEATURES
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ======================================
 
   // 1. ACTIVE NAV HIGHLIGHT
   const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
@@ -498,9 +468,9 @@
   splitEls.forEach(el => splitObs.observe(el));
 
 
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ======================================
   // PARTICLE FIELD â€” GPU Canvas
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ======================================
   (function(){
     const canvas = document.getElementById('particle-canvas');
     if (!canvas) return;
@@ -696,9 +666,9 @@
   })();
 
 
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ======================================
   // 10 NEW EFFECTS
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ======================================
 
 
   // 2. COLOR SHIFT ON SCROLL
@@ -862,9 +832,9 @@
   });
 
 
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ======================================
   // 10 NEW COMBO EFFECTS Aâ†’Z
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ======================================
 
   // 1. CUSTOM RIGHT-CLICK CONTEXT MENU
   const ctxMenu = document.getElementById('ctx-menu');
@@ -1122,9 +1092,9 @@
     }
   });
 
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ======================================
   // NEW FUNCTIONAL FEATURES
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ======================================
 
   // 1. PROJECT FILTER
   function filterProjects(cat, btn) {

@@ -12,21 +12,30 @@ const PRECACHE_ASSETS = [
   './index.html',
   './index-vi.html',
   './404.html',
+  './style.css',
+  './script.js',
   './manifest.json',
   './favicon.svg',
   './assets/cv.pdf',
 ];
 
-// Install — pre-cache core assets
+// Install — pre-cache core assets (graceful: skip missing files)
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
+    caches.open(CACHE_NAME).then(async cache => {
       console.log('[SW] Pre-caching core assets');
-      return cache.addAll(PRECACHE_ASSETS);
+      for (const url of PRECACHE_ASSETS) {
+        try {
+          await cache.add(url);
+        } catch (err) {
+          console.warn('[SW] Failed to cache:', url, err.message);
+        }
+      }
     })
   );
   self.skipWaiting();
 });
+
 
 // Activate — clean old caches
 self.addEventListener('activate', event => {
