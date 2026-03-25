@@ -1,10 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://gnahkiahtport.space/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://gnahkiahtport.space/assets/cover.jpg</image:loc>
+      <image:title>Bach Thai Khang — Architectural Portfolio Cover</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gnahkiahtport.space/assets/avatar.jpg</image:loc>
+      <image:title>Bach Thai Khang Portrait</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gnahkiahtport.space/assets/studio2_f1.jpg</image:loc>
+      <image:title>Old Quarter House Renovation — Studio 02</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gnahkiahtport.space/assets/studio4_hero.jpg</image:loc>
+      <image:title>Phuc Minh Khang Multi-Level School — Studio 04</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gnahkiahtport.space/assets/urban_plan.jpg</image:loc>
+      <image:title>Van Quan Lake Urban Design</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gnahkiahtport.space/assets/indochine_hero.jpg</image:loc>
+      <image:title>Indochine Restaurant Facade Design</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gnahkiahtport.space/assets/school1b_hero.jpg</image:loc>
+      <image:title>Middle School 1B Co Nhue — Concept Design</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gnahkiahtport.space/assets/sipaphin_hero.jpg</image:loc>
+      <image:title>Si Pa Phin School — Concept Design</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gnahkiahtport.space/assets/ai_before.jpg</image:loc>
+      <image:title>AI Facade Ideation — Before</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gnahkiahtport.space/assets/ai_after.jpg</image:loc>
+      <image:title>AI Facade Ideation — After Render</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://gnahkiahtport.space/index-vi.html</loc>

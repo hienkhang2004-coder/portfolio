@@ -26,7 +26,42 @@
 <meta name="twitter:description" content="Architecture student IITC · Hanoi University of Architecture · Sunjin Vietnam">
 <meta name="twitter:image" content="https://gnahkiahtport.space/assets/cover.jpg">
 <meta name="thumbnail" content="https://gnahkiahtport.space/assets/cover.jpg">
+<link rel="alternate" type="application/rss+xml" title="BTK Portfolio RSS" href="./feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Bach Thai Khang",
+    "jobTitle": "Architecture Student",
+    "url": "https://gnahkiahtport.space/",
+    "image": "https://gnahkiahtport.space/assets/avatar.jpg",
+    "email": "hienkhang2004@gmail.com",
+    "telephone": "+84978786930",
+    "address": {"@type": "PostalAddress", "addressLocality": "Hanoi", "addressCountry": "VN"},
+    "alumniOf": {"@type": "CollegeOrUniversity", "name": "Hanoi University of Architecture"},
+    "worksFor": {"@type": "Organization", "name": "Sunjin Vietnam JV"},
+    "knowsAbout": ["Revit", "AutoCAD", "SketchUp", "3ds Max", "Corona", "Photoshop", "Lumion", "D5 Render", "AI Tools"],
+    "sameAs": [
+      "https://www.instagram.com/__gnahkiaht/",
+      "https://www.facebook.com/khagg7z7/"
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+[
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"Old Quarter House Renovation","description":"Renovating a house in a Hanoi Old Quarter alley — optimising light flow, ventilation, and living spaces.","image":"https://gnahkiahtport.space/assets/studio2_f1.jpg","author":{"@type":"Person","name":"Bach Thai Khang"}},
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"Phuc Minh Khang Multi-Level School","description":"Full school complex design — integrating landscape, functional zoning, and a contemporary facade.","image":"https://gnahkiahtport.space/assets/studio4_hero.jpg","author":{"@type":"Person","name":"Bach Thai Khang"}},
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"Van Quan Lake Urban Design","description":"Lakeside urban design — walkways, public amenities, and green-corridor intersections.","image":"https://gnahkiahtport.space/assets/urban_plan.jpg","author":{"@type":"Person","name":"Bach Thai Khang"}},
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"Indochine Restaurant Facade","description":"Facade redesign blending traditional materials with contemporary architectural language.","image":"https://gnahkiahtport.space/assets/indochine_hero.jpg","author":{"@type":"Person","name":"Bach Thai Khang"}},
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"Si Pa Phin Multi-Level School","description":"Three-level school for 1000+ students in Si Pa Phin commune, Dien Bien.","image":"https://gnahkiahtport.space/assets/sipaphin_hero.jpg","author":{"@type":"Person","name":"Bach Thai Khang"}}
+]
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
   :root { --ink:#0e0c0a; --paper:#f5f0e8; --rust:#b84c2a; --warm:#d4a96a; --muted:#8a7f72; --light:#e8e2d6; --dark:#1a1612; --accent:#c4501e; }
@@ -721,16 +756,97 @@
     backdrop-filter: blur(8px);
   }
 </style>
-<!-- Google Analytics — thay G-XXXXXXXXXX bằng Measurement ID thật của bạn -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- Google Analytics — thay G-8JKJG95Z7S bằng Measurement ID thật của bạn -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8JKJG95Z7S"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('config', 'G-8JKJG95Z7S');
 </script>
+<style>
+  /* PREFERS REDUCED MOTION */
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;}
+    .draw-path{stroke-dashoffset:0!important;}
+    .split-reveal .char{opacity:1!important;transform:none!important;}
+    .fade-up{opacity:1!important;transform:none!important;}
+    .section-watermark{display:none;}
+    #particle-canvas{display:none;}
+  }
+  /* SKIP LINK */
+  .skip-link{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--rust);color:white;padding:0.8rem 1.5rem;z-index:100000;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-decoration:none;text-transform:uppercase;transition:top 0.2s;}
+  .skip-link:focus{top:0;}
+  /* LANG BANNER */
+  .lang-suggest{position:fixed;top:0;left:0;right:0;z-index:99997;display:flex;align-items:center;justify-content:center;gap:1rem;padding:0.6rem 1rem;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;background:rgba(14,12,10,0.92);backdrop-filter:blur(12px);color:var(--paper);transform:translateY(-100%);transition:transform 0.4s ease;}
+  .lang-suggest.show{transform:translateY(0);}
+  .lang-suggest .lang-yes{background:var(--rust);color:white;border:none;padding:0.3rem 1rem;cursor:pointer;font-family:inherit;font-size:inherit;letter-spacing:inherit;}
+  .lang-suggest .lang-no{background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:1rem;}
+  /* CV MODAL */
+  .cv-modal{position:fixed;inset:0;z-index:99996;background:rgba(14,12,10,0.95);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;}
+  .cv-modal.active{opacity:1;visibility:visible;}
+  .cv-modal iframe{width:min(900px,90vw);height:80vh;border:1px solid rgba(255,255,255,0.1);background:white;}
+  .cv-modal .cv-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;z-index:10;}
+  .cv-modal .cv-fallback{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;}
+  .cv-modal .cv-fallback a{color:var(--rust);}
+  /* PROJECT MODAL */
+  .project-modal{position:fixed;inset:0;z-index:99995;background:rgba(14,12,10,0.97);overflow-y:auto;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;}
+  .project-modal.active{opacity:1;visibility:visible;}
+  .project-modal .pm-close{position:fixed;top:1.5rem;right:2rem;background:none;border:none;color:white;font-size:1.8rem;cursor:pointer;z-index:10;}
+  .project-modal .pm-content{max-width:900px;margin:4rem auto;padding:2rem;color:var(--paper);}
+  .project-modal .pm-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:0.06em;margin-bottom:0.5rem;}
+  .project-modal .pm-num{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--rust);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.5rem;}
+  .project-modal .pm-desc{font-size:1.1rem;line-height:1.8;color:var(--muted);margin:1.5rem 0;font-style:italic;}
+  .project-modal .pm-meta{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--warm);letter-spacing:0.15em;margin-bottom:2rem;}
+  .project-modal .pm-gallery{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin:2rem 0;}
+  .project-modal .pm-gallery img{width:100%;aspect-ratio:16/10;object-fit:cover;border:1px solid rgba(255,255,255,0.08);}
+  @media(max-width:600px){.project-modal .pm-gallery{grid-template-columns:1fr;}}
+  /* PROJECT FILTER */
+  .project-filter{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:2rem;}
+  .filter-btn{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.45rem 1rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--muted);cursor:pointer;transition:all 0.2s;}
+  .filter-btn.active,.filter-btn:hover{background:var(--rust);color:white;border-color:var(--rust);}
+  /* TESTIMONIALS */
+  .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;padding:0 2rem;max-width:1100px;margin:0 auto;}
+  .testimonial-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);padding:2rem;position:relative;}
+  .testimonial-card::before{content:'"';position:absolute;top:0.5rem;left:1rem;font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--rust);opacity:0.3;line-height:1;}
+  .testimonial-quote{font-size:0.95rem;font-style:italic;color:var(--muted);line-height:1.7;margin-bottom:1.5rem;padding-top:1rem;}
+  .testimonial-author{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:var(--warm);text-transform:uppercase;}
+  .testimonial-role{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;color:rgba(255,255,255,0.3);margin-top:0.3rem;}
+  /* BTN VIEW CV */
+  .btn-view-cv{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.7rem 1.5rem;background:transparent;border:1px solid var(--rust);color:var(--rust);cursor:pointer;transition:all 0.2s;text-decoration:none;}
+  .btn-view-cv:hover{background:var(--rust);color:white;}
+</style>
 </head>
 <body>
+
+<!-- SKIP TO CONTENT -->
+<a class="skip-link" href="#home">Skip to content</a>
+
+<!-- LANGUAGE SUGGESTION BANNER -->
+<div class="lang-suggest" id="langSuggest">
+  <span>🇻🇳 Bạn muốn xem phiên bản tiếng Việt?</span>
+  <button class="lang-yes" onclick="window.location.href='./index-vi.html'">Có</button>
+  <button class="lang-no" onclick="this.parentElement.classList.remove('show');localStorage.setItem('btkLangDismissed','1')">✕</button>
+</div>
+
+<!-- CV VIEWER MODAL -->
+<div class="cv-modal" id="cvModal" role="dialog" aria-label="CV Viewer">
+  <button class="cv-close" onclick="document.getElementById('cvModal').classList.remove('active');document.body.style.overflow=''">✕</button>
+  <iframe src="./assets/cv.pdf" title="Bach Thai Khang CV"></iframe>
+  <div class="cv-fallback">Can't see the PDF? <a href="./assets/cv.pdf" download>Download it here ↓</a></div>
+</div>
+
+<!-- PROJECT DETAIL MODAL -->
+<div class="project-modal" id="projectModal" role="dialog" aria-label="Project Details">
+  <button class="pm-close" onclick="document.getElementById('projectModal').classList.remove('active');document.body.style.overflow=''">✕</button>
+  <div class="pm-content">
+    <div class="pm-num" id="pmNum"></div>
+    <div class="pm-title" id="pmTitle"></div>
+    <div class="pm-meta" id="pmMeta"></div>
+    <div class="pm-desc" id="pmDesc"></div>
+    <div class="pm-gallery" id="pmGallery"></div>
+  </div>
+</div>
 
 <!-- LOADING SCREEN -->
 <div id="loader">
@@ -815,6 +931,7 @@
     </div>
     <div class="hero-cta-row">
       <a class="btn-cv" href="./assets/cv.pdf" download>↓ Download CV</a>
+      <button class="btn-view-cv" onclick="document.getElementById('cvModal').classList.add('active');document.body.style.overflow='hidden'">👁 View CV</button>
     </div>
     <div class="float-label" style="bottom:8rem;left:3rem;--float-dur:3.2s">📍 Hanoi, Vietnam</div>
     <div class="float-label" style="bottom:5rem;left:3rem;--float-dur:2.8s;animation-delay:0.5s">✅ Open to work</div>
@@ -940,9 +1057,17 @@
     <button class="tab-btn active" onclick="switchTab('school',this)">School Projects</button>
     <button class="tab-btn" onclick="switchTab('real',this)">Real Projects</button>
   </div>
+  <div class="project-filter" id="projectFilter">
+    <button class="filter-btn active" onclick="filterProjects('all',this)">All</button>
+    <button class="filter-btn" onclick="filterProjects('residential',this)">Residential</button>
+    <button class="filter-btn" onclick="filterProjects('education',this)">Education</button>
+    <button class="filter-btn" onclick="filterProjects('urban',this)">Urban</button>
+    <button class="filter-btn" onclick="filterProjects('facade',this)">Facade</button>
+    <button class="filter-btn" onclick="filterProjects('ai',this)">AI</button>
+  </div>
   <div class="tab-panel active" id="tab-school">
     <div class="project-grid">
-      <div class="project-card fade-up" onclick="flipCard(this)">
+      <div class="project-card fade-up" data-category="residential" onclick="flipCard(this)">
         <div class="project-card-inner">
           <div class="project-card-front">
             <div class="project-card-thumb" onmouseenter="startSlide(this)" onmouseleave="stopSlide(this)">
@@ -973,7 +1098,7 @@
           </div>
         </div>
       </div>
-      <div class="project-card fade-up" onclick="flipCard(this)">
+      <div class="project-card fade-up" data-category="education" onclick="flipCard(this)">
         <div class="project-card-inner">
           <div class="project-card-front">
             <div class="project-card-thumb" onmouseenter="startSlide(this)" onmouseleave="stopSlide(this)">
@@ -1004,7 +1129,7 @@
           </div>
         </div>
       </div>
-      <div class="project-card fade-up" onclick="flipCard(this)">
+      <div class="project-card fade-up" data-category="urban" onclick="flipCard(this)">
         <div class="project-card-inner">
           <div class="project-card-front">
             <div class="project-card-thumb" onmouseenter="startSlide(this)" onmouseleave="stopSlide(this)">
@@ -1038,7 +1163,7 @@
     </div>
   </div>
   <div class="tab-panel" id="tab-real">
-    <div class="real-project-item fade-up">
+    <div class="real-project-item fade-up" data-category="facade">
       <div>
         <div class="rp-label">Indochine Restaurant</div>
         <div class="rp-type">Facade Design</div>
@@ -1059,7 +1184,7 @@
         <div class="rp-tags"><span class="rp-tag">Revit</span><span class="rp-tag">3ds Max</span><span class="rp-tag">Corona</span><span class="rp-tag">Photoshop</span></div>
       </div>
     </div>
-    <div class="real-project-item fade-up">
+    <div class="real-project-item fade-up" data-category="education">
       <div>
         <div class="rp-label">Middle School 1B – Co Nhue</div>
         <div class="rp-type">Concept Design · Bac Tu Liem</div>
@@ -1080,7 +1205,7 @@
         <div class="rp-tags"><span class="rp-tag">SketchUp</span><span class="rp-tag">Lumion</span><span class="rp-tag">AutoCAD</span></div>
       </div>
     </div>
-    <div class="real-project-item fade-up">
+    <div class="real-project-item fade-up" data-category="education">
       <div>
         <div class="rp-label">Si Pa Phin School</div>
         <div class="rp-type">Concept Design · Si Pa Phin, Dien Bien</div>
@@ -1101,7 +1226,7 @@
         <div class="rp-tags"><span class="rp-tag">Concept</span><span class="rp-tag">Sunjin Vietnam</span></div>
       </div>
     </div>
-    <div class="real-project-item fade-up">
+    <div class="real-project-item fade-up" data-category="ai">
       <div>
         <div class="rp-label">AI Facade Ideation</div>
         <div class="rp-type">Before / After · Freelance</div>
@@ -1141,6 +1266,32 @@
     </div>
   </div>
 </div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--dark);padding:6rem 2rem;">
+  <div class="section-header" style="margin-bottom:3rem;">
+    <span class="section-num" style="color:var(--rust);">✦</span>
+    <h2 class="section-title" style="color:var(--paper);font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:0.08em;">TESTIMONIALS</h2>
+    <span class="section-en" style="color:var(--muted);">What they say</span>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-quote">Khang demonstrates exceptional attention to detail and consistently delivers high-quality work. His ability to quickly integrate AI tools into the design process sets him apart from his peers.</div>
+      <div class="testimonial-author">Arch. Tran Nguyen Quang</div>
+      <div class="testimonial-role">Concept Team Lead · Sunjin Vietnam JV</div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-quote">During his internship, Khang showed strong proficiency in Revit and an impressive work ethic. He contributed meaningfully to our residential and high-rise projects with reliable, professional output.</div>
+      <div class="testimonial-author">HAD Architects</div>
+      <div class="testimonial-role">Architecture Studio · Hanoi</div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-quote">A dedicated student who consistently meets deadlines and produces thoughtful, well-researched designs. Khang's teamwork skills and creative problem-solving make him a valuable collaborator.</div>
+      <div class="testimonial-author">M.Arch. Eytan Fichman</div>
+      <div class="testimonial-role">Advisor · IITC Program, HAU</div>
+    </div>
+  </div>
+</section>
 
 <!-- ACTIVITIES -->
 <section id="activities">
@@ -2446,6 +2597,101 @@
       popup.classList.remove('open');
     }
   });
+
+  // ══════════════════════════════════════
+  // NEW FUNCTIONAL FEATURES
+  // ══════════════════════════════════════
+
+  // 1. PROJECT FILTER
+  function filterProjects(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    const allCards = document.querySelectorAll('.project-card[data-category], .real-project-item[data-category]');
+    allCards.forEach(card => {
+      if (cat === 'all' || card.dataset.category === cat) {
+        card.style.display = '';
+        card.style.opacity = '1';
+      } else {
+        card.style.opacity = '0';
+        setTimeout(() => card.style.display = 'none', 200);
+      }
+    });
+  }
+
+  // 2. PROJECT DETAIL MODAL
+  document.querySelectorAll('.project-card .project-card-arrow').forEach(arrow => {
+    arrow.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const card = this.closest('.project-card');
+      const modal = document.getElementById('projectModal');
+      const numEl = card.querySelector('.project-card-num');
+      const titleEl = card.querySelector('.project-card-title');
+      const descEl = card.querySelector('.back-desc') || card.querySelector('.project-card-sub');
+      const metaEl = card.querySelector('.back-meta');
+      const imgs = card.querySelectorAll('.slide-img');
+
+      document.getElementById('pmNum').textContent = numEl ? numEl.textContent : '';
+      document.getElementById('pmTitle').textContent = titleEl ? titleEl.textContent : '';
+      document.getElementById('pmDesc').textContent = descEl ? descEl.textContent : '';
+      document.getElementById('pmMeta').textContent = metaEl ? metaEl.textContent : '';
+
+      const gallery = document.getElementById('pmGallery');
+      gallery.innerHTML = '';
+      imgs.forEach(img => {
+        const clone = document.createElement('img');
+        clone.src = img.src;
+        clone.alt = img.alt;
+        clone.loading = 'lazy';
+        gallery.appendChild(clone);
+      });
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Close modals on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.getElementById('cvModal').classList.remove('active');
+      document.getElementById('projectModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // 3. LANGUAGE AUTO-DETECT
+  (function(){
+    if (localStorage.getItem('btkLangDismissed')) return;
+    const isVi = /^vi/i.test(navigator.language || '');
+    if (isVi) {
+      setTimeout(() => document.getElementById('langSuggest').classList.add('show'), 3000);
+    }
+  })();
+
+  // 4. SERVICE WORKER REGISTRATION
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').then(reg => {
+        console.log('[SW] Registered:', reg.scope);
+      }).catch(err => console.log('[SW] Registration failed:', err));
+    });
+  }
+
+  // 5. ARIA ENHANCEMENTS
+  (function(){
+    // Tab panels
+    document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-selected', btn.classList.contains('active'));
+    });
+    document.querySelectorAll('.tab-panel').forEach(p => p.setAttribute('role', 'tabpanel'));
+    // Lightbox
+    const lbEl = document.getElementById('lightbox');
+    if (lbEl) { lbEl.setAttribute('role', 'dialog'); lbEl.setAttribute('aria-label', 'Image Lightbox'); }
+    // Chat
+    const chatPopup = document.getElementById('chat-popup');
+    if (chatPopup) { chatPopup.setAttribute('role', 'dialog'); chatPopup.setAttribute('aria-label', 'Chat with Khang'); }
+  })();
 
 </script>
 </body>

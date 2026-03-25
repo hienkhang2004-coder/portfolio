@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bach Thai Khang — Architectural Portfolio</title>
+    <link>https://gnahkiahtport.space/</link>
+    <description>Architecture student portfolio — Hanoi University of Architecture, IITC program. Featuring school projects, real-world design work, and urban planning.</description>
+    <language>en</language>
+    <lastBuildDate>Tue, 25 Mar 2026 00:00:00 +0700</lastBuildDate>
+    <atom:link href="https://gnahkiahtport.space/feed.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://gnahkiahtport.space/assets/cover.jpg</url>
+      <title>Bach Thai Khang Portfolio</title>
+      <link>https://gnahkiahtport.space/</link>
+    </image>
+
+    <item>
+      <title>Si Pa Phin School — Concept Design</title>
+      <link>https://gnahkiahtport.space/#projects</link>
+      <description>A three-level school (Primary – Lower Secondary – Upper Secondary) in Si Pa Phin commune, Dien Bien. Designed for 31 classrooms serving over 1,000 students. The campus includes modern classrooms, a boarding facility, multi-purpose hall, library, sports field, and swimming pool.</description>
+      <pubDate>Mon, 01 Jul 2025 00:00:00 +0700</pubDate>
+      <guid isPermaLink="false">btk-sipaphin-2025</guid>
+    </item>
+
+    <item>
+      <title>Middle School 1B — Co Nhue, Bac Tu Liem</title>
+      <link>https://gnahkiahtport.space/#projects</link>
+      <description>Concept design for a 3,900 m² middle school in Co Nhue Ward, Bac Tu Liem District. Full design with gymnasium block, connecting corridors, and landscaping system.</description>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0700</pubDate>
+      <guid isPermaLink="false">btk-school1b-2025</guid>
+    </item>
+
+    <item>
+      <title>Indochine Restaurant — Facade Design</title>
+      <link>https://gnahkiahtport.space/#projects</link>
+      <description>Redesigned the facade of an Indochine-style restaurant — blending traditional materials with a contemporary architectural language. Includes site plan, ground and second-floor layouts.</description>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0700</pubDate>
+      <guid isPermaLink="false">btk-indochine-2024</guid>
+    </item>
+
+    <item>
+      <title>Phuc Minh Khang Multi-Level School — Studio 04</title>
+      <link>https://gnahkiahtport.space/#projects</link>
+      <description>Full school complex design — integrating landscape, functional zoning, and a contemporary facade. Advisor: Arch. Tran Nguyen Quang, Sunjin Vietnam.</description>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0700</pubDate>
+      <guid isPermaLink="false">btk-studio04-2024</guid>
+    </item>
+
+    <item>
+      <title>Van Quan Lake Urban Design — Urban Q3</title>
+      <link>https://gnahkiahtport.space/#projects</link>
+      <description>Lakeside urban design — walkways, public amenities, and green-corridor intersections. 3.2 hectares masterplan in Ha Dong district.</description>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0700</pubDate>
+      <guid isPermaLink="false">btk-urbanq3-2024</guid>
+    </item>
+
+    <item>
+      <title>Old Quarter House Renovation — Studio 02</title>
+      <link>https://gnahkiahtport.space/#projects</link>
+      <description>Renovating a house in a Hanoi Old Quarter alley — optimising light flow, ventilation, and living spaces within a 4m-wide footprint. Advisor: M.Arch. Eytan Fichman, IITC.</description>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0700</pubDate>
+      <guid isPermaLink="false">btk-studio02-2023</guid>
+    </item>
+
+    <item>
+      <title>AI Facade Ideation — Before/After</title>
+      <link>https://gnahkiahtport.space/#projects</link>
+      <description>Applied AI tools to facade design ideation — transforming a blank 3D mass into a full architectural proposal with materials, colours, and landscaping for Lotus Grand Hotel.</description>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0700</pubDate>
+      <guid isPermaLink="false">btk-aifacade-2024</guid>
+    </item>
+  </channel>
+</rss>

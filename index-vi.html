@@ -26,7 +26,42 @@
 <meta name="twitter:description" content="Sinh viên kiến trúc IITC · ĐH Kiến trúc Hà Nội · Sunjin Vietnam">
 <meta name="twitter:image" content="https://gnahkiahtport.space/assets/cover.jpg">
 <meta name="thumbnail" content="https://gnahkiahtport.space/assets/cover.jpg">
+<link rel="alternate" type="application/rss+xml" title="BTK Portfolio RSS" href="./feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Bạch Thái Khang",
+    "jobTitle": "Sinh viên kiến trúc",
+    "url": "https://gnahkiahtport.space/index-vi.html",
+    "image": "https://gnahkiahtport.space/assets/avatar.jpg",
+    "email": "hienkhang2004@gmail.com",
+    "telephone": "+84978786930",
+    "address": {"@type": "PostalAddress", "addressLocality": "Hà Nội", "addressCountry": "VN"},
+    "alumniOf": {"@type": "CollegeOrUniversity", "name": "Đại học Kiến trúc Hà Nội"},
+    "worksFor": {"@type": "Organization", "name": "Sunjin Vietnam JV"},
+    "knowsAbout": ["Revit", "AutoCAD", "SketchUp", "3ds Max", "Corona", "Photoshop", "Lumion", "D5 Render", "AI Tools"],
+    "sameAs": [
+      "https://www.instagram.com/__gnahkiaht/",
+      "https://www.facebook.com/khagg7z7/"
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+[
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"Cải tạo nhà phố cổ","description":"Cải tạo nhà trong ngõ phố cổ — tối ưu hoá lưu thông ánh sáng và không gian sinh hoạt.","image":"https://gnahkiahtport.space/assets/studio2_f1.jpg","author":{"@type":"Person","name":"Bạch Thái Khang"}},
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"Trường liên cấp Phúc Minh Khang","description":"Thiết kế tổng thể trường liên cấp — tích hợp cảnh quan và mặt đứng hiện đại.","image":"https://gnahkiahtport.space/assets/studio4_hero.jpg","author":{"@type":"Person","name":"Bạch Thái Khang"}},
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"Đô thị hồ Văn Quán","description":"Quy hoạch đô thị ven hồ — thiết kế dạo bộ và hành lang xanh.","image":"https://gnahkiahtport.space/assets/urban_plan.jpg","author":{"@type":"Person","name":"Bạch Thái Khang"}},
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"Nhà hàng Indochine","description":"Thiết kế lại mặt đứng nhà hàng phong cách Đông Dương.","image":"https://gnahkiahtport.space/assets/indochine_hero.jpg","author":{"@type":"Person","name":"Bạch Thái Khang"}},
+  {"@context":"https://schema.org","@type":"CreativeWork","name":"Trường Liên Cấp Si Pa Phìn","description":"Trường liên cấp 3 cấp cho hơn 1.000 học sinh tại xã Si Pa Phìn, Điện Biên.","image":"https://gnahkiahtport.space/assets/sipaphin_hero.jpg","author":{"@type":"Person","name":"Bạch Thái Khang"}}
+]
+</script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Bebas+Neue&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
   :root { --ink:#0e0c0a; --paper:#f5f0e8; --rust:#b84c2a; --warm:#d4a96a; --muted:#8a7f72; --light:#e8e2d6; --dark:#1a1612; --accent:#c4501e; }
@@ -721,16 +756,85 @@
     backdrop-filter: blur(8px);
   }
 </style>
-<!-- Google Analytics — thay G-XXXXXXXXXX bằng Measurement ID thật của bạn -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- Google Analytics — thay G-8JKJG95Z7S bằng Measurement ID thật của bạn -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8JKJG95Z7S"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('config', 'G-8JKJG95Z7S');
 </script>
+<style>
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;}
+    .draw-path{stroke-dashoffset:0!important;}
+    .split-reveal .char{opacity:1!important;transform:none!important;}
+    .fade-up{opacity:1!important;transform:none!important;}
+    .section-watermark{display:none;}
+    #particle-canvas{display:none;}
+  }
+  .skip-link{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--rust);color:white;padding:0.8rem 1.5rem;z-index:100000;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-decoration:none;text-transform:uppercase;transition:top 0.2s;}
+  .skip-link:focus{top:0;}
+  .lang-suggest{position:fixed;top:0;left:0;right:0;z-index:99997;display:flex;align-items:center;justify-content:center;gap:1rem;padding:0.6rem 1rem;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;background:rgba(14,12,10,0.92);backdrop-filter:blur(12px);color:var(--paper);transform:translateY(-100%);transition:transform 0.4s ease;}
+  .lang-suggest.show{transform:translateY(0);}
+  .lang-suggest .lang-yes{background:var(--rust);color:white;border:none;padding:0.3rem 1rem;cursor:pointer;font-family:inherit;font-size:inherit;letter-spacing:inherit;}
+  .lang-suggest .lang-no{background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:1rem;}
+  .cv-modal{position:fixed;inset:0;z-index:99996;background:rgba(14,12,10,0.95);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;}
+  .cv-modal.active{opacity:1;visibility:visible;}
+  .cv-modal iframe{width:min(900px,90vw);height:80vh;border:1px solid rgba(255,255,255,0.1);background:white;}
+  .cv-modal .cv-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;z-index:10;}
+  .cv-modal .cv-fallback{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;}
+  .cv-modal .cv-fallback a{color:var(--rust);}
+  .project-modal{position:fixed;inset:0;z-index:99995;background:rgba(14,12,10,0.97);overflow-y:auto;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;}
+  .project-modal.active{opacity:1;visibility:visible;}
+  .project-modal .pm-close{position:fixed;top:1.5rem;right:2rem;background:none;border:none;color:white;font-size:1.8rem;cursor:pointer;z-index:10;}
+  .project-modal .pm-content{max-width:900px;margin:4rem auto;padding:2rem;color:var(--paper);}
+  .project-modal .pm-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:0.06em;margin-bottom:0.5rem;}
+  .project-modal .pm-num{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--rust);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.5rem;}
+  .project-modal .pm-desc{font-size:1.1rem;line-height:1.8;color:var(--muted);margin:1.5rem 0;font-style:italic;}
+  .project-modal .pm-meta{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--warm);letter-spacing:0.15em;margin-bottom:2rem;}
+  .project-modal .pm-gallery{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin:2rem 0;}
+  .project-modal .pm-gallery img{width:100%;aspect-ratio:16/10;object-fit:cover;border:1px solid rgba(255,255,255,0.08);}
+  @media(max-width:600px){.project-modal .pm-gallery{grid-template-columns:1fr;}}
+  .project-filter{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:2rem;}
+  .filter-btn{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.45rem 1rem;background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--muted);cursor:pointer;transition:all 0.2s;}
+  .filter-btn.active,.filter-btn:hover{background:var(--rust);color:white;border-color:var(--rust);}
+  .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;padding:0 2rem;max-width:1100px;margin:0 auto;}
+  .testimonial-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);padding:2rem;position:relative;}
+  .testimonial-card::before{content:'"';position:absolute;top:0.5rem;left:1rem;font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--rust);opacity:0.3;line-height:1;}
+  .testimonial-quote{font-size:0.95rem;font-style:italic;color:var(--muted);line-height:1.7;margin-bottom:1.5rem;padding-top:1rem;}
+  .testimonial-author{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:var(--warm);text-transform:uppercase;}
+  .testimonial-role{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;color:rgba(255,255,255,0.3);margin-top:0.3rem;}
+  .btn-view-cv{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.7rem 1.5rem;background:transparent;border:1px solid var(--rust);color:var(--rust);cursor:pointer;transition:all 0.2s;text-decoration:none;}
+  .btn-view-cv:hover{background:var(--rust);color:white;}
+</style>
 </head>
 <body>
+
+<a class="skip-link" href="#home">Bỏ qua đến nội dung</a>
+
+<div class="lang-suggest" id="langSuggest">
+  <span>🇬🇧 Switch to English version?</span>
+  <button class="lang-yes" onclick="window.location.href='./index.html'">Yes</button>
+  <button class="lang-no" onclick="this.parentElement.classList.remove('show');localStorage.setItem('btkLangDismissed','1')">✕</button>
+</div>
+
+<div class="cv-modal" id="cvModal" role="dialog" aria-label="Xem CV">
+  <button class="cv-close" onclick="document.getElementById('cvModal').classList.remove('active');document.body.style.overflow=''">✕</button>
+  <iframe src="./assets/cv.pdf" title="Bạch Thái Khang CV"></iframe>
+  <div class="cv-fallback">Không thấy PDF? <a href="./assets/cv.pdf" download>Tải về tại đây ↓</a></div>
+</div>
+
+<div class="project-modal" id="projectModal" role="dialog" aria-label="Chi tiết đồ án">
+  <button class="pm-close" onclick="document.getElementById('projectModal').classList.remove('active');document.body.style.overflow=''">✕</button>
+  <div class="pm-content">
+    <div class="pm-num" id="pmNum"></div>
+    <div class="pm-title" id="pmTitle"></div>
+    <div class="pm-meta" id="pmMeta"></div>
+    <div class="pm-desc" id="pmDesc"></div>
+    <div class="pm-gallery" id="pmGallery"></div>
+  </div>
+</div>
 
 <!-- LOADING SCREEN -->
 <div id="loader">
@@ -815,6 +919,7 @@
     </div>
     <div class="hero-cta-row">
       <a class="btn-cv" href="./assets/cv.pdf" download>↓ Tải CV</a>
+      <button class="btn-view-cv" onclick="document.getElementById('cvModal').classList.add('active');document.body.style.overflow='hidden'">👁 Xem CV</button>
     </div>
     <div class="float-label" style="bottom:8rem;left:3rem;--float-dur:3.2s">📍 Hà Nội, Việt Nam</div>
     <div class="float-label" style="bottom:5rem;left:3rem;--float-dur:2.8s;animation-delay:0.5s">✅ Sẵn sàng làm việc</div>
@@ -940,9 +1045,17 @@
     <button class="tab-btn active" onclick="switchTab('school',this)">Đồ án trong trường</button>
     <button class="tab-btn" onclick="switchTab('real',this)">Dự án thực tế</button>
   </div>
+  <div class="project-filter" id="projectFilter">
+    <button class="filter-btn active" onclick="filterProjects('all',this)">Tất cả</button>
+    <button class="filter-btn" onclick="filterProjects('residential',this)">Nhà ở</button>
+    <button class="filter-btn" onclick="filterProjects('education',this)">Giáo dục</button>
+    <button class="filter-btn" onclick="filterProjects('urban',this)">Đô thị</button>
+    <button class="filter-btn" onclick="filterProjects('facade',this)">Mặt đứng</button>
+    <button class="filter-btn" onclick="filterProjects('ai',this)">AI</button>
+  </div>
   <div class="tab-panel active" id="tab-school">
     <div class="project-grid">
-      <div class="project-card fade-up" onclick="flipCard(this)">
+      <div class="project-card fade-up" data-category="residential" onclick="flipCard(this)">
         <div class="project-card-inner">
           <div class="project-card-front">
             <div class="project-card-thumb" onmouseenter="startSlide(this)" onmouseleave="stopSlide(this)">
@@ -973,7 +1086,7 @@
           </div>
         </div>
       </div>
-      <div class="project-card fade-up" onclick="flipCard(this)">
+      <div class="project-card fade-up" data-category="education" onclick="flipCard(this)">
         <div class="project-card-inner">
           <div class="project-card-front">
             <div class="project-card-thumb" onmouseenter="startSlide(this)" onmouseleave="stopSlide(this)">
@@ -1004,7 +1117,7 @@
           </div>
         </div>
       </div>
-      <div class="project-card fade-up" onclick="flipCard(this)">
+      <div class="project-card fade-up" data-category="urban" onclick="flipCard(this)">
         <div class="project-card-inner">
           <div class="project-card-front">
             <div class="project-card-thumb" onmouseenter="startSlide(this)" onmouseleave="stopSlide(this)">
@@ -1038,7 +1151,7 @@
     </div>
   </div>
   <div class="tab-panel" id="tab-real">
-    <div class="real-project-item fade-up">
+    <div class="real-project-item fade-up" data-category="facade">
       <div>
         <div class="rp-label">Nhà hàng Indochine</div>
         <div class="rp-type">Thiết kế mặt đứng</div>
@@ -1059,7 +1172,7 @@
         <div class="rp-tags"><span class="rp-tag">Revit</span><span class="rp-tag">3ds Max</span><span class="rp-tag">Corona</span><span class="rp-tag">Photoshop</span></div>
       </div>
     </div>
-    <div class="real-project-item fade-up">
+    <div class="real-project-item fade-up" data-category="education">
       <div>
         <div class="rp-label">THCS 1B – Cổ Nhuế</div>
         <div class="rp-type">Concept Design · Bắc Từ Liêm</div>
@@ -1080,7 +1193,7 @@
         <div class="rp-tags"><span class="rp-tag">SketchUp</span><span class="rp-tag">Lumion</span><span class="rp-tag">AutoCAD</span></div>
       </div>
     </div>
-    <div class="real-project-item fade-up">
+    <div class="real-project-item fade-up" data-category="education">
       <div>
         <div class="rp-label">Trường Liên Cấp Si Pa Phìn</div>
         <div class="rp-type">Concept Design · Si Pa Phìn, Điện Biên</div>
@@ -1101,7 +1214,7 @@
         <div class="rp-tags"><span class="rp-tag">Concept</span><span class="rp-tag">Sunjin Vietnam</span></div>
       </div>
     </div>
-    <div class="real-project-item fade-up">
+    <div class="real-project-item fade-up" data-category="ai">
       <div>
         <div class="rp-label">AI Facade Ideation</div>
         <div class="rp-type">Before / After · Freelance</div>
@@ -1141,6 +1254,32 @@
     </div>
   </div>
 </div>
+
+<!-- NHẬN XÉT -->
+<section id="testimonials" style="background:var(--dark);padding:6rem 2rem;">
+  <div class="section-header" style="margin-bottom:3rem;">
+    <span class="section-num" style="color:var(--rust);">✦</span>
+    <h2 class="section-title" style="color:var(--paper);font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:0.08em;">NHẬN XÉT</h2>
+    <span class="section-en" style="color:var(--muted);">Testimonials</span>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-quote">Khang thể hiện sự tỉ mỉ vượt trội và luôn mang lại sản phẩm chất lượng cao. Khả năng tích hợp nhanh chóng công cụ AI vào quy trình thiết kế là điểm nổi bật của Khang so với đồng nghiệp.</div>
+      <div class="testimonial-author">Kts. Trần Nguyên Quang</div>
+      <div class="testimonial-role">Trưởng nhóm Concept · Sunjin Vietnam JV</div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-quote">Trong quá trình thực tập, Khang cho thấy sự thành thạo về Revit và tinh thần làm việc ấn tượng. Khang đóng góp ý nghĩa vào các dự án nhà ở và cao tầng với sản phẩm chuyên nghiệp, đáng tin cậy.</div>
+      <div class="testimonial-author">HAD Architects</div>
+      <div class="testimonial-role">Studio Kiến trúc · Hà Nội</div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-quote">Một sinh viên tận tâm, luôn hoàn thành đúng deadline và tạo ra những đồ án chỉn chu, có chiều sâu. Kỹ năng làm việc nhóm và giải quyết vấn đề sáng tạo khiến Khang trở thành đồng đội quý giá.</div>
+      <div class="testimonial-author">Ths.Kts. Eytan Fichman</div>
+      <div class="testimonial-role">Giảng viên · Chương trình IITC, ĐHKTHN</div>
+    </div>
+  </div>
+</section>
 
 <!-- ACTIVITIES -->
 <section id="activities">
@@ -2446,6 +2585,82 @@
       popup.classList.remove('open');
     }
   });
+
+  // ══════════════════════════════════════
+  // TÍNH NĂNG CHỨC NĂNG MỚI
+  // ══════════════════════════════════════
+
+  function filterProjects(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    const allCards = document.querySelectorAll('.project-card[data-category], .real-project-item[data-category]');
+    allCards.forEach(card => {
+      if (cat === 'all' || card.dataset.category === cat) {
+        card.style.display = '';
+        card.style.opacity = '1';
+      } else {
+        card.style.opacity = '0';
+        setTimeout(() => card.style.display = 'none', 200);
+      }
+    });
+  }
+
+  document.querySelectorAll('.project-card .project-card-arrow').forEach(arrow => {
+    arrow.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const card = this.closest('.project-card');
+      const modal = document.getElementById('projectModal');
+      document.getElementById('pmNum').textContent = card.querySelector('.project-card-num')?.textContent || '';
+      document.getElementById('pmTitle').textContent = card.querySelector('.project-card-title')?.textContent || '';
+      document.getElementById('pmDesc').textContent = (card.querySelector('.back-desc') || card.querySelector('.project-card-sub'))?.textContent || '';
+      document.getElementById('pmMeta').textContent = card.querySelector('.back-meta')?.textContent || '';
+      const gallery = document.getElementById('pmGallery');
+      gallery.innerHTML = '';
+      card.querySelectorAll('.slide-img').forEach(img => {
+        const clone = document.createElement('img');
+        clone.src = img.src; clone.alt = img.alt; clone.loading = 'lazy';
+        gallery.appendChild(clone);
+      });
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.getElementById('cvModal').classList.remove('active');
+      document.getElementById('projectModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+
+  (function(){
+    if (localStorage.getItem('btkLangDismissed')) return;
+    const isVi = /^vi/i.test(navigator.language || '');
+    if (!isVi) {
+      setTimeout(() => document.getElementById('langSuggest').classList.add('show'), 3000);
+    }
+  })();
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').then(reg => {
+        console.log('[SW] Registered:', reg.scope);
+      }).catch(err => console.log('[SW] Registration failed:', err));
+    });
+  }
+
+  (function(){
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-selected', btn.classList.contains('active'));
+    });
+    document.querySelectorAll('.tab-panel').forEach(p => p.setAttribute('role', 'tabpanel'));
+    const lbEl = document.getElementById('lightbox');
+    if (lbEl) { lbEl.setAttribute('role', 'dialog'); lbEl.setAttribute('aria-label', 'Lightbox ảnh'); }
+    const chatPopup = document.getElementById('chat-popup');
+    if (chatPopup) { chatPopup.setAttribute('role', 'dialog'); chatPopup.setAttribute('aria-label', 'Chat với Khang'); }
+  })();
 
 </script>
 </body>

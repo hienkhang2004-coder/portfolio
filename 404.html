@@ -146,9 +146,41 @@
 
   @keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
 
+  /* LANG BANNER */
+  .lang-banner{
+    position:fixed;
+    top:1.5rem;
+    right:1.5rem;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    font-family:'DM Mono',monospace;
+    font-size:0.6rem;
+    letter-spacing:0.1em;
+    color:rgba(255,255,255,0.6);
+    background:rgba(255,255,255,0.06);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:0.5rem 1rem;
+    opacity:0;
+    animation:fadeIn 0.5s ease 1.2s both;
+  }
+  .lang-banner .lang-btn{
+    font-family:inherit;font-size:inherit;letter-spacing:inherit;
+    background:var(--rust);color:white;border:none;padding:0.3rem 0.7rem;
+    cursor:none;transition:background 0.2s;text-transform:uppercase;
+  }
+  .lang-banner .lang-btn:hover{background:#d45a30;}
+  .lang-banner .lang-dismiss{
+    font-family:inherit;font-size:inherit;background:transparent;border:none;
+    color:rgba(255,255,255,0.4);cursor:none;padding:0.2rem;
+  }
+
   @media(max-width:540px){
     .links{flex-direction:column;align-items:center;}
     .btn{width:220px;text-align:center;}
+    .lang-banner{top:auto;bottom:1rem;right:1rem;left:1rem;justify-content:center;}
   }
 </style>
 </head>
@@ -162,21 +194,29 @@
 <div class="corner bl"></div>
 <div class="corner br"></div>
 
+<!-- Language Banner -->
+<div class="lang-banner" id="langBanner" style="display:none">
+  <span id="langText">🇻🇳 Bạn muốn xem tiếng Việt?</span>
+  <button class="lang-btn" id="langYes">Có</button>
+  <button class="lang-dismiss" id="langNo">✕</button>
+</div>
+
 <div class="error-num">404</div>
 
 <div class="container">
-  <div class="label">Error 404 · Page not found</div>
-  <div class="title">Lost in the blueprint</div>
+  <div class="label" id="errLabel">Error 404 · Page not found</div>
+  <div class="title" id="errTitle">Lost in the blueprint</div>
   <div class="divider"></div>
-  <p class="desc">The page you're looking for doesn't exist — it may have been moved, renamed, or never built.</p>
+  <p class="desc" id="errDesc">The page you're looking for doesn't exist — it may have been moved, renamed, or never built.</p>
   <div class="links">
-    <a class="btn btn-primary" href="./index.html">← Back to Portfolio</a>
-    <a class="btn btn-secondary" href="./index-vi.html">🇻🇳 Tiếng Việt</a>
+    <a class="btn btn-primary" href="./index.html" id="btnBack">← Back to Portfolio</a>
+    <a class="btn btn-secondary" href="./index-vi.html" id="btnLang">🇻🇳 Tiếng Việt</a>
   </div>
   <div class="coords">BTK · 21.0285°N 105.8542°E · HANOI</div>
 </div>
 
 <script>
+  // CURSOR
   const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
   let mx=0,my=0,rx=0,ry=0;
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
@@ -187,10 +227,44 @@
     requestAnimationFrame(anim);
   }
   anim();
-  document.querySelectorAll('a').forEach(a=>{
+  document.querySelectorAll('a,button').forEach(a=>{
     a.addEventListener('mouseenter',()=>{cursor.style.transform='scale(2)';ring.style.transform='scale(1.5)';});
     a.addEventListener('mouseleave',()=>{cursor.style.transform='';ring.style.transform='';});
   });
+
+  // LANGUAGE DETECTION
+  (function(){
+    const isVi = /^vi/i.test(navigator.language || navigator.userLanguage || '');
+    const dismissed = localStorage.getItem('btk404LangDismissed');
+
+    if(isVi && !dismissed){
+      // Auto-switch text to Vietnamese
+      document.getElementById('errLabel').textContent = 'Lỗi 404 · Không tìm thấy trang';
+      document.getElementById('errTitle').textContent = 'Lạc trong bản vẽ';
+      document.getElementById('errDesc').textContent = 'Trang bạn tìm không tồn tại — có thể đã bị di chuyển, đổi tên, hoặc chưa được xây dựng.';
+      document.getElementById('btnBack').textContent = '← Về trang Portfolio';
+      document.getElementById('btnBack').href = './index-vi.html';
+      document.getElementById('btnLang').textContent = '🇬🇧 English';
+      document.getElementById('btnLang').href = './index.html';
+      document.title = '404 — Không tìm thấy trang · Bạch Thái Khang';
+    } else if(!isVi && !dismissed){
+      // Show language banner for non-Vietnamese users on EN page (no action needed, already EN)
+      // But if user somehow lands here and speaks another language, we keep English
+    }
+
+    // Show banner for Vietnamese users on English content
+    if(isVi && !dismissed){
+      const banner = document.getElementById('langBanner');
+      banner.style.display = 'flex';
+      document.getElementById('langYes').addEventListener('click', () => {
+        window.location.href = './index-vi.html';
+      });
+      document.getElementById('langNo').addEventListener('click', () => {
+        localStorage.setItem('btk404LangDismissed', '1');
+        banner.style.display = 'none';
+      });
+    }
+  })();
 </script>
 </body>
 </html>
