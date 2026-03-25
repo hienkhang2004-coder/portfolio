@@ -725,6 +725,19 @@ body.theme-mono .cf-submit {
 }
 
 /* ══════════════════════════════════════
+   FIX: Ensure chat-close, lightbox buttons
+   are hidden when parent is not active
+   ══════════════════════════════════════ */
+#chat-popup:not(.open) .chat-close {
+  display: none !important;
+}
+
+.lightbox:not(.active) .lightbox-close,
+.lightbox:not(.active) .lightbox-nav {
+  display: none !important;
+}
+
+/* ══════════════════════════════════════
    26. GOOGLE SIGN-IN (Nav)
    ══════════════════════════════════════ */
 .gsi-nav {
